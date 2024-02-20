@@ -1,0 +1,58 @@
+@use '../../styles/mixins.scss' as mixins;
+@import "../../styles/vars.scss";
+
+
+.header-container {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 50px;
+
+  @media screen and (min-width: 360px) and (max-width: 675px) {
+    height: 80px;
+    flex-direction: column;
+  }
+
+  .header-logo {
+    height: 60px;
+  }
+
+  .header-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+    font-family: $family;
+    .container_accaount{
+      background-color: $pinkColor;
+      padding: 2px;
+      width: 35px;
+      height: 35px;
+      border-radius:50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+
+    }
+    .header-link {
+      text-decoration: none;
+      @include mixins.font($bold, $font-14, $blackColor);
+    }
+
+    .header-text {
+      @include mixins.font($bold, $font-14, $darkPinkColor);
+
+    }
+
+    @media screen and (min-width: 360px) and (max-width: 675px) {
+      padding-bottom: 20px;
+    }
+  }
+}
+.exitBtnStudy{
+  border: none;
+}

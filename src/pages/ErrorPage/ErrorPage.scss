@@ -1,0 +1,13 @@
+@use '../../styles/mixins.scss' as mixins;
+@import "../../styles/vars.scss";
+
+.error-container {
+  min-height: calc(100vh - 80px - 289px);
+  background: $mainBackground;
+  text-align: center;
+
+  .error-text {
+    padding-top: 50px;
+    @include mixins.font($bold, $font-20, $blackColor);
+  }
+}

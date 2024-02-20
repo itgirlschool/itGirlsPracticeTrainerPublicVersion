@@ -1,0 +1,312 @@
+{
+  "id": "lesson_16",
+  "block": "JS",
+  "title": "Формы",
+  "welcome": "Форма — это компонент страницы для получения информации от пользователя. Область заказа в интернет-магазине, окно для написания твита, строка поиска на сайте — всё это формы. Чтобы пользователь мог вводить и отправлять данные, в форме размещают специальные инструменты: кнопки, переключатели, флажки, поля с выпадающими списками и поля ввода текста.",
+  "forms": true,
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Задание 1",
+      "description": "Найдите все формы на странице. Выведите в <p> количество найденных форм.\n\nПодсказка: используйте коллекцию document.forms и свойство length.",
+      "code": "const paragraph = document.getElementById('practicum')\n\nfunction makeOne() {\n\t//Ваш код\n}\n\nmakeOne()",
+      "correctAnswer": "const paragraph = document.getElementById('practicum')\n\nfunction makeOne() {\n  paragraph.innerText = document.forms.length\n}\n\nmakeOne()",
+      "response": 5,
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.\nОбрати внимание, что в футере практикума тоже есть форма и она тоже будет считаться",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 2,
+      "title": "Задание 2",
+      "description": "Найдите первую форму на странице. Выведите значение атрибута name этой формы.\n\nПодсказка: для получения формы используйте коллекцию document.forms и метод getAttribute",
+      "code": "const paragraphTwo = document.getElementById('practicum')\n\nfunction makeTwo() {\n\t//Ваш код\n}\n\nmakeTwo()",
+      "correctAnswer": "const paragraphTwo = document.getElementById('practicum')\n\nfunction makeTwo() {\n  const formOne = document.forms[0]\n  const name = formOne.getAttribute('name')\n  paragraphTwo.innerText = name\n}\n\nmakeTwo()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 3,
+      "title": "Задание 3",
+      "description": "Найдите 'Форма 4' на странице. Выведите значение атрибута name этой формы.\n\nПодсказка: для получения формы используйте коллекцию document.forms и метод getAttribute",
+      "code": "const paragraphThree = document.getElementById('practicum')\n\nfunction makeThree() {\n\t//Ваш код\n}\n\nmakeThree()",
+      "correctAnswer": "const paragraphThree = document.getElementById('practicum')\n\nfunction makeThree() {\n  // нужная нам форма - предпоследняя на странице\n  const formFour = document.forms[document.forms.length - 2]\n  const name = formFour.getAttribute('name')\n  paragraphThree.innerText = name\n}\n\nmakeThree()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements. Помни, что последняя форма на странице - форма в футере.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 4,
+      "title": "Задание 4",
+      "description": "Найдите все формы на странице и выведите их названия. Выведите названия всех найденных форм, разделённых запятыми.\n\nДля решения задания вы можете использовать следующую логику:\n- Получите все формы на странице, используя коллекцию document.forms\n- Создайте пустой массив formNames для хранения названий форм\n- Пройдитесь по каждой форме в коллекции и для каждой формы:\n - Получите значение атрибута name с помощью метода getAttribute\n - Добавьте полученное название в массив formNames\n- Преобразуйте массив formNames в строку, разделив названия запятыми, с помощью метода join()",
+      "code": "const paragraphFour = document.getElementById('practicum')\n\nfunction makeFour() {\n\t//Ваш код\n}\n\nmakeFour()",
+      "correctAnswer": "const paragraphFour = document.getElementById('practicum')\n\nfunction makeFour() {\n  const allForms = document.forms\n  const formNames = []\n  for(form of allForms) {\n    const name = form.getAttribute('name')\n    formNames.push(name)\n  }\n  const namesString = formNames.join(', ')\n  paragraphFour.innerText = namesString\n}\n\nmakeFour()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements. Помни, что последняя форма на странице - форма в футере.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 5,
+      "title": "Задание 5",
+      "description": "Найдите третью форму на странице, используя document.forms. Выведите на страницу количество элементов в форме, используя коллекцию form.elements\n\nПодсказка: используйте коллекцию document.forms для получения формы по индексу и свойство form.elements.length для получения количества элементов в форме",
+      "code": "const paragraphFive = document.getElementById('practicum')\n\nfunction makeFive() {\n\t//Ваш код\n}\n\nmakeFive()",
+      "correctAnswer": "const paragraphFive = document.getElementById('practicum')\n\nfunction makeFive() {\n  const formThree = document.forms[2]\n  const elementsCount = formThree.elements.length\n  paragraphFive.innerText = elementsCount\n}\n\nmakeFive()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 6,
+      "title": "Задание 6",
+      "description": "Найдите вторую форму на странице, используя document.forms. Выведите на страницу количество элементов в форме, используя коллекцию form.elements",
+      "code": "const paragraphSix = document.getElementById('practicum')\n\nfunction makeSix() {\n\t//Ваш код\n}\n\nmakeSix()",
+      "correctAnswer": "const paragraphSix = document.getElementById('practicum')\n\nfunction makeSix() {\n  const formTwo = document.forms[1]\n  const elementsCount = formTwo.elements.length\n  paragraphSix.innerText = elementsCount\n}\n\nmakeSix()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 7,
+      "title": "Задание 7",
+      "description": "Выведите перечисление названий (name) всех элементов второй формы на экран. В задании 6 вы нашли их количество.\n\nПодсказка: Для решения задания вам понадобится использовать цикл for и коллекцию form.elements для перебора элементов формы и их вывода на экран\n- Создайте пустую строку elementsList , которая будет хранить перечисление названий элементов\n- Используйте цикл for для перебора элементов формы в коллекции formElements\n- Внутри цикла добавьте текущее название элемента формы (свойство name) в elementsList, добавляя дефис перед названием\n- После цикла выведите текст с перечислением элементов в элемент с id=\"practicum\" , используя свойство textContent",
+      "code": "const paragraphSeven = document.getElementById('practicum')\n\nfunction makeSeven() {\n\t//Ваш код\n}\n\nmakeSeven()",
+      "correctAnswer": "const paragraphSeven = document.getElementById('practicum')\n\nfunction makeSeven() {\n  let elementsList = ''\n  const form = document.forms.formTwo\n  for(let element of form.elements) {\n    const name = element.getAttribute('name')\n    elementsList += ' -' + name\n  }\n  paragraphSeven.textContent = elementsList\n}\n\nmakeSeven()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 8,
+      "title": "Задание 8",
+      "description": "Выведите перечисление названий (name) всех элементов первой формы на экран.",
+      "code": "const paragraphEight = document.getElementById('practicum')\n\nfunction makeEight() {\n\t//Ваш код\n}\n\nmakeEight()",
+      "correctAnswer": "const paragraphEight = document.getElementById('practicum')\n\nfunction makeEight() {\n  const formElements = document.forms.formOne.elements\n  let elementNames = ''\n  for (let element of formElements) {\n    const name = element.getAttribute('name')\n    if(elementNames === '') {\n      elementNames = name\n    }else {\n      elementNames += ', ' + name\n    }\n  }\n  paragraphEight.textContent = elementNames\n}\n\nmakeEight()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 9,
+      "title": "Задание 9",
+      "description": "Найдите третью форму на странице. Выведите перечисление названий (name) всех элементов формы на экран.",
+      "code": "const paragraphNine = document.getElementById('practicum')\n\nfunction makeNine() {\n\t//Ваш код\n}\n\nmakeNine()",
+      "correctAnswer": "const paragraphNine = document.getElementById('practicum')\n\nfunction makeNine() {\n  const formElements = document.forms.formThree.elements\n  let elementNames = ''\n  for (let element of formElements) {\n    const name = element.getAttribute('name')\n    if(elementNames === '') {\n      elementNames = name\n    }else {\n      elementNames += ', ' + name\n    }\n  }\n  paragraphNine.textContent = elementNames\n}\n\nmakeNine()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 10,
+      "title": "Задание 10",
+      "description": "Выведите на экран значение radio кнопки четвёртой формы на странице\n\nПодсказка: используйте коллекцию document.forms для доступа к формам, свойство elements для доступа к элементам формы и свойство value для получения значения radio кнопки",
+      "code": "const paragraphTen = document.getElementById('practicum')\n\nfunction makeTen() {\n\t//Ваш код\n}\n\nmakeTen()",
+      "correctAnswer": "const paragraphTen = document.getElementById('practicum')\n\nfunction makeTen() {\n    const form = document.forms.formFour\n    const radioBtn = form.elements.fourthName\n    paragraphTen.textContent = radioBtn.value\n}\n\nmakeTen()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 11,
+      "title": "Задание 11",
+      "description": "Выведите значения всех опций из первой формы\n\nПодсказка: Используйте коллекцию document.forms для доступа к формам, свойство elements для доступа к элементам формы и свойство value для получения значения выбранной опции\n- Получите доступ к форме с помощью document.forms и сохраните её в переменную\n- Получите доступ к элементу select с помощью form.elements и сохраните его в переменную\n- Создайте пустую строку optionsValues , которая будет хранить значения всех опций\n- Используйте цикл или метод forEach для перебора опций в коллекции элемента select\n- Внутри цикла получите значение каждой опции с помощью свойства value и добавьте его в optionsValues\n- Выведите значения опций на страницу",
+      "code": "const paragraphEleven = document.getElementById('practicum')\n\nfunction makeEleven() {\n\t//Ваш код\n}\n\nmakeEleven()",
+      "correctAnswer": "const paragraphEleven = document.getElementById('practicum')\n\nfunction makeEleven() {\n  const form = document.forms.formOne\n  const select = form.elements.firstSelect\n  let optionValues = ''\n  for (let option of select) {\n    if(optionValues === '') {\n      optionValues = option.value\n    } else {\n      optionValues += ', ' + option.value\n    }\n  }\n  paragraphEleven.textContent = optionValues\n}\n\nmakeEleven()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 12,
+      "title": "Задание 12",
+      "description": "Выведите значения атрибутов id всех чекбоксов (количество: 3) из второй формы\n\nПодсказка: Используйте коллекцию document.forms для доступа к формам, свойство elements для доступа к элементам формы и свойство id для получения значений",
+      "code": "const paragraphTwelve = document.getElementById('practicum')\n\nfunction makeTwelve() {\n\t//Ваш код\n}\n\nmakeTwelve()",
+      "correctAnswer": "const paragraphTwelve = document.getElementById('practicum')\n\nfunction makeTwelve() {\n    const ids = []\n    const elements = document.forms.formTwo.elements\n    for (let element of elements) {\n        if(element.type === 'checkbox') {\n            ids.push(element.id)\n        }\n    }\n  paragraphTwelve.textContent = ids.join(', ')\n}\n\nmakeTwelve()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 13,
+      "title": "Задание 13",
+      "description": "Проверьте была ли выбрана кнопка четвёртой формы\n\nПодсказка: Используйте коллекцию document.forms для доступа к формам, свойство elements для доступа к элементам формы и свойство checked для проверки выбранности кнопки\n- Получите доступ к форме с помощью document.forms и сохраните её в переменную\n- Получите доступ к radio кнопке с помощью form.elements и сохраните её в переменную\n- Используйте условный оператор (if) для проверки выбранности кнопки\n- Если кнопка выбрана, выведите сообщение \"Кнопка выбрана\" на страницу\n- Если кнопка не выбрана, выведите сообщение \"Кнопка не выбрана\" на страницу",
+      "code": "const paragraphThirteen = document.getElementById('practicum')\n\nfunction checkButton() {\n\t//Ваш код\n}\n\ncheckButton()",
+      "correctAnswer": "const paragraphThirteen = document.getElementById('practicum')\n\nfunction checkButton() {\n    const form = document.forms.formFour\n    const radioBtn = form.elements.fourthName\n    paragraphThirteen.textContent = radioBtn.checked\n        ? \"Кнопка выбрана\"\n        : \"Кнопка не выбрана\"\n}\n\ncheckButton()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 14,
+      "title": "Задание 14",
+      "description": "Проверьте, какой вариант выбран в первой форме\n\nПодсказка: Используйте коллекцию document.forms для доступа к формам, свойство elements для доступа к элементам формы и свойство value выбранной опции для получения выбранного варианта\n- Получите доступ к форме с помощью document.forms и сохраните её в переменную\n- Получите доступ к элементу select с помощью form.elements и сохраните его в переменную\n- Установите выбранным второй вариант: select.selectedIndex = 1;\n- Используйте свойство value выбранной опции для получения выбранного варианта\n- Используйте условный оператор (if) для проверки выбранного варианта\n- Если выбран первый вариант, выведите сообщение \"Выбран первый вариант\" на страницу\n- Если выбран второй вариант, выведите сообщение \"Выбран второй вариант\" на страницу\n- Если выбран третий вариант, выведите сообщение \"Выбран третий вариант\" на страницу",
+      "code": "const paragraphFourteen = document.getElementById('practicum')\n\nfunction checkOption() {\n\t//Ваш код\n}\n\ncheckOption()",
+      "correctAnswer": "const paragraphFourteen = document.getElementById('practicum')\n\nfunction checkOption() {\n    const form = document.forms.formOne\n    const select = form.elements.firstSelect\n    select.selectedIndex = 1\n    const optionValue = select[1].value\n    if(optionValue === 'Опция 1') {\n        paragraphFourteen.textContent = 'Выбран первый вариант'\n    } else if (optionValue === 'Опция 2') {\n        paragraphFourteen.textContent = 'Выбран второй вариант'\n    } else {\n        paragraphFourteen.textContent = 'Выбран третий вариант'\n    }\n}\n\ncheckOption()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 15,
+      "title": "Задание 15",
+      "description": "Добавьте в первую форму выбранную Опцию 1 по умолчанию\n\nПодсказка: Используйте коллекцию document.forms для доступа к формам, свойство elements для доступа к элементам формы и свойство selectedIndex элемента select, чтобы установить выбранный индекс опции по умолчанию.\n- Получите доступ к форме с помощью document.forms и сохраните её в переменную\n- Получите доступ к элементу select с помощью form.elements и сохраните его в переменную\n- Используйте свойство selectedIndex элемента select, чтобы установить выбранный индекс опции по умолчанию\n- Установите значение selectedIndex равным индексу опции, которую вы хотите выбрать по умолчанию\n- Выведите выбранный по умолчанию индекс в формате 'Индекс по умолчанию - _твоя переменная_'",
+      "code": "const paragraph = document.getElementById('practicum')\n\nfunction makeFifteen() {\n\t//Ваш код\n}\n\nmakeFifteen()",
+      "correctAnswer": "const paragraph = document.getElementById('practicum')\n\nfunction makeFifteen() {\n  const form = document.forms.formOne\n  const select = form.elements.firstSelect\n  select.selectedIndex = 0\n  const index = select.selectedIndex\n  paragraph.textContent = `Индекс по умолчанию - ${index}`\n}\n\nmakeFifteen()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 16,
+      "title": "Задание 16",
+      "description": "Во второй форме установите выбранный вариант \"Вариант 3\" по умолчанию.\n\nПодсказка: Используйте свойство checked для элемента checkbox, чтобы установить его выбранным по умолчанию.\n- Получите доступ к форме с помощью document.forms и сохраните её в переменную.\n- Получите доступ к элементу checkbox с помощью form.elements и сохраните его в переменную.\n- Используйте свойство checked элемента checkbox, чтобы установить его выбранным по умолчанию.\n- Установите значение true для выбранного варианта.\nНажми кнопку 'Проверить'\nПосмотри результат в Форма 2",
+      "code": "function makeSixteen() {\n\t//Ваш код\n}\n\nmakeSixteen()",
+      "correctAnswer": "function makeSixteen(){\n  const form = document.forms.formTwo\n  const checkbox = form.elements.checkboxThree\n  checkbox.checked = true\n}\n\nmakeSixteen()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 17,
+      "title": "Задание 17",
+      "description": "Заполните поля первой формы.\nПроверьте, заполнены ли все поля первой формы перед отправкой\n\nПодсказка:\n- Получите доступ к каждому полю формы с помощью form.elements и сохраните их в соответствующие переменные\n- Используйте условные операторы (if) для проверки каждого поля на заполненность\n- Если хотя бы одно поле не заполнено, выведите сообщение об ошибке на страницу (элемент куда необходимо добавить ошибку создан: <p> class=\"error-message\" id=\"errorMessage\"></p> )",
+      "code": "const formOne = document.forms.formOne\n\nconst formOneSubmit = () => {\n  //твой код\n}\n\nformOneSubmit()",
+      "correctAnswer": "const formOne = document.forms.formOne\n\nconst formOneSubmit = () => {\n  const paragraphError = document.querySelector('#errorMessage')\n  paragraphError.textContent = ''\n  const elements = formOne.elements\n  if(elements.firstName.value === '') {\n    paragraphError.textContent = 'Введите имя'\n  } else if (elements.firstEmail.value === '') {\n    paragraphError.textContent = 'Введите почту'\n  }\n}\n\nformOneSubmit()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 18,
+      "title": "Задание 18",
+      "description": "Очистите все поля первой формы после отправки.\n\nПодсказка:\n- Получите доступ к форме с помощью document.forms и сохраните её в переменную\n- Используйте метод reset() формы, чтобы очистить все её поля после отправки.",
+      "code": "const formReset = () => {\n  //твой код\n}",
+      "correctAnswer": "const form = document.forms.formOne\n\nconst formReset = () => {\n  form.reset()\n}",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 19,
+      "title": "Задание 19",
+      "description": "При выборе определенной опции из выпадающего списка первой формы измените цвет фона страницы (Опция 1 - красный цвет; Опция 2 - зелёный цвет; Опция 3 - синий цвет)\n\nПодсказка:\n- Выберите одну из опций\n- Получите доступ к элементу select с помощью document.getElementById или другим методом выборки элементов и сохраните его в переменную\n- Используя условные операторы (if), проверьте выбранную опцию\n- В зависимости от выбранной опции, измените цвет фона страницы, используя свойство document.body.style.backgroundColor",
+      "code": "const selectElement = //твой код\nconst formsContainer = //твой код\n\nconst changeColor = () => {\n  //твой код\n}\n\nchangeColor()",
+      "correctAnswer": "const selectElement = document.getElementById('firstSelect')\nconst formsContainer = document.querySelector('.forms-container')\n\nconst changeColor = () => {\n  if(selectElement.value === 'Опция 1'){\n      formsContainer.style.backgroundColor = 'red'\n  } else if(selectElement.value === 'Опция 2'){\n      formsContainer.style.backgroundColor = 'green'\n  } else {\n      formsContainer.style.backgroundColor = 'blue'\n  }\n}\n\nchangeColor()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 20,
+      "title": "Задание 20",
+      "description": "Добавьте валидацию для поля Email первой формы\n\nПодсказка:\n- Получите доступ к первой форме с помощью document.forms и сохраните её в переменную\n- Получите доступ к полю Email с помощью form.elements и сохраните его в переменную\n- Используя регулярное выражение ( RegExp: /^[^\\s@]+@[^\\s@]+.[^\\s@]+$/ ), проверьте введённое значение поля Email\n- В зависимости от результата проверки, измените стиль поля Email (сделайте border цвета 'red') и отобразите сообщение об ошибке в элементе <p>(элемент куда необходимо добавить ошибку создан: <p> class=\"error-message\" id=\"errorMessage\"></p> ) с помощью свойства textContent.",
+      "code": "const emailInput = //Ваш код\nconst errorMessage = //Ваш код\n\nconst mailValidation = () => {\n\t//Ваш код\n}\n\nmailValidation()",
+      "correctAnswer": "const emailInput = document.forms.formOne.elements.firstEmail\nconst errorMessage = document.getElementById('errorMessage')\n\nconst mailValidation = () => {\n  const regex = /^[^\\s@]+@[^\\s@]+.[^\\s@]+$/\n  if(!regex.test(emailInput.value)) {\n    emailInput.style.border = '2px solid red'\n    errorMessage.textContent = 'Некорректный email'\n  }else {\n    errorMessage.textContent = ''\n    emailInput.style.border = ''\n  }\n}\n\nmailValidation()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 21,
+      "title": "Задание 21",
+      "description": "При отправке второй формы выполняется проверка всех чекбоксов. Если ни один из чекбоксов не выбран, выведите сообщение об ошибке 'Проверка не пройдена' в элемент с id \"practicum\".",
+      "code": "const formSubmit = () => {\n\tconst checkboxes = document.forms.formTwo.querySelectorAll('input[type=\"checkbox\"]')\n\tlet isChecked = false\n\n\tcheckboxes.forEach(function (checkbox) {\n\t\tif (checkbox.checked) {\n\t\t\tisChecked = true;\n\t\t}\n\t})\n\n\tif (!isChecked) {\n\t\t//Ваш код\n\t} else {\n\t\tdocument.getElementById('practicum').textContent = 'Проверка пройдена'\n\t}\n}\nformSubmit()",
+      "correctAnswer": "const formSubmit = () => {\n  const checkboxes = document.forms.formTwo.querySelectorAll('input[type=\"checkbox\"]')\n  let isChecked = false\n\n  checkboxes.forEach(function (checkbox) {\n    if (checkbox.checked) {\n        isChecked = true;\n    }\n  })\n\n  if (!isChecked) {\n    document.getElementById('practicum').textContent = 'Проверка не пройдена'\n  } else {\n    document.getElementById('practicum').textContent = 'Проверка пройдена'\n  }\n}\n\nformSubmit()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 22,
+      "title": "Задание 22",
+      "description": "При отправке третьей формы выполняется проверка поля Имя на заполненность. Если поле Имя пустое, выведите сообщение об ошибке 'Введите имя!' в элементе с id \"practicum\", иначе выведите 'Проверка пройдена'",
+      "code": "const formSubmit = () => {\n  //твой код\n}\n\nformSubmit()",
+      "correctAnswer": "const formSubmit = () => {\n  \tconst nameInput = document.forms.formThree.elements.thirdName\n\n\tif (nameInput.value.trim() === '')\n    \tdocument.getElementById('practicum').textContent = 'Введите имя!'\n\t} else {\n\t\tdocument.getElementById('practicum').textContent = 'Проверка пройдена'\n\t}\n}\n\nformSubmit()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 23,
+      "title": "Задание 23",
+      "description": "Если опция \"Я хочу зарегистрироваться\" в четвёртой форме не выбрана, кнопка 'Отправить' должна быть заблокирована. В противном случае, сделайте кнопку разблокированной.\n\nПодсказка: используйте свойство disabled\n\nНапиши код и нажми 'Проверить', кнопка 'Отправить' должна стать заблокированной\n\nНажми 'Я хочу зарегистрироваться и снова нажми 'Проверить', теперь кнопка должна быть доступна",
+      "code": "const formSubmit = () => {\n  //твой код\n}\nformSubmit()",
+      "correctAnswer": "const formSubmit = () => {\n  const btn = document.forms.formFour.elements.fourthButton\n  const radioBtn = document.forms.formFour.elements.fourthName\n  \n  if(!radioBtn.checked) {\n    btn.disabled = true\n  } else {\n    btn.disabled = false\n  }\n}\nformSubmit()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 24,
+      "title": "Задание 24",
+      "description": "Найдите все поля ввода на странице и установите им атрибут \"placeholder\" со значением \"Введите данные\"\n\nПодсказка: используйте методы forEach и setAttribute",
+      "code": "const setPlaceholder = () => {\n\t//Ваш код\n}\nsetPlaceholder()",
+      "correctAnswer": "const setPlaceholder = () => {\n  const inputFields = document.querySelectorAll('.form__input')\n  \n  inputFields.forEach(function(input) {\n    input.setAttribute('placeholder', 'Введите данные')\n  })\n}\n\nsetPlaceholder()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 25,
+      "title": "Задание 25",
+      "description": "При фокусе на любом поле ввода измените его границу на  \"1px solid #00ff00\". При потере фокуса восстановите стандартную границу.\n Подсказка: не забудьте отменить стили по умолчанию при фокусе.",
+      "code": "const setColor = () => {\n  const inputs = document.querySelectorAll('.form__input')\n\n  inputs.forEach(function (input) {\n    input.addEventListener('focus', function () {\n      //Ваш код\n    })\n\n    input.addEventListener('blur', function () {\n      //Ваш код\n    })\n  })\n}\n\nsetColor()",
+      "correctAnswer": "const setColor = () => {\n  const inputs = document.querySelectorAll('.form__input')\n\n  inputs.forEach(function (input) {\n    input.addEventListener('focus', function () {\n      input.style.outline = 'none'\n      input.style.border = '1px solid #00ff00'\n    })\n\n    input.addEventListener('blur', function () {\n      input.style.border = ''\n    })\n  })\n}\nsetColor()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements."
+    },
+    {
+      "id": 26,
+      "title": "Задание 26",
+      "description": "Отобразите в элементе с id \"practicum\" значение placeholder из поля Имя в третьей форме",
+      "code": "const showPlaceholder = () => {\n\t//Ваш код\n}\nshowPlaceholder()",
+      "correctAnswer": "const showPlaceholder = () => {\n    const nameField = document.forms.formThree.elements.thirdName\n    const paragraph = document.getElementById('practicum')\n    paragraph.textContent = nameField.placeholder\n}\n\nshowPlaceholder()",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 27,
+      "title": "Задание 27",
+      "description": "Заполни поля третьей формы.\nПолучи значения полей ввода и выведи их через запятую в элементе с id \"practicum\"",
+      "code": "const nameValue = //твой код\nconst emailValue = //твой код\n\nconst showFields = (nameValue, emailValue) => {\n  //твой код\n}\n\nshowFields(nameValue, emailValue)",
+      "correctAnswer": "const nameValue = document.querySelector('#thirdName').value\nconst emailValue = document.querySelector('#thirdEmail').value\n\nconst showFields = (nameValue, emailValue) => {\n  document.getElementById('practicum').textContent = nameValue + ', ' + emailValue\n}\n\nshowFields(nameValue, emailValue)",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 28,
+      "title": "Задание 28",
+      "description": "Выбери вторую или третью из опций выпадающего списка в первой форме.\n Отобрази сообщение с текстом этой опции (например 'Опция 2') в элементе с id \"practicum\"",
+      "code": "const selectFormOne = document.getElementById('firstSelect')\n\nconst showOptionValue = (select) => {\n\t//твой код\n}\n\nshowOptionValue(selectFormOne)",
+      "correctAnswer": "const selectFormOne = document.getElementById('firstSelect')\n\nconst showOptionValue = (select) => {\n  const paragraph = document.getElementById('practicum')\n  paragraph.textContent = selectFormOne.value\n}\n\nshowOptionValue(selectFormOne)",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 29,
+      "title": "Задание 29",
+      "description": "При отправке второй формы выведите значения выбранных вариантов в элемент с id 'practicum'",
+      "code": "const formTwo = document.forms.formTwo;\nconst resultElement = document.getElementById('practicum')\n\nfunction formSubmit(form, paragraph) {\n\tconst checkboxes = form.querySelectorAll('input[type=\"checkbox\"]:checked')\n\tconst selectedOptions = Array.from(checkboxes).map((checkbox) => checkbox.labels[0].textContent)\n\n\t//Ваш код\n}\n\nformSubmit(formTwo, resultElement)",
+      "correctAnswer": "const formTwo = document.forms.formTwo;\nconst resultElement = document.getElementById('practicum')\n\nfunction formSubmit(form, paragraph) {\n\tconst checkboxes = form.querySelectorAll('input[type=\"checkbox\"]:checked')\n\tconst selectedOptions = Array.from(checkboxes).map((checkbox) => checkbox.labels[0].textContent)\n\n\tparagraph.textContent = selectedOptions\n}\n\nformSubmit(formTwo, resultElement)",
+      "response": "",
+      "comment": "Все стили и id элементов формы смотри в инструментах разработчика во вкладке Elements.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+@import '../../styles/vars';
+.postcard {
+  max-width: 350px;
+  margin: 50px auto 0;
+  padding: 60px 20px;
+  background: #fffdee;
+  border: 10px solid transparent;
+  border-image: 10 repeating-linear-gradient(135deg, #C42061, #C42061 10px, transparent 10px, transparent 20px, #FBCFDF 20px, #FBCFDF 30px, transparent 30px, transparent 40px);
+  font-family:$family;
+  color: #605756;
+  h3{
+    margin-bottom: 40px;
+    text-align: center;
+    color: $pinkColor;
+  }
+  .submit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a{
+      font-size: 14px;
+      color: $pinkColor;
+    }
+  }
+  .red{
+    color: red;
+  }
+  .text_err_message-pass{
+    font-size: 14px;
+    color: $pinkColor;
+  }
+  .text_err_message-resPass{
+    font-size: 14px;
+    color: $pinkColor;
+  }
+}
+.form-row input[type="text"], .form-row input[type="email"], .form-row input[type="password"]{
+  width: 100%;
+  padding: 10px 10px;
+  line-height: 35px;
+  border-width: 0;
+  outline: none;
+  background: transparent url(https://html5book.ru/wp-content/uploads/2016/12/bg-form.png) bottom left repeat-x;
+  background-size: 8px 35px;
+  font-family: $family;
+}
+.form-row input[type="submit"] {
+  padding: 10px 60px;
+  margin-top: 10px;
+  background: $pinkColor;
+  border-width: 0;
+  cursor: pointer;
+  outline: none;
+  font-family: $family;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #fffdee;
+  text-transform: uppercase;
+  transition: 1s cubic-bezier(.165, .84, .44, 1);
+}
+.form-row input[type=submit]:hover {
+  background: #C42061;
+}
+.form-row{
+  margin-bottom: 20px;
+}
+:last-child{
+  margin-bottom: 0;
+}
+.link_reg{
+  margin-top: 20px;
+}

@@ -1,0 +1,82 @@
+@import "../../../styles/vars";
+.containerBurger {
+  background-color: white;
+  position: relative;
+  flex-basis: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    width: 180px;
+    padding-left: 20px;
+    img {
+      width: 100%;
+    }
+  }
+.wrapper_menu{
+  position: relative;
+  width: 40px;
+  right:30px;
+  top: 1px;
+  display: flex;
+  justify-content: center;
+
+  height: 70%
+}
+}
+
+#page-wrap {
+  text-align: center;
+  overflow: auto;
+  top: 45%;
+  position: relative;
+}
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 30px;
+  color: black;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: $pinkColor;
+}
+
+.bm-burger-button {
+  padding: 10px;
+  position: absolute;
+  width: 30px;
+  height: 24px;
+}
+
+.bm-burger-bars {
+  background: black;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: black;
+}
+
+.bm-menu {
+  background: white;
+  padding: 6.5em 1.5em 0;
+  font-size: 1em;
+  font-family: $family;
+}
+
+.bm-morph-shape {
+  fill: $pinkColor;
+}
+.bm-item-list {
+  color: #b8b7ad;
+}
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}

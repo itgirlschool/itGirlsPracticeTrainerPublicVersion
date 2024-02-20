@@ -1,0 +1,293 @@
+{
+  "id": "lesson_20",
+  "block": "JS",
+  "title": "Обработка ошибок.",
+  "welcome": "Когда вы разрабатываете реальное приложение, недостаточно просто написать код, который будет решать задачу пользователя. Важно сделать так, чтобы всё работало стабильно и предсказуемо. А этого невозможно добиться без корректной обработки ошибок, которые возникают в процессе работы приложения.",
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Задание 1",
+      "description": "Создайте функцию makeOne, которая пытается вызвать функцию functionWithErrors, и при этом отлавливает ошибку с помощью блока try/catch.",
+      "code": "function makeOne() {\n\tconst resultOne = document.getElementById('practicum')\n\t//Блок try\n\tfunctionWithErrors() //Попытка вызова несуществующей функции\n\tresultOne.textContent = 'Функция вызвана без ошибок'\n\t//Блок catch\n\tresultOne.textContent = 'Ошибка была перехвачена: ' + error.message\n}\nmakeOne()",
+      "correctAnswer": "function makeOne() {\n  const resultOne = document.getElementById('practicum')\n  try {\n    functionWithErrors()\n    resultOne.textContent = 'Функция вызвана без ошибок'\n  } catch (error) {\n    resultOne.textContent = 'Ошибка была перехвачена: ' + error.message\n  }\n}\nmakeOne()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 2,
+      "title": "Задание 2",
+      "description": "Cоздайте функцию makeTwo, которая использует блок try/catch. Создайте код, который пытается перезаписать константу e, обрабатывает ошибку и выводит в <p> - 'Не удалось перезаписать константу: _текст ошибки_', если этот код не выполняется.",
+      "code": "function makeTwo() {\n  const resultTwo = document.getElementById('practicum')\n  const e = 'Меня нельзя перезаписать'\n  //Ваш код\n}\nmakeTwo()",
+      "correctAnswer": "function makeTwo() {\n   const resultTwo = document.getElementById('practicum')\n   const e = 'Меня нельзя перезаписать'\n   try {\n     e = 'Попытка перезаписать'\n     resultTwo.textContent = 'Всё прошло удачно'\n   } catch (error) {\n     resultTwo.textContent = 'Не удалось перезаписать константу: ' + error\n   }\n}\nmakeTwo()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 3,
+      "title": "Задание 3",
+      "description": "Cоздайте функцию makeThree, которая используя блок try/catch, \n- пытается выполнить код с оператором throw new Error (передай в качестве аргумента строку 'Ошибка!'), \n- обрабатывает ошибку и выводит её в <p>, если происходит попытка выполнить этот оператор.",
+      "code": "function makeThree() {\n\tconst resultThree = document.getElementById('practicum')\n\ttry {\n\t\t//Ваш код\n\t} catch (error) {\n\t\tresultThree.textContent = 'Ошибка была перехвачена: ' + error.message\n\t}\n}\nmakeThree()",
+      "correctAnswer": "function makeThree() {\n\tconst resultThree = document.getElementById('practicum')\n\ttry {\n      const error = new Error('Ошибка!');\n      resultThree.textContent = error.message\n\t} catch (error) {\n      resultThree.textContent = 'Ошибка была перехвачена: ' + error.message\n\t}\n}\nmakeThree()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 4,
+      "title": "Задание 4",
+      "description": "Cоздайте функцию makeFour, которая использует блок try/catch. Ошибка не должна выводиться на экран, а должен быть выведен результат умножения чисел 2 и3 в элемент с id \"practicum\".",
+      "code": "function makeFour() {\n\t//Ваш код\n}",
+      "correctAnswer": "",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 5,
+      "title": "Задание 5",
+      "description": "Допишите функцю makeFive так, чтобы она создала объект ошибки (new Error) и выводила текст ошибки в консоль.",
+      "code": "function makeFive(number) {\n  // если number равна 0, генерируем ошибку и выводим сообщение ошибки в консоль\n  // иначе выводим в консоль результат выражения number * (number - 1)\n}\nmakeFive(0)\n//makeFive(-1)",
+      "correctAnswer": "function makeFive(number) {\n  if (number === 0) {\n    const error = new Error('Ошибка')\n    console.log(error.message)\n  } else {\n    console.log(number * (number - 1))\n  }\n}\nmakeFive(0)\n//makeFive(-1)",
+      "response": "",
+      "comment": "Важно!\nВызываем функции всегда по одной, вторую комментируем."
+    },
+    {
+      "id": 6,
+      "title": "Задание 6",
+      "description": "Создайте функцию makeSix, которая дополнит код предыдущей функции так, чтобы она использовала оператор throw для генерации исключения в случае ошибки, а затем перехватывала это исключение и выводила в консоль сообщение \"Ошибка перехвачена\".",
+      "code": "function makeSix(number) {\n\ttry {\n\t  //твой код\n\t} catch (error) {\n\t  //твой код\n\t}\n}\nmakeSix(0)",
+      "correctAnswer": "function makeSix(number) {\n\ttry {\n\t  if(number === 0) {\n        throw new Error('Ошибка перехвачена')\n      } else {\n        console.log(num)\n      }\n\t} catch (error) {\n\t  console.log(error.message)\n\t}\n}\nmakeSix(0)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 7,
+      "title": "Задание 7",
+      "description": "Допишите функцию makeSeven так, что если делитель равен нулю, бросьте исключение с сообщением \"Деление на ноль недопустимо\".",
+      "code": "function makeSeven() {\n\tlet dividend = 10\n\tlet divisor = 0\n\t//Ваш код\n\tconsole.log(dividend / divisor)\n}\nmakeSeven()",
+      "correctAnswer": "function makeSeven() {\n  let dividend = 10\n  let divisor = 0\n  try {\n    if(divisor === 0) {\n      throw new Error('Деление на ноль недопустимо')\n    }\n  } catch (error) {\n    console.log(error.message)\n    return\n  }\n console.log(dividend / divisor)\n}\nmakeSeven()",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 8,
+      "title": "Задание 8",
+      "description": "Добавьте блок try/catch так, чтобы вместо ошибки выводилось цифра 1 в консоль",
+      "code": "function makeEight() {\n\t//Тут добавляете try\n\tlet a = 22;\n\tlet c = a + d;\n\t//Тут catch\n\t//Вывод цифры в консоль\n}\nmakeEight()",
+      "correctAnswer": "function makeEight() {\n  try{\n    let a = 22;\n\tlet c = a + d;\n    console.log(c)\n  }catch{\n      console.log(1)\n  }\n}\nmakeEight()",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 9,
+      "title": "Задание 9",
+      "description": "Добавьте в функцию makeNine блок try, в котором адрес будет проверяться на валидность и пробрасываться ошибка, если адрес некорректен\nЕсли проверка пройдена успешно, выведите сообщение \"Email-адрес корректен\" на страницу в <p>\nЕсли возникла ошибка (некорректный email), перехватите исключение с помощью блока catch\nВ блоке catch выведите сообщение об ошибке 'Некорректный email-адрес' на страницу в <p>",
+      "code": "function makeNine() {\n\tlet email = 'example.com'\n\tlet emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/\n\t//твой код\n}\nmakeNine()",
+      "correctAnswer": "function makeNine() {\n  let email = 'example.com'\n  let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/\n  \n  try {\n    if(!emailPattern.test(email)) {\n      throw 'Некорректный email-адрес'\n    }\n    document.getElementById('practicum').textContent = 'Email-адрес корректен';\n  } catch (error) {\n    document.getElementById('practicum').textContent = error\n  }\n}\nmakeNine()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 10,
+      "title": "Задание 10",
+      "description": "Допишите проверку телефона пользователя, если длина телефона менее 10 символов бросьте исключение throw new Error с сообщением \"Некорректная длина телефонного номера\"",
+      "code": "function makeTen() {\n\tconst phoneNumber = '066298207'\n\tif (!/^\\d+$/.test(phoneNumber)) {\n\t\tthrow new Error('Телефонный номер должен состоять только из цифр')\n\t}\n\t//Ваш код\n\tconsole.log('Телефонный номер корректен');\n}\nmakeTen()",
+      "correctAnswer": "function makeTen() {\n    const phoneNumber = '066298207';\n    try {\n        if (!/^\\d+$/.test(phoneNumber)) {\n            throw new Error('Телефонный номер должен состоять только из цифр')\n        }\n        if (phoneNumber.length < 10) {\n            throw new Error('Некорректная длина телефонного номера')\n        }\n        console.log('Телефонный номер корректен')\n    } catch (error) {\n        console.log(error.message)\n    }\n}\nmakeTen()",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 11,
+      "title": "Задание 11",
+      "description": "Создайте функцию makeEleven, которая проверит возраст пользователя.\nЕсли возраст меньше 18 лет, необходимо бросить в консоль исключение типа Error с сообщением \"Доступ запрещен для лиц младше 18 лет\". В противном случае, выведите в консоль сообщение \"Доступ разрешен\".",
+      "code": "function makeEleven() {\n\tlet age = 12\n\tif (age < 18) {\n\t\t//Ваш код\n\t} else {\n\t\t//Ваш код\n\t}\n}\nmakeEleven()",
+      "correctAnswer": "function makeEleven() {\n  let age = 12\n  try {\n    if (age < 18) {\n      throw new Error('Доступ запрещен для лиц младше 18 лет')\n    } else {\n        console.log('Доступ разрешен')\n    }\n  } catch (error) {\n    console.log(error.message)\n  }\n}\nmakeEleven()",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 12,
+      "title": "Задание 12",
+      "description": "Создайте функцию makeTwelve, которая будет подсчитывать размер скидки на товар\nОднако существует ограничение: скидка не может быть отрицательной и не может превышать 50%\nВ случае нарушения этого ограничения, необходимо в <p> бросить исключение типа Error с сообщением \"Некорректное значение скидки\"\nВ противном случае, выведите в <p> сообщение с размером скидки.\nИспользуйте блок try/catch",
+      "code": "function makeTwelve() {\n\tlet discount = 51\n\tif (discount < 0 || discount > 50) {\n\t\t//Ваш код\n\t}\n\tconsole.log('Замените текст')\n}\nmakeTwelve()",
+      "correctAnswer": "function makeTwelve() {\n  let discount = 51\n  try {\n    if (discount < 0 || discount > 50) {\n      throw new Error('Некорректное значение скидки')\n\t}\n    document.getElementById('practicum').textContent = discount\n\tconsole.log(discount)\n  } catch (error) {\n    document.getElementById('practicum').textContent =error.message\n  }\n}\nmakeTwelve()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 13,
+      "title": "Задание 13",
+      "description": "Есть функция makeThirteen, в неё передаются два параметра: переменная (\"а\") и некоторая функция (\"func\"). Вам необходимо запустить функцию \"func\", с переменной \"а\" в качестве аргумента\nВ блоке catch вывести имя (свойство \"name\") с возникающей ошибки в элемент с id practicum",
+      "code": "function makeThirteen(a, func) {\n\tconst result = document.getElementById('practicum')\n\ttry {\n\t\t//Ваш код\n\t} catch (error) {\n\t\t//Ваш код\n\t}\n}\nmakeThirteen()",
+      "correctAnswer": "function makeThirteen(a, func) {\n  const result = document.getElementById('practicum')\n  try {\n    func(a)\n  } catch (error) {\n    result.textContent = error.name\n  }\n}\nmakeThirteen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 14,
+      "title": "Задание 14",
+      "description": "Есть функция makeFourteen, в неё передаются два параметра: число (\"n\") и некоторая функция (\"func\"). Вам необходимо запустить функцию \"func\", с числом \"n\" в качестве аргумента.\nВ блоке catch вывести сообщение с описанием ошибки в элемент с id practicum",
+      "code": "function makeFourteen(n, func) {\n\tconst result = document.getElementById('practicum')\n\t//Ваш код\n}\nmakeFourteen()",
+      "correctAnswer": "function makeFourteen(n, func) {\n\tconst result = document.getElementById('practicum')\n\ttry {\n\t  func(n)\n\t} catch (error) {\n\t  result.textContent = error.message\n\t}\n}\nmakeFourteen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 15,
+      "title": "Задание 15",
+      "description": "Есть функция makeFifteen, в неё передаются два параметра: строка (\"str\") и некоторая функция (\"func\"). Вам необходимо запустить функцию \"func\", с строкой \"str\" в качестве аргумента.\nВ блоке catch вывести сообщение с описанием ошибки в элемент с id practicum",
+      "code": "function makeFifteen(str, func) {\n\tconst result = document.getElementById('practicum')\n\t//Ваш код\n}\nmakeFifteen()",
+      "correctAnswer": "function makeFifteen(str, func) {\n\tconst result = document.getElementById('practicum')\n\ttry {\n\t  func(str)\n\t} catch (error) {\n\t  result.textContent = error.message\n\t}\n}\nmakeFifteen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 16,
+      "title": "Задание 16",
+      "description": "Создайте функцию makeSixteen и добавьте try, catch, finally так, чтобы в элемент с id practicum выводился 0 при ошибке.\nА в элемент с id practicumFinally всегда выводилось слово finally",
+      "code": "function makeSixteen() {\n  const result = document.getElementById('practicum')\n  const forWordFinally = document.getElementById('practicumFinally')\n  //Блок try\n  //Некорректная операция деления для примера, может вызвать ошибку\n  if (true) {\n      throw new Error('Division by zero')\n  }\n  const result = 12 / 0\n  result.textContent = result\n  //Блок catch (error)\n  result.textContent = '0' //Вывод '0' при ошибке\n  //Блок finally\n}\nmakeSixteen()",
+      "correctAnswer": "function makeSixteen() {\n  const resultSixteen = document.getElementById('practicum')\n  const forWordFinally = document.getElementById('practicumFinally')\n  try {\n    if (true) {\n\t\tthrow new Error('Division by zero')\n\t}\n\tconst result = 12 / 0\n\tresultSixteen.textContent = String(result)\n  } catch (error) {\n    resultSixteen.textContent = '0'\n  } finally {\n    forWordFinally.textContent = 'finally'\n  }\n}\nmakeSixteen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>"
+    },
+    {
+      "id": 17,
+      "title": "Задание 17",
+      "description": "Создайте функцию makeSeventeen и добавьте try, catch, finally так, чтобы в элемент с id practicum выводилась сумма элементов массива при успешном выполнении функции и сообщение \"Ошибка\" при ошибке\nА в элемент с id practicumFinally всегда выводилась строка \"finally17\"",
+      "code": "function makeSeventeen() {\n\tconst resultSeventeen = document.getElementById('practicum')\n\t//Блок try\n\tconst arr = [1, 2, 3]\n\tconst sum = arr.reduce((acc, val) => acc + val, 0)\n\tresultSeventeen.textContent = sum\n\t//Блок catch (error)\n\t//Вывод ошибки в <p> \n\t//Ваш код\n\t//Блок finally\n}\nmakeSeventeen()",
+      "correctAnswer": "function makeSeventeen() {\n  const resultSeventeen = document.getElementById('practicum')\n  const resultFinally = document.getElementById('practicumFinally')\n  try {\n    const arr = [1, 2, 3]\n\tconst sum = arr.reduce((acc, val) => acc + val, 0)\n    if(!sum) {\n      throw new Error('Ошибка')\n    }\n    resultSeventeen.textContent = sum\n  } catch (error) {\n    resultSeventeen.textContent = error.message\n  } finally {\n    resultFinally.textContent = 'finally17'\n  }\n}\nmakeSeventeen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>"
+    },
+    {
+      "id": 18,
+      "title": "Задание 18",
+      "description": "Создайте функцию makeEighteen и добавьте try, catch, finally так, чтобы в элемент с id practicum выводилось значение, возвращаемое функцией calculateValue, при успешном выполнении и сообщение \"Ошибка\" при ошибке\nА в элемент с id practicumFinally всегда выводилась строка \"finally18\"",
+      "code": "function calculateValue() {\n\tif (Math.random() < 0.5) {\n\t\tthrow new Error('Произошла ошибка')\n\t}\n\treturn 'Успешное выполнение'\n}\n\nfunction makeEighteen() {\n\t//Ваш код\n}\n//добавь вызов функции",
+      "correctAnswer": "function calculateValue() {\n  if (Math.random() < 0.5) {\n    throw new Error('Произошла ошибка')\n  }\n  return 'Успешное выполнение'\n}\n\nfunction makeEighteen() {\n  const paragraph = document.getElementById('practicum')\n  const paragraphFinally = document.getElementById('practicumFinally')\n  try {\n    paragraph.textContent = calculateValue()\n  } catch (error) {\n    paragraph.textContent = error.message\n  } finally {\n    paragraphFinally.textContent = 'finally18'\n  }\n}\nmakeEighteen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>"
+    },
+    {
+      "id": 19,
+      "title": "Задание 19",
+      "description": "Создайте функцию makeNineteen и добавьте try, catch, finally так, чтобы в элемент с id practicum выводилось значение, возвращаемое функцией fetchData, при успешном выполнении и сообщение \"Ошибка\" при ошибке\nА в элемент с id practicumFinally всегда выводилась строка \"finally19\"",
+      "code": "function fetchData() {\n\tif (Math.random() < 0.5) {\n\t\tthrow new Error('Произошла ошибка при получении данных')\n\t}\n\treturn 'Данные успешно получены'\n}\n\nfunction makeNineteen() {\n\t//Ваш код\n}\nmakeNineteen()",
+      "correctAnswer": "function fetchData() {\n  if (Math.random() < 0.5) {\n    throw new Error('Произошла ошибка при получении данных')\n  }\n  return 'Данные успешно получены'\n}\n\nfunction makeNineteen() {\n  const paragraph = document.getElementById('practicum')\n  const paragraphFinally = document.getElementById('practicumFinally')\n  try {\n    paragraph.textContent = fetchData()\n  } catch (error) {\n    paragraph.textContent = error.message\n  } finally {\n    paragraphFinally.textContent = 'finally19'\n  }\n}\nmakeNineteen()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n  <p id=\"practicumFinally\"></p>\n</section>"
+    },
+    {
+      "id": 20,
+      "title": "Задание 20",
+      "description": "Создайте функцию makeTwenty, которая получает json файл, который некорректен. Чтобы предотвратить ошибку, добавьте блок try/catch.",
+      "code": "const json = '{ некорректный JSON }';\n\nfunction makeTwenty() {\n  const resultTwenty = document.getElementById('practicum')\n  //Блок try\n  let user = JSON.parse(json) //Возникает ошибка\n  resultTwenty.textContent = user.name //Не сработает\n  //Блок catch (e)\n  resultTwenty.textContent = 'Извините, в данных ошибка, мы попробуем получить их ещё раз.'\n}\n\nmakeTwenty()",
+      "correctAnswer": "const json = '{ некорректный JSON }';\n\nfunction makeTwenty() {\n  const resultTwenty = document.getElementById('practicum')\n\n  try {\n    let user = JSON.parse(json)\n\tresultTwenty.textContent = user.name\n  } catch (error) {\n    resultTwenty.textContent = 'Извините, в данных ошибка, мы попробуем получить их ещё раз.'\n  }\n}\nmakeTwenty()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 21,
+      "title": "Задание 21",
+      "description": "Создайте функцию makeTwentyOne, которая получает JSON файл, который некорректен.\nЧтобы предотвратить ошибку, добавьте блок try/catch.",
+      "code": "const jsonTwentyOne = '{ некорректный JSON }'\n\nfunction makeTwentyOne() {\n\tconst resultTwentyOne = document.getElementById('practicum')\n\t//Ваш код\n}\nmakeTwentyOne()",
+      "correctAnswer": "const jsonTwentyOne = '{ некорректный JSON }'\n\nfunction makeTwentyOne() {\n  const resultTwentyOne = document.getElementById('practicum')\n  try {\n    let data = JSON.parse(json)\n    resultTwentyOne.textContent = data.toString()\n  } catch (error) {\n    resultTwentyOne.textContent = 'Некорректные данные'\n  }\n}\nmakeTwentyOne()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 22,
+      "title": "Задание 22",
+      "description": "Создайте функцию makeTwentyTwo, которая пытается выполнить некорректную операцию и использует оператор throw и выводит 'Ошибка',\nошибка обрабатывается в блоке catch",
+      "code": "function makeTwentyTwo() {\n  const resultTwentyTwo = document.getElementById('practicum')\n  //Блок try\n  const divisor = 0\n  if (divisor === 0) {\n    //Ваш код\n  }\n  const result = 24 / divisor\n  //Блок catch (error)\n}\nmakeTwentyTwo()",
+      "correctAnswer": "function makeTwentyTwo() {\n  const resultTwentyTwo = document.getElementById('practicum')\n  try {\n    const divisor = 0\n\tif (divisor === 0) {\n      throw new Error('Ошибка')\n\t}\n\tconst result = 24 / divisor\n    resultTwentyTwo.textContent = result\n  } catch (error) {\n    resultTwentyTwo.textContent = error.message\n  }\n}\nmakeTwentyTwo()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 23,
+      "title": "Задание 23",
+      "description": "Создайте функцию makeTwentyThree, которая с вероятностью 90% выбрасывает ошибку,\nи обрабатывает эту ошибку в блоке catch (нужно вывести сообщение об ошибке error.message).",
+      "code": "function makeTwentyThree() {\n\tconst result = document.getElementById('practicum')\n\t//Блок try\n\tconst randomValue = Math.random()\n\tif (randomValue <= 0.9) {\n\t\tthrow new Error('Искусственная ошибка')\n\t}\n\tresult.textContent = 'Операция успешно выполнена'\n\t//Блок catch (error)\n}\nmakeTwentyThree()",
+      "correctAnswer": "function makeTwentyThree() {\n  const result = document.getElementById('practicum')\n  try {\n    const randomValue = Math.random()\n\tif (randomValue <= 0.9) {\n      throw new Error('Искусственная ошибка')\n\t}\n\tresult.textContent = 'Операция успешно выполнена'\n  } catch (error) {\n    result.textContent = error.message\n  }\n}\nmakeTwentyThree()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 24,
+      "title": "Задание 24",
+      "description": "Создайте функцию makeTwentyFour, которая использует setTimeout с блоком try/catch,\nчтобы обработать ошибку, которая может возникнуть при асинхронном выполнении кода.",
+      "code": "function makeTwentyFour() {\n  const result = document.getElementById('practicum')\n  //Блок try\n  noSuchVariable //Попытка обратиться к несуществующей переменной\n  //Блок catch (error)\n}\nmakeTwentyFour()",
+      "correctAnswer": "function makeTwentyFour() {\n  const result = document.getElementById('practicum')\n  try {\n      noSuchVariable\n  } catch (error) {\n    result.textContent = error.message\n  }\n}\nmakeTwentyFour()",
+      "response": "",
+      "comment": "Помни, что выполнение асинхронного кода занимает какое-то время.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 25,
+      "title": "Задание 25",
+      "description": "Создайте функцию makeTwentyFive, которая использует async/await для асинхронной операции и блок try/catch, чтобы обработать ошибку, которая может возникнуть при этой асинхронной операции.",
+      "code": "const result = document.getElementById('practicum')\n\nfunction simulateAsyncOperation() {\n\treturn new Promise((resolve, reject) => {\n\t\tif (Math.random() < 0.9) {\n\t\t\treject(new Error('Произошла ошибка при асинхронной операции'));\n\t\t} else {\n\t\t\tresolve('Асинхронная операция успешно выполнена');\n\t\t}\n\t});\n}\n\n//Добавить название функции и ключевое слово async\n//Подумайте, в каком месте нужно добавить await\n// result.textContent = 'Ожидание...';\n// try {\n// \tconst result = simulateAsyncOperation();\n// \tresult.textContent = 'Результат: ' + result;\n// } catch (error) {\n// \tresult.textContent = 'Произошла ошибка: ' + error.message;\n// }",
+      "correctAnswer": "const result = document.getElementById('practicum')\n\nfunction simulateAsyncOperation() {\n\treturn new Promise((resolve, reject) => {\n\t\tif (Math.random() < 0.9) {\n\t\t\treject(new Error('Произошла ошибка при асинхронной операции'));\n\t\t} else {\n\t\t\tresolve('Асинхронная операция успешно выполнена');\n\t\t}\n\t});\n}\n\nasync function myFn() {\n  result.textContent = 'Ожидание...';\n  try {\n  \tconst result = await simulateAsyncOperation();\n  \tresult.textContent = 'Результат: ' + result;\n  } catch (error) {\n  \tresult.textContent = 'Произошла ошибка: ' + error.message;\n  }\n}\nmyFn()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 26,
+      "title": "Задание 26",
+      "description": "Создайте функцию makeTwentySix, которая содержит код с использованием Promise.reject, демонстрирующий, что ошибки внутри этих операций не попадают в блок catch на том же уровне.",
+      "code": "function makeTwentySix() {\n\tconst result = document.getElementById('practicum')\n\tresult.textContent = 'Ожидание...'\n\ttry {\n\t\t//твой код\n\t\tthrow new Error('ошибка')\n\t} catch (e) {\n\t\tresult.textContent = 'Ошибка на верхнем уровне: ' + e.message\n\t}\n}\nmakeTwentySix()",
+      "correctAnswer": "function makeTwentySix() {\n\tconst result = document.getElementById('practicum')\n\tresult.textContent = 'Ожидание...'\n\ttry {\n\t\tPromise.reject('err')\n\t\t\t.then((result) => {\n\t\t\t\tresult.textContent = 'Успешное завершение: ' + result\n\t\t\t})\n\t\t\t.catch((error) => {\n\t\t\t\tresult.textContent = 'Ошибка в Promise.reject: ' + error\n\t\t\t});\n\n\t\tthrow new Error('ошибка')\n\t} catch (e) {\n\t\tresult.textContent = 'Ошибка на верхнем уровне: ' + e.message\n\t}\n}\nmakeTwentySix()",
+      "response": "",
+      "comment": "",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    },
+    {
+      "id": 27,
+      "title": "Задание 27",
+      "description": "Выполнение функции упадёт в блок catch?\nОтвет будет доступен при нажатии на кнопку \"Проверить\".",
+      "code": "function makeTwentySeven() {\n\tconst result = document.getElementById('practicum')\n\tresult.textContent = string\n\treturn\n\ttry {\n\t\twhile (true) {\n\t\t\t// Бесконечный цикл\n\t\t}\n\t} catch (error) {\n\t\tresult.textContent = 'Произошла ошибка: ' + error.message\n\t}\n}\nmakeTwentySeven()",
+      "correctAnswer": "",
+      "response": "",
+      "comment": "Чтобы разблокировать кнопку 'Проверить', добавь в любой строке пробел.",
+      "html": "<section class='html'>\n  <p id=\"practicum\"></p>\n</section>",
+      "htmlJSX": "<section className='html'>\n  <p id=\"practicum\"></p>\n</section>"
+    }
+  ]
+}

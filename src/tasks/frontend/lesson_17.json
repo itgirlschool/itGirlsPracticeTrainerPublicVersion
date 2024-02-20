@@ -1,0 +1,244 @@
+{
+  "id": "lesson_17",
+  "block": "JS",
+  "title": "Обьекты и классы",
+  "welcome": "Массив — это объект. Функция — это объект. Объект — тоже объект. \n\nОбъекты состоят из пар **«ключ — значение»**.",
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Задание 1",
+      "description": "Создайте класс Worker. Класс должен содержать свойства name, surname. Создайте на его основе объект worker. Выведите в консоль созданный объект.",
+      "code": "//Ваш код\nconst worker = new Worker('Имя', 'Фамилия');\nconsole.log(worker);",
+      "correctAnswer": "class Worker {\n  constructor(name, surname) {\n    this.name = name;\n    this.surname = surname;\n  }\n}\nconst worker = new Worker(\"Имя\", \"Фамилия\");\nconsole.log(worker);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 2,
+      "title": "Задание 2",
+      "description": "Добавьте в класс Worker метод fullName, который будет возвращать полное имя работника в формате \"Фамилия, Имя\". Создайте объект worker на основе класса Worker и выведите его полное имя в консоль с помощью метода fullName",
+      "code": "class Worker {\n  constructor(name, surname) {\n    this.name = name;\n    this.surname = surname;\n  }\n  //ваш код\n}\n//ваш код\nconsole.log()//ваш код",
+      "correctAnswer": "class Worker {\n  constructor(name, surname) {\n    this.name = name;\n    this.surname = surname;\n  }\n  fullName() {\n    return this.surname + \", \" + this.name;\n  }\n}\nconst worker2 = new Worker(\"Имя\", \"Фамилия\");\nconsole.log(worker2.fullName());",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 3,
+      "title": "Задание 3 ",
+      "description": "Создайте класс Car. Класс должен содержать свойства brand, model и year. Создайте на его основе объект car и выведите его свойства в консоль.",
+      "code": "//ваш код",
+      "correctAnswer": "class Car {\n  constructor(brand, model, year) {\n    this.brand = brand;\n    this.model = model;\n    this.year = year;\n  }\n}\nconst car = new Car(\"BMW\", \"X5\", 2023);\nconsole.log(car);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 4,
+      "title": "Задание 4",
+      "description": "Добавьте в класс Car метод getAge, который будет возвращать возраст машины (текущий год минус год выпуска,текущий год нужно получить через клас Date). Создайте объект car2 на основе класса Car и выведите его возраст в консоль с помощью метода getAge. Результат в консоли должен быть типом данных numbers.",
+      "code": "class Car {\n  constructor(brand, model, year) {\n    this.brand = brand;\n    this.model = model;\n    this.year = year;\n  }\n}\nconst car = new Car('BMW','X6',2023);\nconsole.log(car.getAge());",
+      "correctAnswer": "class Car {\n  constructor(brand, model, year) {\n    this.brand = brand;\n    this.model = model;\n    this.year = year;\n  }\n  getAge() {\n    const nowYears = new Date().getFullYear();\n    return nowYears - this.year;\n  }\n}\nconst car = new Car(\"BMW\", \"X6\", 2023);\nconsole.log(car.getAge());",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 5,
+      "title": "Задание 5",
+      "description": "Cоздайте класс Rectangle. Класс должен содержать свойства width и height. Создайте на его основе объект rectangle и выведите его свойства в консоль.",
+      "code": "// твой код",
+      "correctAnswer": "class Rectangle {\n  constructor(width, height) {\n    this.width = width;\n    this.height = height;\n  }\n}\nconst rectangle = new Rectangle(200, 200);\nconsole.log(rectangle);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 6,
+      "title": "Задание 6",
+      "description": "Добавьте в класс Rectangle метод getArea, который будет возвращать площадь прямоугольника (произведение ширины и высоты). Создайте объект rectangle на основе класса Rectangle и выведите его площадь в консоль с помощью метода getArea.",
+      "code": "class Rectangle {\n  constructor(width, height) {\n    this.width = width;\n    this.height = height;\n  }\n  //твой код\n}\nconst rectangle = new Rectangle();\nconsole.log(); //твой код",
+      "correctAnswer":"class Rectangle {\n  constructor(width, height) {\n    this.width = width;\n    this.height = height;\n  }\n  getArea() {\n    return this.width * this.height;\n  }\n  //твой код\n}\nconst rectangle = new Rectangle(200, 200);\nconsole.log(rectangle.getArea()); //твой код",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 7,
+      "title": "Задание 7",
+      "description": "Cоздайте класс Circle. Класс должен содержать свойство radius. Создайте на его основе объект circle и выведите его свойство в консоль.",
+      "code": "// ваш код",
+      "correctAnswer":"class Circle {\n\tconstructor(radius){\n\t\tthis.radius = radius\n\t}\n}\nconst circle = new Circle(12)\nconsole.log(circle);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 8,
+      "title": "Задание 8",
+      "description": "Добавьте в класс Circle метод calculateArea, который будет вычислять и возвращать площадь круга. Формула для расчета площади круга: площадь = радиус * радиус * 3.14. Создайте объект circle2 на основе класса Circle с радиусом 3 и выведите его площадь круга в консоль с помощью метода calculateArea.",
+      "code": "class Circle {\n\tconstructor(radius){\n\t\tthis.radius = radius\n\t}\n\t//ваш код\n}\nconst circle = new Circle(12)\nconsole.log();//ваш код",
+      "correctAnswer":"class Circle {\n  constructor(radius) {\n    this.radius = radius;\n  }\n  calculateArea() {\n    return this.radius * this.radius * 3.14;\n  }\n}\nconst circle = new Circle(12);\nconsole.log(circle.calculateArea()); ",
+      "response": "",
+      "comment": ""
+    },
+
+    {
+      "id": 9,
+      "title": "Задание 9",
+      "description": "Создайте класс Student. Класс должен содержать свойства name, age и grade. Создайте на его основе объект student и выведите его свойства в консоль.",
+      "code": "//ваш код",
+      "correctAnswer":"class Student {\n  constructor(name, age, grade) {\n    this.name = name;\n    this.age = age;\n    this.grade = grade;\n  }\n}\nconst student = new Student(\"Cat\", 29, 2);\nconsole.log(student)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 10,
+      "title": "Задание 10",
+      "description": "Добавьте в класс Student метод increaseGrade, который будет увеличивать текущую оценку на 1. Создайте объект student2 на основе класса Student, увеличьте его оценку с помощью метода increaseGrade и выведите новую оценку в консоль.",
+      "code": "class Student {\n  constructor(name, age, grade) {\n    this.name = name;\n    this.age = age;\n    this.grade = grade;\n  }\n}\nconst student = new Student(\"Cat\", 29, 2);",
+      "correctAnswer":"class Student {\n  constructor(name, age, grade) {\n    this.name = name;\n    this.age = age;\n    this.grade = grade;\n  }\n  increaseGrade() {\n    this.grade += 1;\n  }\n}\nconst student = new Student(\"Cat\", 29, 2);\nstudent.increaseGrade();\nconsole.log(student.grade);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 11,
+      "title": "Задание 11",
+      "description": "Создайте класс Book. Класс должен содержать свойства title, author и year. Создайте на его основе объект book и выведите его свойства в консоль.",
+      "code": "//ваш код",
+      "correctAnswer":"class Book {\n  constructor(title, author, year) {\n    this.title = title;\n    this.author = author;\n    this.year = year;\n  }\n\n}\nconst book = new Book(\"Выразительный Javascript\", \"Марейн Хавербек\", 2018);\nconsole.log(book)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 12,
+      "title": "Задание 12",
+      "description": "Добавьте в класс Book метод getTitleAndAuthor, который будет возвращать строку в формате \"Название книги - Автор\". Создайте объект book2 на основе класса Book и выведите его название и автора в консоль с помощью метода getTitleAndAuthor.",
+      "code": "class Book {\n  constructor(title, author, year) {\n    this.title = title;\n    this.author = author;\n    this.year = year;\n  }\n  //ваш код\n}\nconst book = new Book(\"Выразительный Javascript\", \"Марейн Хавербек\", 2018);\nconsole.log();//ваш код",
+      "correctAnswer":"class Book {\n  constructor(title, author, year) {\n    this.title = title;\n    this.author = author;\n    this.year = year;\n  }\n  getTitleAndAuthor() {\n    return this.title + \" - \" + this.author;\n  }\n}\nconst book = new Book(\"Выразительный Javascript\", \"Марейн Хавербек\", 2018);\nconsole.log(book.getTitleAndAuthor());",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 13,
+      "title": "Задание 13",
+      "description": "Создайте класс BankAccount. Класс должен содержать свойства accountNumber и balance. Создайте на его основе объект account и выведите его свойства в консоль.",
+      "code": "//ваш код",
+      "correctAnswer":"class BankAccount{\n  constructor(accountNumber,balance){\n    this.accountNumber = accountNumber\n    this.balance = balance\n  }\n}\nconst account = new BankAccount(324234,534554)\nconsole.log(account);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 14,
+      "title": "Задание 14",
+      "description": "Добавьте в класс BankAccount метод deposit, который будет увеличивать баланс на заданную сумму. Создайте объект account на основе класса BankAccount, пополните его баланс с помощью метода deposit и выведите новый баланс в консоль.",
+      "code": "class BankAccount{\n  constructor(accountNumber,balance){\n    this.accountNumber = accountNumber\n    this.balance = balance\n  }\n  //ваш код\n}\nconst account = new BankAccount(324234,534554)\nconsole.log(); //каш код",
+      "correctAnswer":"class BankAccount {\n  constructor(accountNumber, balance) {\n    this.accountNumber = accountNumber;\n    this.balance = balance;\n  }\n  deposit(sum) {\n    this.balance = sum + this.balance;\n  }\n}\nconst account = new BankAccount(324234, 534554);\naccount.deposit(200000);\nconsole.log(account.balance);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 15,
+      "title": "Задание 15",
+      "description": "В класс BankAccount добавлен метод withdraw, который уменьшает баланс на заданную сумму. Если запрошенная сумма превышает текущий баланс, выведите сообщение \"Недостаточно средств\". Создайте объект account на основе класса BankAccount, попробуйте снять с него сумму, превышающую баланс, и выведите соответствующее сообщение в консоль.",
+      "code": "class BankAccount {\n  constructor(accountNumber, balance) {\n    this.accountNumber = accountNumber;\n    this.balance = balance;\n  }\n  deposit(sum) {\n    this.balance = sum + this.balance;\n  }\n  withdraw(amount) {\n    if (amount <= this.balance) {\n      //Уменьшите баланс на заданную сумму\n    } else {\n      //Выводите в консоль сообщение\n    }\n  }\n}\nconst bankAccount = new BankAccount(324234, 534554);",
+      "correctAnswer":"class BankAccount {\n  constructor(accountNumber, balance) {\n    this.accountNumber = accountNumber;\n    this.balance = balance;\n  }\n  deposit(sum) {\n    this.balance = sum + this.balance;\n  }\n  withdraw(amount) {\n    if (amount <= this.balance) {\n      this.balance = this.balance - amount;\n    } else {\n      console.log(\"Не достаточно средств\");\n    }\n  }\n}\nconst account = new BankAccount(324234, 534554);\n\naccount.withdraw(555486);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 16,
+      "title": "Задание 16",
+      "description": "Создайте класс Animal. Класс должен содержать свойства name и sound. Создайте на его основе объект animal и выведите его свойства в консоль.",
+      "code": "//ваш код",
+      "correctAnswer":"class Animal {\n  constructor(name,sound) {\n    this.name = name\n    this.sound = sound\n  }\n}\nconst animal = new Animal()\nconsole.log(animal);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 17,
+      "title": "Задание 17",
+      "description": "Добавьте в класс Animal метод makeSound, который будет выводить в консоль звук животного. Создайте объект animal на основе класса Animal и вызовите метод makeSound.",
+      "code": "class Animal {\n  constructor(name, sound) {\n    this.name = name;\n    this.sound = sound;\n  }\n  ///ваш код\n}\nconst animal = new Animal();\n///ваш код",
+      "correctAnswer":"class Animal {\n  constructor(name, sound) {\n    this.name = name;\n    this.sound = sound;\n  }\n  makeSound() {\n    console.log(this.sound);\n  }\n}\nconst animal = new Animal(\"dog\", \"gav,gav\");\nanimal.makeSound()",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 18,
+      "title": "Задание 18",
+      "description": "Добавьте в класс Animal метод makeSound, который будет выводить в консоль звук животного. Создайте объект animal на основе класса Animal и вызовите метод makeSound.",
+      "code": "//ваш код",
+      "correctAnswer":"class Point{\n  constructor(x,y){\n    this.x = x\n    this.y = y\n  }\n}\nconst point = new Point()\nconsole.log(point);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 19,
+      "title": "Задание 19",
+      "description": "В классе Point добавлен метод getDistance, который будет возвращать расстояние от точки до начала координат (0,0). Создайте объект point на основе класса Point и выведите его расстояние до начала координат с помощью метода getDistance.",
+      "code": "class Point {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n  }\n  // Метод getDistance возвращает расстояние от точки до начала координат (0,0)\n  getDistance() {\n    return Math.sqrt(this.x ** 2 + this.y ** 2);\n  }\n}",
+      "correctAnswer":"class Point {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n  }\n  // Метод getDistance возвращает расстояние от точки до начала координат (0,0)\n  getDistance() {\n    return Math.sqrt(this.x ** 2 + this.y ** 2);\n  }\n}\n\nconst point = new Point(2, 13);\nconsole.log(point.getDistance());",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 20,
+      "title": "Задание 20",
+      "description": "Создайте класс Calculator. Класс должен содержать методы add, subtract, multiply и divide, которые будут выполнять соответствующие математические операции над двумя числами и возвращать результат. Создайте объект calc на основе класса Calculator и выполните следующее математическое выражение: (((2+2)-1)*4)\\2 с помощью методов. Результат вывести в консоль.",
+      "code": "//ваш код",
+      "correctAnswer":"class Calculator {\n  add(num1, num2) {\n    return num1 + num2;\n  }\n  subtract(num1, num2) {\n    return num1 - num2;\n  }\n  multiply(num1, num2) {\n    return num1 * num2;\n  }\n  divide(num1, num2) {\n    return num1 / num2;\n  }\n}\n//длинный вариант.\nconst calc = new Calculator();\nconst addResult = calc.add(2, 2);\nconst subtractResult = calc.subtract(addResult, 1);\nconst multiplyResult = calc.multiply(subtractResult, 4);\nconst divideResult = calc.divide(multiplyResult, 2);\nconsole.log(divideResult);\n\n\n///сокращенный вариант.\n///console.log(calc.divide(calc.multiply(calc.subtract(calc.add(2, 2), 1), 4), 2));",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 21,
+      "title": "Задание 21",
+      "description": "Создайте класс Person. Класс должен содержать свойства name, age и city. Создайте на его основе объект person. Cоздайте переменную personInfo и в нее поместите строчку, в которой будет вся информация из обьекта. Должно получиться: 'Josh, 43, London' и выведите personInfo в консоль",
+      "code": "//ваш код",
+      "correctAnswer":"class Person {\n  constructor(name, age, city) {\n    this.name = name;\n    this.age = age;\n    this.city = city;\n  }\n}\nconst person = new Person(\"Josh\", 43, \"london\");\nconst personInfo = `${person.name},${person.age},${person.city}`;\nconsole.log(personInfo);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 22,
+      "title": "Задание 22",
+      "description": "Добавьте в класс Person метод changeCity, который будет изменять значение свойства city на новое значение. Создайте объект person на основе класса Person, вызовите метод changeCity с аргументом \"New York\" и выведите новое значение свойства city в консоль.",
+      "code": "class Person {\n  constructor(name, age, city) {\n    this.name = name;\n    this.age = age;\n    this.city = city;\n  }\n  //ваш код\n}\nconst person = new Person(\"Josh\", 43, \"london\");\n//ваш код",
+      "correctAnswer":"class Person {\n  constructor(name, age, city) {\n    this.name = name;\n    this.age = age;\n    this.city = city;\n  }\n  changeCity(str) {\n    this.city = str;\n  }\n}\nconst person = new Person(\"Josh\", 43, \"london\");\nperson.changeCity(\"New York\");\nconsole.log(person.city);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 23,
+      "title": "Задание 23",
+      "description": "Создайте два класса EmployeeAmazon и EmployeeApple. \n \n  - EmployeeAmazon, EmployeeApple должны содержать свойства name, position и salary, a EmployeeApple должен содержать еще и метод calculateBonus, который будет увеличивать зарплату на процент, который ты ему передашь аргументом, и менять ее в поле salary. \n \n - Создайте обьекты employeeAmazon и employeeApple и заполните их данными: \n Josh работает в компании Amazon менеджером, и его зарплата составляет 12 000$ в год. \n Frank работает в компании Apple разработчиком и его зарплата составляет 220 000$ в год. \n \n  - В этом году Josh получит повышение на 15% процентов, а Frank получит повышение на 25%. \n \n - Используя метод calculateBonus из обьекта employeeApple, повысьте зарплаты этим сотрудникам, не создавая метод calculateBonus в классе EmployeeAmazon. \n \n  - Для изменения зарплаты Josha используйте функцию bind. \n \n  - После изменений зарплат, создайте переменную salaryInfo, в которой будет лежать строка содержащая информацию о зарплатах вот в таком формате : \n Frank salary:указать зарплату Franka за год после повышения, Josh salary:указать зарплату Josha за год после повышения \n \n Выведите переменную salaryInfo в консоль.",
+      "code": "class EmployeeAmazon {\n  ///ваш код\n}\nclass EmployeeApple {\n  //ваш код\n\n  calculateBonus(bonus) {\n    ///ваш код\n  }\n}\n//ваш код\n\nconst salaryInfo = ///ваш код\nconsole.log(salaryInfo)",
+      "correctAnswer":"class EmployeeAmazon {\n  constructor(name, position, salary) {\n    this.name = name;\n    this.position = position;\n    this.salary = salary;\n  }\n}\nclass EmployeeApple {\n  constructor(name, position, salary) {\n    this.name = name;\n    this.position = position;\n    this.salary = salary;\n  }\n  calculateBonus(bonus) {\n    this.salary = (this.salary * bonus) / 100 + this.salary;\n  }\n}\nconst employeeAmazon = new EmployeeAmazon(\"Josh\", \"Manager\", 12000);\nconst employeeApple = new EmployeeApple(\"Frank\", \"Developer\", 220000);\n\n//вызов метода calculateBonus c другим контекстом обьекта \nemployeeApple.calculateBonus.bind(employeeAmazon)(15);\n\nemployeeApple.calculateBonus(25);\n\nconst salaryInfo = `Frank salary:${employeeApple.salary}, Josh salary:${employeeAmazon.salary}`;\nconsole.log(salaryInfo);",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 24,
+      "title": "Задание 24",
+      "description": "Создайте класс Product. Класс должен содержать свойства name, price и quantity. Создайте метод displayInfo, который будет выводить все данные в консоль одной строкой : \n Название продукта:ноутбук, Цена продукта:999,  Количество продукта:5",
+      "code": "//ваш код",
+      "correctAnswer":"class Product {\n  constructor(name, price, quantity) {\n    this.name = name;\n    this.price = price;\n    this.quantity = quantity;\n  }\n  displayInfo() {\n    console.log(\n      `Название продукта:${this.name}, Цена продукта:${this.price}, Количество продукта:${this.quantity}`\n    );\n  }\n}\n\nconst product = new Product(\"Ноутбук\", 999, 5);\nproduct.displayInfo();",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 25,
+      "title": "Задание 25",
+      "description": "Добавьте в класс Product метод calculateTotalPrice, который будет возвращать общую стоимость продукта (произведение цены на количество). Создайте объект product на основе класса Product с ценой 10 и количеством 5. Выведите общую стоимость продукта в консоль с помощью метода calculateTotalPrice.",
+      "code": "class Product {\n  constructor(name, price, quantity) {\n    this.name = name;\n    this.price = price;\n    this.quantity = quantity;\n  }\n  displayInfo() {\n    console.log(\n      `Название продукта:${this.name}, Цена продукта:${this.price}, Количество продукта:${this.quantity}`\n    );\n  }\n  // ваш код\n}\n// ваш код",
+      "correctAnswer":"class Product {\n  constructor(name, price, quantity) {\n    this.name = name;\n    this.price = price;\n    this.quantity = quantity;\n  }\n  displayInfo() {\n    console.log(\n      `Название продукта:${this.name}, Цена продукта:${this.price}, Количество продукта:${this.quantity}`\n    );\n  }\n  calculateTotalPrice() {\n    return this.price * this.quantity;\n  }\n}\nconst product = new Product(\"Ноутбук\", 10, 5);\nconsole.log(product.calculateTotalPrice());",
+      "response": "",
+      "comment": ""
+    },
+
+    {
+      "id": 26,
+      "title": "Задание 26",
+      "description":"Создайте класс Triangle. Класс должен содержать свойства side1, side2 и side3, которые представляют длины сторон треугольника. Создайте на его основе объект triangle с параметрами 3, 4 и 5. Добавьте в класс Triangle метод calculatePerimeter, который будет возвращать периметр треугольника (сумма длин всех сторон). Выведите периметр треугольника в консоль с помощью метода calculatePerimeter.",
+      "code": "//ваш код",
+      "correctAnswer":"class Triangle {\n  constructor(side1, side2, side3) {\n    this.side1 = side1;\n    this.side2 = side2;\n    this.side3 = side3;\n  }\n  calculatePerimeter() {\n    return this.side1 + this.side2 + this.side3;\n  }\n}\nconst triangle = new Triangle(3, 4, 5);\nconsole.log(triangle.calculatePerimeter());",
+      "response": "",
+      "comment": ""
+    }
+  ]
+}

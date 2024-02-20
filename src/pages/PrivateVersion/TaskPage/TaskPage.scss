@@ -1,0 +1,330 @@
+@use '../../../styles/mixins' as mixins;
+@import "../../../styles/vars";
+
+.container {
+  background-color: $mainBackground;
+  height: 100vh;
+  display: flex;
+  @media screen and (min-width: 360px) and (max-width: 980px) {
+    flex-direction: column;
+  }
+
+  .wrapper_task {
+    font-family:$family;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .container_task {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-around;
+      padding: 20px;
+
+
+      h1 {
+        text-align: center;
+        margin-bottom: 60px;
+        @include mixins.font($bold, $font-30, $blackColor);
+        @media screen and (min-width: 360px) and (max-width: 980px) {
+          font-size: 18px;
+          margin-bottom: 50px;
+        }
+      }
+
+      p {
+        @include mixins.font($light, $font-18, $blackColor);
+        @media screen and (min-width: 360px) and (max-width: 980px) {
+          font-size: 16px;
+          margin-bottom: 30px;
+        }
+      }
+
+      .container_task-comment {
+        background: $lightBlueColor;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      .container_task-html-comment {
+        margin-bottom: 20px;
+        background: $whiteColor;
+        padding: 10px;
+        margin-top: 20px;
+        font-family: $family
+      }
+
+      .html {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        background: $whiteColor;
+        padding: 20px 40px;
+        margin-top: 10px;
+
+        .html-btn {
+          width: 250px;
+          height: 40px;
+          border-radius: 10px;
+          border: none;
+          background: $pinkColor;
+          color: $whiteColor;
+          margin-bottom: 10px;
+        }
+        .html-text {
+          @include mixins.font($normal, $font-18, $blackColor);
+        }
+        h1{
+          margin-bottom: 0;
+        }
+        .html-yellow-div {
+          width: 200px;
+          height: 100px;
+          background: yellow;
+        }
+        .boxWithBorder {
+          width: 200px;
+          height: 100px;
+          border: 2px solid $blackColor;
+        }
+        .red {
+          background: red;
+        }
+        .active,
+        .redText {
+          color: red;
+        }
+        .boxSize {
+          width: 400px;
+          height: 200px;
+        }
+        .html-input {
+          height: 38px;
+          padding: 6px 10px;
+          background-color: #fff;
+          border: 1px solid #D1D1D1;
+          border-radius: 4px;
+          box-shadow: none;
+          box-sizing: border-box;
+        }
+        .html-img {
+          width: 200px;
+          height: 150px;
+        }
+        .html-link {
+          margin-top: 10px;
+          @include mixins.font($light, $font-16, $blueColor);
+        }
+      }
+    }
+ button{
+   border-radius:0;
+   margin: 0;
+   padding: 0;
+ }
+    .container_button {
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-end;
+
+      :last-child {
+        flex-grow: 1;
+      }
+
+      :first-child {
+        flex-basis: 50%;
+      }
+    }
+  }
+
+  .container_func {
+    background-color: $darkGreyColor;
+    max-width: 1000px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .mirror-container {
+      flex-basis: 60%;
+      display: flex;
+      flex-direction: column;
+
+
+      .mirror {
+        flex-grow: 1;
+        position: relative;
+        @media (max-width: 920px) {
+          min-height: 300px;
+
+        }
+
+        .mirror-tip-btn {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+
+          background: none;
+          border: 1px solid $pinkColor;
+          border-radius: 10px;
+          color: $pinkColor;
+          padding: 5px;
+          cursor: pointer;
+        }
+      }
+
+      .container-btn {
+        display: flex;
+        button {
+          width: 100%;
+          height: 46px;
+          border-right: 1px solid;
+          @media screen and (min-width: 360px) and (max-width: 980px) {
+            font-size: 15px;
+            height: 40px;
+          }
+          @include mixins.button($light, $font-20, $whiteColor, $pinkColor, $pinkColor, $blackColor, $disabledBtnBackground);
+        }
+      }
+    }
+
+    .result {
+      flex-grow: 1;
+      background-color: $darkGreyColor;
+      display: flex;
+      @media screen and (min-width: 360px) and (max-width: 980px) {
+        flex-direction: column;
+      }
+
+
+      .console {
+        padding: 10px;
+        flex-basis: 50%;
+        border-right: 2px solid white;
+        color: #0cb3eb;
+        font-family: $family;
+        font-size: 18px;
+        .cons_result{
+          margin-bottom: 40px;
+        }
+        .cons_errors{
+          margin-bottom: 20px;
+        }
+        @media screen and (min-width: 360px) and (max-width: 980px) {
+          min-height: 100px;
+          font-size: 14px;
+          padding: 2px;
+          overflow: hidden;
+          border-right: none;
+        }
+
+        .successfully {
+          margin-left: 6px;
+          font-size: 16px;
+          color: #758f68;
+          @media screen and (min-width: 360px) and (max-width: 980px) {
+            font-size: 14px;
+            margin-left:2px ;
+          }
+        }
+
+        .error {
+          font-size: 16px;
+          margin-left: 6px;
+          color: #d04444;
+          @media screen and (min-width: 360px) and (max-width: 980px) {
+            font-size: 14px;
+            margin-left:2px ;
+          }
+        }
+      }
+
+      .request {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h2 {
+        max-width: 350px;
+        text-align: center;
+        @include mixins.font($light, $font-18, $whiteColor);
+        line-height: 22px;
+        @media screen and (min-width: 360px) and (max-width: 980px) {
+          @include mixins.font($light, $font-14, $whiteColor);
+          margin-left:2px ;
+          margin-bottom: 40px;
+          margin-top: 10px;
+        }
+      }
+
+      .result-message {
+        @include mixins.font($normal, $font-16, $whiteColor);
+
+      }
+    }
+    .container_button{
+      width: 100%;
+      display: flex;
+      :last-child {
+        flex-basis: 50%;
+      }
+
+      :first-child {
+        flex-basis: 50%;
+      }
+    }
+  }
+  button {
+    height: 46px;
+
+    background-color: $pinkColor;
+
+    border: 1px solid;
+
+    @media screen and (min-width: 360px) and (max-width: 980px) {
+      font-size: 15px;
+      height: 40px;
+    }
+
+    @include mixins.button($light, $font-20, $whiteColor, $pinkColor, $pinkColor, $blackColor, $disabledBtnBackground);
+  }
+}
+.html{
+  #task21{
+    width: 100%;
+    height: 40px;
+    border-radius:10px;
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    border: none;
+  }
+  #task22{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+  }
+  #task23{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    label{
+      margin-top: 10px;
+    }
+    input{
+      width: 100%;
+      height: 30px;
+      border-radius: 5px;
+      outline: none;
+      border:  1px solid;
+      padding: 5px;
+    }
+  }
+
+}
+

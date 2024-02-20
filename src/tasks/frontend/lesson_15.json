@@ -1,0 +1,215 @@
+{
+  "id": "lesson_15",
+  "block": "JS",
+  "title": "Циклы",
+  "welcome": "",
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Задание 1",
+      "description": "Выведите числа от 1 до 10 в консоль. Используйте цикл for.",
+      "code": "// ниже напиши свой код\n",
+      "correctAnswer": "for (let number = 1; number <= 10; number++) {\n  console.log(number);\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 2,
+      "title": "Задание 2",
+      "description": "Выведите числа от 10 до 1 в консоль в обратном порядке. Используйте цикл for.",
+      "code": "// ниже напиши свой код\n",
+      "correctAnswer": "for (let number = 10; number >= 1; number--) {\n  console.log(number);\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 3,
+      "title": "Задание 3",
+      "description": "Выведите чётные числа от 1 до 20 в консоль. Используйте цикл for.",
+      "code": "// ниже напиши свой код\n",
+      "correctAnswer": "for (let number = 1; number <= 20; number++) {\n  if(number % 2 === 0) {\n    console.log(number)\n  }\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 4,
+      "title": "Задание 4",
+      "description": "Выведите таблицу умножения на 5 от 1 до 10.",
+      "code": "// ниже напиши свой код\n",
+      "correctAnswer": "for (let number = 1; number <= 10; number++) {\n  console.log(`5 * ${number}`)\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 5,
+      "title": "Задание 5",
+      "description": "Вычислить сумму чисел от 1 до 100 и вывести значение в консоль.",
+      "code": "// ниже напиши свой код\nlet sum = 0",
+      "correctAnswer": "let sum = 0\nfor (let number = 1; number <= 100; number++) {\n  sum += number\n}\nconsole.log(sum)",
+      "response": "",
+      "comment": "Подсказка: должно получиться число 5050"
+    },
+    {
+      "id": 6,
+      "title": "Задание 6",
+      "description": "Выведите все элементы массива в консоль, используя цикл for.",
+      "code": "// ниже напиши свой код\nconst array = [1, 2, 3, 4, 5]",
+      "correctAnswer": "const array = [1, 2, 3, 4, 5]\n\nfor (let i = 0; i < array.length; i++) {\n  console.log(array[i])\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 7,
+      "title": "Задание 7",
+      "description": "Выведите сумму всех элементов массива, используя цикл for.",
+      "code": "// ниже напиши свой код\nconst array = [1, 2, 3, 4, 5]\nlet sum = 0",
+      "correctAnswer": "const array = [1, 2, 3, 4, 5]\nlet sum = 0\n\nfor (let i = 0; i < array.length; i++) {\n  sum += array[i]\n}\nconsole.log(sum)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 8,
+      "title": "Задание 8",
+      "description": "Напишите цикл for, который изменяет массив животных, делая их прекрасными! Например, если есть следующий массив:\n\nlet animals = [\"Кот\", \"Рыба\", \"Лемур\"]\n\nЦикл должен сделать его таким\n\n[\"Кот - прекрасное животное\", \"Рыба - прекрасное животное\", \"Лемур - прекрасное животное\"]",
+      "code": "// ниже напиши свой код\nlet animals = [\"Кот\", \"Рыба\", \"Лемур\"]",
+      "correctAnswer": "let animals = [\"Кот\", \"Рыба\", \"Лемур\"]\nfor (let i = 0; i < animals.length; i++) {\n  const animal = animals[i];\n  const newAnimalString = `${animal} - прекрасное животное`\n  animals[i] = newAnimalString\n}\nconsole.log(animals)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 9,
+      "title": "Задание 9",
+      "description": "Выведите символы в строке в консоль.\n\nconst str = 'Hello'",
+      "code": "// ниже напиши свой код\nconst str = 'Hello'",
+      "correctAnswer": "const str = 'Hello'\nfor (let symbol of str) {\n  console.log(symbol)\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 10,
+      "title": "Задание 10",
+      "description": "Выведите все элементы массива в консоль, используя цикл for...of.",
+      "code": "// ниже напиши свой код\nconst array = [1, 2, 3, 4, 5]",
+      "correctAnswer": "const array = [1, 2, 3, 4, 5]\nfor (let number of array) {\n  console.log(number)\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 11,
+      "title": "Задание 11",
+      "description": "Выведите каждое слово из массива строк в консоль\n\nПодсказка: вам понадобится метод массивов split",
+      "code": "// ниже напиши свой код\nconst sentences = ['Hello, world!', 'How are you?']",
+      "correctAnswer": "const sentences = ['Hello, world!', 'How are you?']\nfor (let item of sentences) {\n    const words = item.split(' ')\n    for (let word of words) {\n        console.log(word)\n    }\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 12,
+      "title": "Задание 12",
+      "description": "Выведите сумму всех элементов массива используя цикл for..of.",
+      "code": "// ниже напиши свой код\nconst numbers = [1, 2, 3, 4, 5]\nlet sum = 0",
+      "correctAnswer": "const numbers = [1, 2, 3, 4, 5]\nlet sum = 0\nfor (let number of numbers) {\n  sum += number\n}\nconsole.log(sum)",
+      "response": 15,
+      "comment": ""
+    },
+    {
+      "id": 13,
+      "title": "Задание 13",
+      "description": "Выведите длину каждого слова из массива строк в консоль.",
+      "code": "// ниже напиши свой код\nconst list = ['apple', 'banana', 'cherry']",
+      "correctAnswer": "const list = ['apple', 'banana', 'cherry']\n\nfor (let item of list) {\n  console.log(item.length)\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 14,
+      "title": "Задание 14",
+      "description": "Преобразуйте каждый элемент массива words в верхний регистр.",
+      "code": "// ниже напиши свой код\nconst words = ['apple', 'banana', 'cherry']",
+      "correctAnswer": "const words = ['apple', 'banana', 'cherry']\n\nfor (let word of words) {\n  const newWord = word.toUpperCase()\n  console.log(newWord)\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 15,
+      "title": "Задание 15",
+      "description": "Подсчитайте количество гласных букв в строке\n\nconst greeting = 'Hello, world!'.",
+      "code": "// ниже напиши свой код\nconst greeting = 'Hello, world!'\nconst vowels = ['a', 'e', 'i', 'o', 'u']\nlet count = 0",
+      "correctAnswer": "const greeting = 'Hello, world!'\nconst vowels = ['a', 'e', 'i', 'o', 'u']\nlet count = 0\n\nfor (let vowel of vowels) {\n  const newGreeting = greeting.toLowerCase()\n  for (let item of newGreeting) {\n    if(item === vowel) {\n      count += 1\n    }\n  }\n}\nconsole.log(count)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 16,
+      "title": "Задание 16",
+      "description": "Объедините все строки массива в одну строку с пробелами между ними.",
+      "code": "// ниже напиши свой код\nconst words = ['Hello', 'world', '!']",
+      "correctAnswer": "const words = ['Hello', 'world', '!']\nconst string = words.join(' ')\n\nconsole.log(string)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 17,
+      "title": "Задание 17",
+      "description": "Выведите числа от 1 до 10 в консоль, используя цикл while.",
+      "code": "// ниже напиши свой код",
+      "correctAnswer": "let number = 1\n\nwhile (number <= 10) {\n    console.log(number)\n    number++;\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 18,
+      "title": "Задание 18",
+      "description": "Выведите числа от 1 до 10 в консоль в обратном порядке, используя цикл while.",
+      "code": "// ниже напиши свой код",
+      "correctAnswer": "let number = 10\n\nwhile (number >= 1) {\n    console.log(number)\n    number--;\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 19,
+      "title": "Задание 19",
+      "description": "Выведите в консоль все отрицательные числа массива, используя цикл for...of.",
+      "code": "// ниже напиши свой код\nconst allNumbers = [1, 2, 3, -4, 5]",
+      "correctAnswer": "const allNumbers = [1, 2, 3, -4, 5]\n\nfor (let number of allNumbers) {\n  if(number < 0) {\n    console.log(number)\n  }\n}",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 20,
+      "title": "Задание 20",
+      "description": "Выведите в консоль значения элементов массива до первого отрицательного числа, используя цикл do...while.",
+      "code": "// ниже напиши свой код\nconst random = [2, 4, 6, -3, 8, 10]",
+      "correctAnswer": "const random = [2, 4, 6, -3, 8, 10]\nlet index = 0\n\ndo {\n    if (random[index] < 0) {\n        break\n    }\n    console.log(random[index])\n    index++\n} while (index < random.length)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 21,
+      "title": "Задание 21",
+      "description": "Выведите числа от 1 до 20, пропуская числа, которые делятся на 3, используя цикл do...while.",
+      "code": "// ниже напиши свой код",
+      "correctAnswer": "let number = 1\n\ndo {\n    if (number % 3 !== 0) {\n        console.log(number)\n    }\n    number++\n} while (number <= 20)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 22,
+      "title": "Задание 22",
+      "description": "Ссумируйте числа, пока сумма этих чисел не станет больше 100. Результат выведите в консоль.",
+      "code": "// ниже напиши свой код\nlet sum = 0",
+      "correctAnswer": "let sum = 0\nfor (let number = 1; sum <=100; number++) {\n  sum += number\n}\nconsole.log(sum)",
+      "response": "",
+      "comment": ""
+    },
+    {
+      "id": 23,
+      "title": "Задание 23",
+      "description": "Напишите генератор случайных строк до 6 символов и выведите результат в консоль.",
+      "code": "// ниже напиши свой код\nlet alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'",
+      "correctAnswer": "let alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'\n\nconst generateRandomString = (length) => {\n    let result = ''\n    for (let i = 0; i < length; i++) {\n        const randomIndex = Math.floor(Math.random() * alphabet.length)\n        result += alphabet[randomIndex]\n    }\n    return result\n};\n\nconst randomString = generateRandomString(6)\nconsole.log(randomString)",
+      "response": "",
+      "comment": ""
+    }
+  ]
+}

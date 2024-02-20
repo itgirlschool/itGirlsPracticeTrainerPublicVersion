@@ -1,0 +1,53 @@
+{
+  "name": "itgirlpracticetrainer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "firebase": "firebase deploy",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@codemirror/lang-javascript": "^6.2.1",
+    "@codemirror/view": "^6.22.0",
+    "@edge-runtime/vm": "^3.1.7",
+    "@reduxjs/toolkit": "^2.1.0",
+    "@uiw/codemirror-theme-atomone": "^4.21.20",
+    "@uiw/react-codemirror": "^4.21.20",
+    "antd": "^5.10.3",
+    "firebase": "^10.6.0",
+    "geteventlisteners": "^1.1.0",
+    "html-react-parser": "^5.0.6",
+    "html-to-react": "^1.7.0",
+    "idb": "^8.0.0",
+    "idb-keyval": "^6.2.1",
+    "idb-react-hook": "^0.1.1",
+    "isolated-vm": "^4.6.0",
+    "loglevel": "^1.8.1",
+    "node-fetch": "^3.3.2",
+    "react": "^18.2.0",
+    "react-burger-menu": "^3.0.9",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.50.0",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.18.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "uuid": "^9.0.1",
+    "vm": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "sass": "^1.69.5",
+    "vite": "^4.4.5"
+  }
+}

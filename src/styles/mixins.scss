@@ -1,0 +1,31 @@
+@import "vars";
+
+@font-face {
+  font-family: 'Rubik';
+}
+
+@mixin font($weight, $size, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  font-family: $family;
+  color: $color;
+}
+
+@mixin button($weight, $size, $text-color, $bg-color,  $hover-bg-color, $hover-text-color, $disabled-bg) {
+  background: $bg-color;
+  transition: 0.4s;
+
+  @include font($weight, $size, $text-color);
+
+  &:hover {
+    cursor: pointer;
+    background: $hover-bg-color;
+    color: $hover-text-color;
+  }
+
+  &[disabled] {
+    cursor: default;
+    background: $disabled-bg;
+    color: $text-color;
+  }
+}

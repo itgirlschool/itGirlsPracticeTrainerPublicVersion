@@ -1,0 +1,58 @@
+@use '../../../styles/mixins' as mixins;
+@import "../../../styles/vars";
+
+.rules-container {
+  background-color: $mainBackground;
+  min-height: 81.1vh;
+  padding: 50px;
+
+  @media screen and (min-width: 360px) and (max-width: 675px) {
+    padding: 20px;
+  }
+
+  .rules-title{
+    text-align: center;
+    margin-bottom: 30px;
+    @include mixins.font($bold, $font-30, $blackColor);
+  }
+
+  .rules-note {
+    padding: 30px;
+    border: 1px solid $pinkColor;
+    border-radius: 10px;
+    @include mixins.font($normal, $font-18, $pinkColor);
+  }
+
+  .rules-text {
+    margin-top: 30px;
+    padding: 0 30px;
+    @include mixins.font($normal, $font-18, $blackColor);
+  }
+
+  .rules-checkbox-container {
+    padding: 0 30px;
+    margin-top: 20px;
+
+    .rules-label {
+      @include mixins.font($light, $font-16, $blackColor);
+
+      .rules-input {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .rules-btn-container {
+    width: 100%;
+    text-align: center;
+
+    .rules-btn {
+      width: 300px;
+      height: 40px;
+      margin-top: 30px;
+      border-radius: 10px;
+      border: none;
+      @include mixins.button($light, $font-18, $whiteColor, $pinkColor, $whiteColor, $pinkColor, $disabledBtnBackground);
+    }
+  }
+}
