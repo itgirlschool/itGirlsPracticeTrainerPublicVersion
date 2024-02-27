@@ -16,19 +16,23 @@ import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {useDispatch} from "react-redux";
 import {setUser} from "../store/slices/userSlices.js";
 import Spinner from "../components/Spinner/Spinner.jsx";
-import {getUsers} from '../Services/GetCourse/getUsers.js'
+import PreLoaderApp from "../components/PreLoaderApp/PreLoaderApp.jsx";
+
+
 
 
 function App() {
     const [burger, setBurger] = useState(false)
     const [showInfo, setShowInfo] = useState(true)
     const [loader,setLoader] = useState('loading')
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const auth = getAuth();
 
     useEffect(() => {
         if (window.innerWidth < 990) setBurger(true)
+
     })
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -44,13 +48,12 @@ function App() {
                 nameUser:currentUser.displayName
             }))
             setLoader('uploaded')
-
-            console.log(currentUser)
         })
     },[])
 
-
-
+    if(loader === 'loading'){
+        return <PreLoaderApp showInfo={showInfo} burger={burger}/>
+    }
 
     return (
         <div className="app" id='app'>

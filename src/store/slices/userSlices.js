@@ -1,9 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-import {useDispatch} from "react-redux";
-
-
-
+import {createSlice} from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
     name: "user",
@@ -15,7 +10,6 @@ const userSlice = createSlice({
     },
     reducers: {
         setUser(state, action) {
-            console.log(state)
             state.email = action.payload.email
             state.token = action.payload.token
             state.id = action.payload.uid

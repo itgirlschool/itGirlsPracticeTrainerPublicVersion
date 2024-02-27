@@ -19,7 +19,7 @@
     "@uiw/codemirror-theme-atomone": "^4.21.20",
     "@uiw/react-codemirror": "^4.21.20",
     "antd": "^5.10.3",
-    "firebase": "^10.6.0",
+    "firebase": "^10.8.0",
     "geteventlisteners": "^1.1.0",
     "html-react-parser": "^5.0.6",
     "html-to-react": "^1.7.0",
