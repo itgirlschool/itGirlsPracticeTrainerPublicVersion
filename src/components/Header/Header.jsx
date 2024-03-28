@@ -1,50 +1,53 @@
 import {useAuth} from "../../hooks/use-auth.js";
-import {useNavigate} from "react-router-dom";
 import Select from "./Selectors/Select.jsx";
 import logo from "../../assets/images/logo.png";
-import {getAuth,signOut} from "firebase/auth";
 import "./Header.scss";
-import {removeUser} from "../../store/slices/userSlices.js";
-import  ExitButtonAuth from  '../ExitButtonsAuth/ExitButtonAuth.jsx'
-import {useEffect, useState} from "react";
+import progress from '../../assets/images/prgress.png'
+import balls from '../../assets/images/balls.png'
+import ExitButtonAuth from '../ExitButtonsAuth/ExitButtonAuth.jsx'
 
 
-const openLessons =[
+const openLessons = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/webreg">Как девушке стать программисткой</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/webreg">Как девушке стать
+                программисткой</a>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/webinar_freelance">Как девушке начать зарабатывать на фрилансе</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/webinar_freelance">Как девушке
+                начать зарабатывать на фрилансе</a>
         ),
     }
 ]
 
-const profession =[
+const profession = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/new_frontend">Frontend-разработка</a>
+            <a target="_blank" rel="noopener noreferrer"
+               href="https://itgirlschool.com/new_frontend">Frontend-разработка</a>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/freelance_nocode">Фриланс и No-Code</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/freelance_nocode">Фриланс и
+                No-Code</a>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/java-developer">Backend-разработка</a>
+            <a target="_blank" rel="noopener noreferrer"
+               href="https://itgirlschool.com/java-developer">Backend-разработка</a>
         ),
     }
 ]
-const course =[
+const course = [
     {
         key: '1',
         label: (
@@ -54,7 +57,8 @@ const course =[
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/java-script">Основы JavaScript</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/java-script">Основы
+                JavaScript</a>
         ),
     },
     {
@@ -84,17 +88,19 @@ const course =[
     {
         key: '7',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/email">E-mail рассылки и чат-боты</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/email">E-mail рассылки и
+                чат-боты</a>
         ),
     },
     {
         key: '8',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/personal-brand">Личный бренд для фрилансеров</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/personal-brand">Личный бренд для
+                фрилансеров</a>
         ),
     },
 ]
-const  about = [
+const about = [
     {
         key: '1',
         label: (
@@ -110,52 +116,68 @@ const  about = [
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/social">Социальные инициативы</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/social">Социальные
+                инициативы</a>
         ),
     },
     {
         key: '4',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/affiliate">Партнерская программа</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/affiliate">Партнерская
+                программа</a>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/tpost/a0nvrmdnb1-smi-o-nas">СМИ о нас</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/tpost/a0nvrmdnb1-smi-o-nas">СМИ
+                о нас</a>
         ),
     },
     {
         key: '5',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/paymentampbonuses">Способы оплаты и бонусы</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://itgirlschool.com/paymentampbonuses">Способы
+                оплаты и бонусы</a>
         ),
     },
 ]
 const userStudy = [
-    {key:1,label: <ExitButtonAuth/> }
+    {key: 1, label: <ExitButtonAuth/>}
 ]
 
 
 const Header = () => {
-    const  {nameUser} = useAuth()
-    function getInitials(string){
-         return string?.trim().split(" ").map(word => word[0]).join("");
+    const {nameUser} = useAuth()
+
+    function getInitials(string) {
+        return string?.trim().split(" ").map(word => word[0]).join("");
     }
 
-    return(
+    return (
         <header className='header-container'>
             <img className='header-logo' src={logo} alt='logo'/>
-             <div className='header-info-container'>
-                 {nameUser && <div className='container_accaount'>
-                     <Select items={userStudy} content={getInitials(nameUser)}/>
-                 </div>}
-                 <Select items={openLessons} content='Открытые уроки'/>
+            {nameUser && <div className='progress_user-info'>
+                <div className='progress_header'>
+                    <img src={progress} alt='progress'/>
+                    Progress:87%
+                </div>
+                <div className='ball'>
+                    <img src={balls} alt='balls'/>
+                    Balls:4
+                </div>
+            </div>}
+            <div className='header-info-container'>
+                {nameUser && <div className='container_accaount'>
+                    <Select items={userStudy} content={getInitials(nameUser)}/>
+                </div>}
+                <Select items={openLessons} content='Открытые уроки'/>
                 <Select items={profession} content='Профессии'/>
                 <Select items={course} content='Интересные курсы'/>
                 <Select items={about} content='О школе'/>
+            </div>
+            <div className='header-info-container-btn'>
                 <p className='header-text'>Нас уже 600+ учениц</p>
-
             </div>
 
 

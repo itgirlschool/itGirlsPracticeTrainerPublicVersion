@@ -3,9 +3,11 @@ html, body {
 }
 
 .app {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #eae4e4;
+
 
   .header-container {
     flex-shrink: 0;
@@ -13,7 +15,6 @@ html, body {
 
   .content {
     flex-grow: 1;
-    background:#f3efe6
   }
 
 

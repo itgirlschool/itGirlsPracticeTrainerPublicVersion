@@ -1,6 +1,5 @@
 @import "../../../styles/vars";
 .containerBurger {
-  background-color: white;
   position: relative;
   flex-basis: 80px;
   display: flex;
@@ -14,14 +13,15 @@
     }
   }
 .wrapper_menu{
+  background-color: $pinkColor;
+  border-radius: 133px;
   position: relative;
-  width: 40px;
+  width: 50px;
   right:30px;
   top: 1px;
   display: flex;
   justify-content: center;
-
-  height: 70%
+  height: 60%
 }
 }
 
@@ -45,14 +45,18 @@
 }
 
 .bm-burger-button {
-  padding: 10px;
+  color: white;
+  left: 9px;
+  top:13px;
+  padding: 5px;
   position: absolute;
   width: 30px;
-  height: 24px;
+  height: 20px;
 }
 
 .bm-burger-bars {
-  background: black;
+  background: white;
+  border-radius: 10px;
 }
 
 .bm-cross-button {
@@ -78,5 +82,5 @@
   color: #b8b7ad;
 }
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.7);
+
 }

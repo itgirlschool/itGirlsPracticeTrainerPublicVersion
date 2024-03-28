@@ -27,7 +27,7 @@ export default function RegistrationPage({setShowInfo, burger}) {
             updateProfile(auth.currentUser, {
                 displayName: data.firstName + ' ' + data.lastName
             }).then(() => {
-                navigate('/')
+                navigate('/home')
             })
                 .catch((error) => console.error(error))
         }).catch(e => console.log(e))

@@ -25,6 +25,12 @@
   .red{
     color: red;
   }
+  .erLogin{
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: $familySecond;
+    font-size: 16px;
+  }
   .text_err_message-pass{
     font-size: 14px;
     color: $pinkColor;
@@ -43,6 +49,7 @@
   background: transparent url(https://html5book.ru/wp-content/uploads/2016/12/bg-form.png) bottom left repeat-x;
   background-size: 8px 35px;
   font-family: $family;
+
 }
 .form-row input[type="submit"] {
   padding: 10px 60px;
@@ -62,7 +69,29 @@
   background: #C42061;
 }
 .form-row{
+  a{
+    margin-bottom: 20px;
+  }
   margin-bottom: 20px;
+  button{
+    margin-bottom: 20px;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid;
+    font-family: $familySecond;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    cursor: pointer;
+    img{
+      width: 28px;
+      height: 28px;
+    }
+  }
 }
 :last-child{
   margin-bottom: 0;
