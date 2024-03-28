@@ -5,10 +5,20 @@ import arrow from '../../assets/images/arrow_home.png'
 import arrowLink from '../../assets/images/arrow_link.png'
 import {Link} from "react-router-dom";
 import './Home.scss'
+import {useEffect} from "react";
 
 
 
-export default function Home() {
+export default function Home({setShowInfo}) {
+
+    useEffect(() => {
+        if (window.innerWidth < 1110){
+            setShowInfo(false)
+        }
+        return ()=>{
+            setShowInfo(true)
+        }
+    }, []);
     return (
         <>
             <div className='wrapper_homeGl'>

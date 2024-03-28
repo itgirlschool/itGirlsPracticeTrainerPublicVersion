@@ -1,9 +1,10 @@
 @import '../../styles/vars';
 
 .wrapper_homeGl {
+
   display: flex;
   column-gap:40px ;
-  padding: 0 87px;
+  padding: 20px 87px;
   @media (max-width: 680px) {
     padding: 3%;
   }
