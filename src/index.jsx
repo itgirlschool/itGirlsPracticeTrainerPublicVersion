@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import './styles/index.scss';
 import App from './pages/App.jsx';
 import  {store} from "./store/index.js";
+import  {useAddData,useGetData} from "./Services/Firebade_realTime/services.js";
 
 
 

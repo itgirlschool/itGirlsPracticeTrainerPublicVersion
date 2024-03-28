@@ -1,6 +1,5 @@
 import {Routes, Route, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import  {useAddData,useGetData} from "../Services/Firebade_realTime/services.js";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 import Header from "../components/Header/Header.jsx";
@@ -11,12 +10,14 @@ import RegistrationPage from "./RegistrationPage/RegistrationPage.jsx";
 import Spinner from "../components/Spinner/Spinner.jsx";
 import PreLoaderApp from "../components/PreLoaderApp/PreLoaderApp.jsx";
 import Home from "./Home/Home.jsx";
+import HomePagePublic from "./PublicVersion/HomePagePublic/HomePagePublic.jsx";
 
 import {useDispatch} from "react-redux";
 import {setUser} from "../store/slices/userSlices.js";
 
 import "../styles/App.scss";
-import HomePagePublic from "./PublicVersion/HomePagePublic/HomePagePublic.jsx";
+import 'normalize.css';
+
 
 
 function App() {
