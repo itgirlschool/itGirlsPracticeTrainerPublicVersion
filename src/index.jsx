@@ -11,8 +11,6 @@ import  {store} from "./store/index.js";
 import {QueryClient,QueryClientProvider } from 'react-query';
 
 
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <BrowserRouter>
