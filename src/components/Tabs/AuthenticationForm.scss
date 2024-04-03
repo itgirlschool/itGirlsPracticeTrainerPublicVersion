@@ -44,31 +44,32 @@
             }
 
             .auth__button {
-                width        : 386px;
-                height       : 60px;
-                display      : flex;
-                padding      : 10px;
-                margin-bottom: 30px;
-                gap          : 25px;
+                width          : 386px;
+                height         : 60px;
+                display        : flex;
+                padding        : 10px;
+                margin-bottom  : 30px;
+                gap            : 25px;
+                justify-content: space-between;
+                align-items    : center;
 
                 background-color: rgba(243, 243, 243, 1);
                 border          : 1px solid rgba(243, 243, 243, 1);
                 border-radius   : 50px;
 
                 button {
-                    border    : none;
-                    background: none;
-                    font      : inherit;
-                    color     : inherit;
-                    cursor    : pointer;
+                    border    : 1px solid rgba(243, 243, 243, 1);
+                    background: transparent;
+
                 }
 
-                auth:active {
+
+                button:focus {
                     background-color: rgba(234, 93, 128, 1);
                 }
             }
         }
     }
 
-    .auth__lreg {}
+    .auth__reg {}
 }
