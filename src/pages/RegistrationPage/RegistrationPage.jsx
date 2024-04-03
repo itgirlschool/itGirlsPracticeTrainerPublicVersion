@@ -25,13 +25,11 @@ export default function RegistrationPage({ setShowInfo, burger }) {
     function sendGoogle() {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // Обработка успешной аутентификации через Google
                 const user = result.user;
                 console.log("Google User:", user);
                 navigate('/home');
             })
             .catch((error) => {
-                // Обработка ошибок аутентификации
                 console.error("Google Auth Error:", error);
             });
     }
@@ -39,13 +37,11 @@ export default function RegistrationPage({ setShowInfo, burger }) {
     function sendGithub() {
         signInWithPopup(auth, githubProvider)
             .then((result) => {
-                // Обработка успешной аутентификации через GitHub
                 const user = result.user;
                 console.log("GitHub User:", user);
                 navigate('/home');
             })
             .catch((error) => {
-                // Обработка ошибок аутентификации
                 console.error("GitHub Auth Error:", error);
             });
     }
@@ -71,7 +67,6 @@ export default function RegistrationPage({ setShowInfo, burger }) {
     return (
         <>{/*{burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}*/}
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
-                {/*<h3> Регистрация учетной записи</h3>*/}
                 <div className={`form-row ${errors?.email && 'red'}`}>
                     <input type="text" placeholder="Ваше имя" {...register("firstName", {
                         required: true,
