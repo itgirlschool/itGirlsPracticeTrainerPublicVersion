@@ -36,7 +36,7 @@ export default function RegistrationPage({ setShowInfo, burger }) {
     return (
         <>{/*{burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}*/}
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
-                <h3> Регистрация учетной записи</h3>
+                {/*<h3> Регистрация учетной записи</h3>*/}
                 <div className={`form-row ${errors?.email && 'red'}`}>
                     <label htmlFor="firstName">Ваше имя</label>
                     <input type="text" placeholder="First name" {...register("firstName", {

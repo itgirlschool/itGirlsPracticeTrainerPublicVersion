@@ -11,7 +11,7 @@ import Spinner from "../components/Spinner/Spinner.jsx";
 import PreLoaderApp from "../components/PreLoaderApp/PreLoaderApp.jsx";
 import Home from "./Home/Home.jsx";
 import HomePagePublic from "./PublicVersion/HomePagePublic/HomePagePublic.jsx";
-import Tabs from "../components/Tabs/Tabs.jsx";
+import AuthenticationForm from "../components/Tabs/AuthenticationForm.jsx";
 
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/slices/userSlices.js";
@@ -68,7 +68,7 @@ function App() {
                     <Route path='/registration' element={<RegistrationPage setShowInfo={setShowInfo} />} />
                     <Route path='/' element={<Home setShowInfo={setShowInfo} />} />
                     <Route path='/home' element={<HomePagePublic />} />
-                    <Route path='/tabs' element={<Tabs />} />
+                    <Route path='/tabs' element={<AuthenticationForm />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
                     :

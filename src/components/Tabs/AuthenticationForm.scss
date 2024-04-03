@@ -1,0 +1,74 @@
+@import '../../styles/vars.scss';
+
+.log-reg-page {
+    width          : 90%;
+    height         : 840px;
+    display        : flex;
+    margin         : 0 auto;
+    justify-content: space-between;
+    align-items    : center;
+
+
+    .image {
+        width: 810px;
+
+        img {
+            display  : block;
+            max-width: 100%;
+        }
+    }
+
+    .auth__log {
+        width           : 566px;
+        height          : 791px;
+        display         : flex;
+        flex-direction  : column;
+        padding         : 90px 92px;
+        background-color: rgba(255, 255, 255, 1);
+        border-radius   : 60px;
+        box-shadow      : 0px 8px 16px rgba(105, 105, 105, 0.2);
+
+        .auth__heading {
+            h2 {
+                margin-bottom: 40px;
+                font-family  : $family;
+                font-size    : $font-32;
+                line-height  : 43.2px;
+                font-weight  : 700;
+                color        :
+                    rgba(54, 54, 58, 1);
+
+                span {
+                    color: rgba(234, 93, 128, 1);
+                }
+            }
+
+            .auth__button {
+                width        : 386px;
+                height       : 60px;
+                display      : flex;
+                padding      : 10px;
+                margin-bottom: 30px;
+                gap          : 25px;
+
+                background-color: rgba(243, 243, 243, 1);
+                border          : 1px solid rgba(243, 243, 243, 1);
+                border-radius   : 50px;
+
+                button {
+                    border    : none;
+                    background: none;
+                    font      : inherit;
+                    color     : inherit;
+                    cursor    : pointer;
+                }
+
+                auth:active {
+                    background-color: rgba(234, 93, 128, 1);
+                }
+            }
+        }
+    }
+
+    .auth__lreg {}
+}

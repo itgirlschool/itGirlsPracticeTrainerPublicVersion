@@ -4,9 +4,9 @@ import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
 import SideBar from "../Header/SideBar/SideBar";
 import Header from "../Header/Header";
 import cat from '../../assets/images/cat.png';
-import './Tabs.scss';
+import './AuthenticationForm.scss';
 
-export default function Tabs({ setShowInfo, burger, showInfo }) {
+export default function AuthenticationForm({ burger, showInfo }) {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
@@ -16,12 +16,16 @@ export default function Tabs({ setShowInfo, burger, showInfo }) {
                 <div className="image">
                     <img src={cat} alt="cat" />
                 </div>
-                <div className="tabs">
-                    <div className="tabs__button">
-                        <button onClick={() => setActiveIndex(0)}>Войти</button>
-                        <button onClick={() => setActiveIndex(1)}>Зарегистрироваться</button>
+                <div className={`auth ${activeIndex === 0 ? 'auth__log' : 'auth__reg'}`}>
+                    <div className="auth__heading">
+                        {activeIndex === 0 && <h2><span>Войти</span> в учетную запись тренажера</h2>}
+                        {activeIndex === 1 && <h2><span>Регистрация</span> учетной записи</h2>}
                     </div>
-                    <div className="tabs__info">
+                    <div className="auth__button">
+                        <button className="btn" onClick={() => setActiveIndex(0)}>Войти</button>
+                        <button className="btn" onClick={() => setActiveIndex(1)}>Зарегистрироваться</button>
+                    </div>
+                    <div className="auth__info">
                         {activeIndex === 0 && <LoginPage />}
                         {activeIndex === 1 && <RegistrationPage />}
                     </div>
