@@ -63,8 +63,7 @@ export default function LoginPage({ setShowInfo, burger }) {
     // }, []);
 
     return (
-        <>
-            {burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}
+        <>{/*{burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}*/}
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
                 <h3> Войти в у четную запись тренажера</h3>
                 {errLogin && <h5 className='red erLogin'>Не верный логин или пароль</h5>}

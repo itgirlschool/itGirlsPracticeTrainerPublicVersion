@@ -34,8 +34,7 @@ export default function RegistrationPage({ setShowInfo, burger }) {
     }
 
     return (
-        <>
-            {burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}
+        <>{/*{burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}*/}
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
                 <h3> Регистрация учетной записи</h3>
                 <div className={`form-row ${errors?.email && 'red'}`}>
