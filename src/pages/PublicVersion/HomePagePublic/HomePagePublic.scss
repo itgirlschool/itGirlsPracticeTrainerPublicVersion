@@ -1,8 +1,5 @@
 @import '../../../styles/vars';
 
-.homePageModal .ant-modal-content {
-  border-radius: 60px;
-}
 
 .homePublicPage{
   display: flex;
@@ -11,7 +8,7 @@
 
 
   //мобальное окно
-  &__modal{
+  &__modal .ant-modal-content{
     border-radius: 60px;
   }
 
@@ -28,6 +25,7 @@
     font-size: $font-32;
     color: $pinkColor;
     text-align: center;
+    // font-family: $family;
   }
 
   &__modal-stripes{
@@ -38,6 +36,7 @@
     text-align: center;
     font-size: 16px;
     color: $colorText;
+    // font-family: $family;
   }
 
   &__modal-arrow{
@@ -51,17 +50,168 @@
     border-radius: 50px;
     border: none;
     background-color: $pinkColor;
+    cursor: pointer;
+    // font-family: $family;
   }
 
   // основная страница
 
   &__left{
-    max-width: 40%;
+    max-width: 45%;
     width: 100%;
   }
 
+  &__taskPublic{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    height: 100%;
+  }
+
+  &__block{
+    background-color: $whiteColor;
+    border-radius: 60px;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    padding: 4% 0 4% 4%;
+  }
+
+  &__exercise{
+    width: 55%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__exercise-title{
+    font-size: $font-32;
+    color: $pinkColor;
+    padding-bottom: 5%;
+  }
+
+  &__exercise-text{
+    font-size: $font-16;
+    color: $darkBrownColor;
+  }
+
+  &__exercise-a{
+    font-size: $font-16;
+    color: $pinkColor;
+    padding-top: 5%;
+  }
+
+  &__img{}
+
+  &__img-calc{
+    width: 80%;
+    margin-left: 3%;
+  }
+
+  &__img-rhombus{
+    width: 15%;
+    transform: translate(-40px, 180%);
+  }
+
+
+  &__result{
+    background-color:$whiteColor;
+    height: 29vh;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 60px;
+    margin-top: 10%;
+  }
+
+  &__result-rhombus{
+    transform: translate(0, 35%);
+  }
+
+  &__result-cat{
+    width: 90%;
+    transform: translate(0, 23%);
+  }
+
+  &__result-images{
+    width: 40%;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__result-block{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__result-arrow{
+    width: 85%;
+    transform: translate(-110%, 15%);
+  }
+
+  &__result-text{
+    font-size: 18px;
+    color: $darkBrownColor;
+    font-weight: 700;
+    font-family: $familySecond;
+    height: 10vh;
+  }
+
+
   &__right{
-    max-width: 40%;
+    max-width: 45%;
     width: 100%;
+  }
+
+  &__answer{
+    height: 70vh;
+    background-color: #282C34;
+    border-radius: 60px;
+    padding-top: 10%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  &__hint{
+    display: flex;
+    align-items: flex-end;
+    width: 15%;
+  }
+
+  &__hint-btn{
+    cursor: pointer;
+    background-color: $whiteColor;
+    border: none;
+    border: 50%;
+    padding: 12%;
+    border-radius: 50%;
+
+    margin-bottom: 40%;
+  }
+
+  &__hint-img{
+    width: 100%;
+  }
+
+  &__check{
+    margin-top: 4%;
+  }
+
+  &__check-btn{
+    width: 100%;
+    border-radius: 50px;
+    border: none;
+    background-color: $pinkColor;
+    color: $whiteColor;
+    font-size: $font-16;
+    padding: 2%;
+    font-family: $family;
+    cursor: pointer;
   }
 }
