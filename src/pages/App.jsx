@@ -40,7 +40,7 @@ function App() {
         onAuthStateChanged(auth, (currentUser) => {
             if (!currentUser) {
                 setLoader('uploaded')
-                // navigate('/')
+                 navigate('/')
                 return
             }
             dispatch(setUser({
@@ -49,7 +49,7 @@ function App() {
                 id: currentUser.uid,
                 nameUser: currentUser.displayName
             }))
-            // navigate('/home')
+             navigate('/home')
             setLoader('uploaded')
         })
     }, [])

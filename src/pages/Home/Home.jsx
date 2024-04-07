@@ -35,7 +35,7 @@ export default function Home({setShowInfo}) {
                         <div className='box box_second'>Не волнуйся, если у тебя нет предварительного опыта в программировании . Наш тренажер #ITGIRLS предназначен начинающих, для тех, кто еще не определилися и хотел бы познакомиться с этим направлением поближе. Мы будем тебя поддерживать на каждом шагу, предоставляя пошаговые инструкции и полезные подсказки.</div>
                     </div>
                     <div className='btn_wrapper'>
-                        <Link to='/login'>
+                        <Link to='/tabs'>
                             <span>Создать профиль</span>
                             <img src={arrowLink} alt='arrow'/>
                         </Link>
