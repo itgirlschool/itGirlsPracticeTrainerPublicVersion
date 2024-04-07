@@ -16,7 +16,7 @@ import bulb from "../../../assets/images/homePage/bulb.png";
 export default function HomePagePublic({ setDisabledFooter }) {
   const [value, setValue] = useState("");
   const [numberTask, setNumberTask] = useState(0);
-  const [classTheory, setClassTheory] = useState("active"); //добавить слово active
+  const [classTheory, setClassTheory] = useState("active");
   const [openModal, setOpenModal] = useState(true);
 
   useEffect(() => {

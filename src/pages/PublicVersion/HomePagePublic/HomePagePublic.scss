@@ -4,7 +4,12 @@
 .homePublicPage{
   display: flex;
   justify-content: space-around;
-  // flex-wrap: wrap;
+
+  @media screen and (min-width: 360px) and (max-width: 675px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 
   //мобальное окно
@@ -19,28 +24,50 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      height: 80vh;
+    }
   }
 
   &__modal-title{
     font-size: $font-32;
     color: $pinkColor;
     text-align: center;
-    // font-family: $family;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      width: 70%;
+      font-size: $font-24; //22
+    }
   }
 
   &__modal-stripes{
     transform: translate(-10px, -9px);
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      width: 11%;
+      transform: translate(90px, -50px);
+    }
   }
 
   &__modal-text{
     text-align: center;
     font-size: 16px;
     color: $colorText;
-    // font-family: $family;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-14;
+    }
   }
 
   &__modal-arrow{
     padding: 2%;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      width: 28%;
+    }
   }
 
   &__modal-btn{
@@ -51,7 +78,13 @@
     border: none;
     background-color: $pinkColor;
     cursor: pointer;
-    // font-family: $family;
+    font-family: $family;
+
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-14;
+      padding: 6% 10%;
+    }
   }
 
   // основная страница
@@ -59,12 +92,13 @@
   &__left{
     max-width: 45%;
     width: 100%;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      max-width: 90%;
+    }
   }
 
   &__taskPublic{
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
     height: 100%;
   }
 
@@ -75,6 +109,11 @@
     display: flex;
     align-items: center;
     padding: 4% 0 4% 4%;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      height: 25vh;
+      border-radius: 30px;
+    }
   }
 
   &__exercise{
@@ -83,26 +122,50 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      width: 100%;
+      padding: 4%;
+    }
   }
 
   &__exercise-title{
     font-size: $font-32;
     color: $pinkColor;
     padding-bottom: 5%;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-18;
+    }
   }
 
   &__exercise-text{
     font-size: $font-16;
     color: $darkBrownColor;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-14;
+    }
   }
 
   &__exercise-a{
     font-size: $font-16;
     color: $pinkColor;
     padding-top: 5%;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-14;
+    }
   }
 
-  &__img{}
+  &__img{
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      display: none;
+    }
+  }
 
   &__img-calc{
     width: 80%;
@@ -122,6 +185,14 @@
     justify-content: space-between;
     border-radius: 60px;
     margin-top: 10%;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      margin-bottom: 5%;
+      justify-content: center;
+      height: 18vh;
+      margin-top: 5%;
+      border-radius: 30px;
+    }
   }
 
   &__result-rhombus{
@@ -137,6 +208,10 @@
     width: 40%;
     display: flex;
     align-items: flex-end;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      display: none;
+    }
   }
 
   &__result-block{
@@ -150,6 +225,11 @@
   &__result-arrow{
     width: 85%;
     transform: translate(-110%, 15%);
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      width: 70%;
+      transform: translate(-90%, 15%);
+    }
   }
 
   &__result-text{
@@ -158,12 +238,21 @@
     font-weight: 700;
     font-family: $familySecond;
     height: 10vh;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-14;
+    }
   }
 
 
   &__right{
     max-width: 45%;
     width: 100%;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      max-width: 90%;
+    }
   }
 
   &__answer{
@@ -172,9 +261,16 @@
     border-radius: 60px;
     padding-top: 10%;
     width: 100%;
+    font-size: 16px;
 
     display: flex;
     justify-content: space-between;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      font-size: $font-14;
+      height: 30vh;
+      border-radius: 30px;
+    }
   }
 
 
@@ -210,8 +306,12 @@
     background-color: $pinkColor;
     color: $whiteColor;
     font-size: $font-16;
-    padding: 2%;
+    padding: 2.4%;
     font-family: $family;
     cursor: pointer;
+
+    @media screen and (min-width: 360px) and (max-width: 675px){
+      padding: 5%;
+    }
   }
 }
