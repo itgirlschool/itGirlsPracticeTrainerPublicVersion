@@ -9,9 +9,10 @@ import google from '../../assets/images/icons/google-new.png'
 import line from '../../assets/images/line.png'
 import { getAuth, signInWithEmailAndPassword,GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
 import {sendSocial} from "../../common/authLogic/authProvider.js";
+import {setUser} from "../../store/slices/userSlices.js";
 
 
-export default function LoginPage({ setShowInfo, burger }) {
+export default function LoginPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [errLogin, setErrorLogin] = useState(false)
@@ -22,12 +23,20 @@ export default function LoginPage({ setShowInfo, burger }) {
     const providerGitHub = new GithubAuthProvider()
 
     function onSubmit(data) {
+        setErrorLogin(false)
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((user) => {
-               // navigate('/home')
+                dispatch(setUser({
+                    displayName: user.user.displayName,
+                    password: data.password,
+                    email: data.email,
+                    token: user.user.accessToken
+                }))
+                navigate('/home')
             })
             .catch((error) => {
-
+                console.log(error)
+                setErrorLogin(true)
             })
     }
 

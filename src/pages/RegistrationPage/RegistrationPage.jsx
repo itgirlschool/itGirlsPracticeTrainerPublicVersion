@@ -8,6 +8,7 @@ import {useAddData,} from "../../Services/Firebade_realTime/services.js";
 import {
     getAuth,
     createUserWithEmailAndPassword,
+    updateProfile,
     GoogleAuthProvider,
     GithubAuthProvider,
 } from "firebase/auth";
@@ -51,9 +52,12 @@ export default function RegistrationPage({setShowInfo, burger}) {
             })
             .then((currentUser) => {
                 dispatch(setUser(currentUser))
-                console.log(displayName,)
+                updateProfile(auth.currentUser,{
+                    displayName: data.firstName + ' ' + data.lastName
+                }).catch(e=>console.error(e))
             })
             .catch(e => {
+                console.error(e)
                 setExistingEmail(true)
             })
     }
