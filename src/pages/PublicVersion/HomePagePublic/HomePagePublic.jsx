@@ -16,7 +16,6 @@ import bulb from "../../../assets/images/homePage/bulb.png";
 export default function HomePagePublic({ setDisabledFooter }) {
   const [value, setValue] = useState("");
   const [numberTask, setNumberTask] = useState(0);
-  const [classTheory, setClassTheory] = useState("active");
   const [openModal, setOpenModal] = useState(true);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }, [numberTask]);
 
   function getTaskUser() {
-    setClassTheory("");
     setOpenModal(false);
   }
 
@@ -44,15 +42,12 @@ export default function HomePagePublic({ setDisabledFooter }) {
                 <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask].title} <img src={stripesModal} alt="stripes modal" className="homePublicPage__modal-stripes"/></h2>
                 <p className="homePublicPage__modal-text">{tasksPublic[numberTask].theory}</p>
                 <img src={arrowModal} alt="arrow modal" className="homePublicPage__modal-arrow"/>
-                {classTheory === "active" && (
                   <button onClick={()=> getTaskUser()} className="homePublicPage__modal-btn">
                     Мне все понятно! Показать задание
                   </button>
-                )}
               </div>
         </Modal>
-        <div className={`homePublicPage__left ${classTheory}`}>
-          {classTheory !== "active" && (
+        <div className='homePublicPage__left'>
             <div className="homePublicPage__taskPublic">
               <div className="homePublicPage__block">
                 <div className="homePublicPage__exercise">
@@ -100,7 +95,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
                 </div>
               </div>
             </div>
-          )}
         </div>
         <div className="homePublicPage__right">
           <div className="homePublicPage__answer">
