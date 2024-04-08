@@ -59,7 +59,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                   </p>
                   <a
                     onClick={() => {
-                      setClassTheory("active");
+                        setOpenModal(true);
                     }}
                     href="#"
                     className="homePublicPage__exercise-a"
