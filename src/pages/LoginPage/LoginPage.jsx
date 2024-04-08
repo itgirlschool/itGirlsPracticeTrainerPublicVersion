@@ -1,14 +1,14 @@
 import { useForm } from 'react-hook-form';
 import './LoginPage.scss'
-import { useEffect, useState } from "react";
-import SideBar from "../../components/Header/SideBar/SideBar.jsx";
-import Header from "../../components/Header/Header.jsx";
+import { useState } from "react";
+import {useAddData} from "../../Services/Firebade_realTime/services.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import github from '../../assets/images/icons/github-new.png'
 import google from '../../assets/images/icons/google-new.png'
 import line from '../../assets/images/line.png'
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword,GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
+import {sendSocial} from "../../common/authLogic/authProvider.js";
 
 
 export default function LoginPage({ setShowInfo, burger }) {
@@ -17,66 +17,36 @@ export default function LoginPage({ setShowInfo, burger }) {
     const [errLogin, setErrorLogin] = useState(false)
     const { register, handleSubmit, formState: { errors }, getValues, watch } = useForm();
     const auth = getAuth()
-    const provider = new GoogleAuthProvider();
+    const mutation = useAddData()
+    const providerGoogle = new GoogleAuthProvider();
+    const providerGitHub = new GithubAuthProvider()
+
     function onSubmit(data) {
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((user) => {
-                navigate('/home')
+               // navigate('/home')
             })
             .catch((error) => {
 
             })
     }
-    function sendGoogle() {
-        signInWithPopup(auth, provider).then(result => {
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            const user = result.user;
-            console.log(user, token)
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.customData.email;
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            console.log(credential)
-        })
-    }
-    function sendGithub() {
-        signInWithPopup(auth, provider)
-            .then(result => {
-                const credential = GithubAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
-            }).catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.customData.email;
-                const credential = GithubAuthProvider.credentialFromError(error);
-            })
-    }
 
 
 
 
-    // useEffect(() => {
-    //     setShowInfo(false)
-    //     return () => setShowInfo(true)
-    // }, []);
+
 
     return (
-        <>{/*{burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />}*/}
+        <>
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
-                {/*<h3> Войти в у четную запись тренажера</h3>*/}
                 {errLogin && <h5 className='red erLogin'>Не верный логин или пароль</h5>}
                 <div className={`form-row ${errors?.email && 'red'}`}>
-                    {/* <label htmlFor="email">Ваш Email</label> */}
                     <input type="text" placeholder="Ваш Email" id="email" {...register("email", {
                         required: true,
                         pattern: /^\S+@\S+$/i
                     })} />
                 </div>
                 <div className={`form-row ${errors?.pass && 'red'}`}>
-                    {/* <label htmlFor="pass">Ваш пароль</label> */}
                     <input type="password" placeholder="Ваш пароль" {...register("password", {
                         required: true,
                         pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
@@ -86,10 +56,10 @@ export default function LoginPage({ setShowInfo, burger }) {
 
                 <div className='form-row submit'>
                     <input type="submit" value="Войти" />
-                    <div className='line'><img src={line} alt="line" /><Link to='/registration'>Войти через</Link><img src={line} alt="line" /></div>
+                    <div className='line'><img src={line} alt="line" /><Link to='#'>Войти через</Link><img src={line} alt="line" /></div>
                     <div className='submit__btns'>
-                        <button className='google_btn' onClick={sendGoogle} ><img src={google} alt='google' /></button>
-                        <button className='github_btn' onClick={sendGithub} ><img src={github} alt='github' /></button>
+                        <button className='google_btn' type='button' onClick={()=>sendSocial(dispatch,navigate,auth,providerGoogle,mutation)}  ><img src={google} alt='google' /></button>
+                        <button className='github_btn' type='button' onClick={()=>sendSocial(dispatch,navigate,auth,providerGitHub,mutation)} ><img src={github} alt='github' /></button>
                     </div>
                 </div>
             </form>
