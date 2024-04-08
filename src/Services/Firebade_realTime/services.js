@@ -37,3 +37,8 @@ export function useGetData() {
     });
 }
 
+export async function  getAllUsers(){
+    const snapshot = await db.ref('users').once('value');
+    return snapshot.val();
+}
+

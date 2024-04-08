@@ -148,16 +148,17 @@ const userStudy = [
 
 
 const Header = () => {
-    const {nameUser} = useAuth()
+    const {lastName,firstName} = useAuth()
 
-    function getInitials(string) {
+    function getInitials(lastName,firstName) {
+        const string = firstName + '' + lastName
         return string?.trim().split(" ").map(word => word[0]).join("");
     }
 
     return (
         <header className='header-container'>
             <img className='header-logo' src={logo} alt='logo'/>
-            {nameUser && <div className='progress_user-info'>
+            {firstName && <div className='progress_user-info'>
                 <div className='progress_header'>
                     <img src={progress} alt='progress'/>
                     Progress:87%
@@ -168,8 +169,8 @@ const Header = () => {
                 </div>
             </div>}
             <div className='header-info-container'>
-                {nameUser && <div className='container_accaount'>
-                    <Select items={userStudy} content={getInitials(nameUser)}/>
+                { <div className='container_accaount'>
+                    <Select items={userStudy} content={getInitials(firstName,lastName)}/>
                 </div>}
                 <Select items={openLessons} content='Открытые уроки'/>
                 <Select items={profession} content='Профессии'/>
