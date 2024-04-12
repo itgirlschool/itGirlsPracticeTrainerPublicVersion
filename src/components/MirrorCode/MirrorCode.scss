@@ -1,6 +1,15 @@
 .cm-scroller{
   overflow-x: hidden;
+  // padding-left: 10px;
 }
 .mirror{
   font-size: 16px;
+}
+
+.cm-editor{
+  border-radius: 0 20px;
+}
+
+.cm-theme{
+  padding-left: 10px;
 }
