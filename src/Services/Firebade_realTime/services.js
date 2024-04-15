@@ -5,18 +5,20 @@ import {useQuery, useMutation, useQueryClient} from "react-query";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.database()
-
 export function useAddData() {
-    const queryClient = useQueryClient()
+    const queryClient = useQueryClient();
+
     return useMutation(async (newData) => {
-            await db.ref('users').push(newData)
+        const ref = db.ref('users').push();
+        const newKey = ref.key;
+        console.log(newKey)
+        await ref.set(newData);
+        return newKey;
+    }, {
+        onSuccess: (newKey) => {
+            queryClient.invalidateQueries('users');
         },
-        {
-            onSuccess: () => {
-                queryClient.invalidateQueries('users')
-            }
-        }
-    )
+    });
 }
 
 export function useEditData() {

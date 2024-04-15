@@ -47,7 +47,8 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     email: data.email,
                     token: user.user.accessToken
                 }
-                mutation.mutate(infoUser)
+               const  a =  mutation.mutate(infoUser)
+               console.log(a)
                 return infoUser
             })
             .then((currentUser) => {
