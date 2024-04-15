@@ -43,12 +43,12 @@ function App() {
                  navigate('/')
                 return
             }
-            //dispatch(setUser({
-              //  email: currentUser.email,
-                //token: currentUser.accessToken,
-                //id: currentUser.uid,
-                //nameUser: currentUser.displayName
-            //}))
+            dispatch(setUser({
+               email: currentUser.email,
+                token: currentUser.accessToken,
+                id: currentUser.uid,
+                displayName: currentUser.displayName
+            }))
              navigate('/home')
             setLoader('uploaded')
         })

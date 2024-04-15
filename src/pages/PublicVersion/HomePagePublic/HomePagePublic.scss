@@ -1,9 +1,11 @@
 @import '../../../styles/vars';
 
 
-.homePublicPage{
+.homePublicPage {
   display: flex;
   justify-content: space-around;
+  height: 91.7vh;
+
 
   @media screen and (min-width: 360px) and (max-width: 675px) {
     display: flex;
@@ -13,11 +15,11 @@
 
 
   //мобальное окно
-  &__modal .ant-modal-content{
+  &__modal .ant-modal-content {
     border-radius: 60px;
   }
 
-  &__modal-container{
+  &__modal-container {
     padding: 8%;
     height: 70vh;
     display: flex;
@@ -25,52 +27,52 @@
     justify-content: space-between;
     align-items: center;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       height: 130vh;
     }
   }
 
-  &__modal-title{
+  &__modal-title {
     font-size: $font-32;
     color: $pinkColor;
     text-align: center;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 70%;
       font-size: $font-24;
     }
   }
 
-  &__modal-stripes{
+  &__modal-stripes {
     transform: translate(-10px, -9px);
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 12%;
       transform: translate(20px, -50px);
     }
   }
 
-  &__modal-text{
+  &__modal-text {
     text-align: center;
     font-size: 16px;
     color: $colorText;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
 
-  &__modal-arrow{
+  &__modal-arrow {
     padding: 2%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 28%;
     }
   }
 
-  &__modal-btn{
+  &__modal-btn {
     font-size: $font-16;
     padding: 4% 15%;
     color: $whiteColor;
@@ -81,7 +83,7 @@
     font-family: $family;
 
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
       padding: 6% 10%;
     }
@@ -89,20 +91,20 @@
 
   // основная страница
 
-  &__left{
+  &__left {
     max-width: 45%;
     width: 100%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       max-width: 90%;
     }
   }
 
-  &__taskPublic{
+  &__taskPublic {
     height: 100%;
   }
 
-  &__block{
+  &__block {
     background-color: $whiteColor;
     border-radius: 60px;
     height: 37vh;
@@ -111,86 +113,86 @@
     justify-content: space-around;
     padding: 4% 0 4% 4%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       height: 28vh;
       border-radius: 30px;
       padding: 0;
     }
   }
 
-  &__exercise{
+  &__exercise {
     width: 55%;
     height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 100%;
       padding: 4%;
     }
   }
 
-  &__exercise-title{
+  &__exercise-title {
     font-size: $font-32;
     color: $pinkColor;
     padding-bottom: 5%;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-18;
     }
   }
 
-  &__exercise-text{
+  &__exercise-text {
     font-size: $font-16;
     color: $darkBrownColor;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
 
-  &__exercise-a{
+  &__exercise-a {
     font-size: $font-16;
     color: $pinkColor;
     padding-top: 5%;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
 
-  &__img{
+  &__img {
     display: flex;
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       display: none;
     }
   }
 
-  &__img-calc{
+  &__img-calc {
     width: 80%;
     margin-left: 10%;
   }
 
-  &__img-rhombus{
+  &__img-rhombus {
     width: 50%;
     height: 5%;
     transform: translate(-80px, 650%);
   }
 
 
-  &__result{
-    background-color:$whiteColor;
-    height: 32vh;
+  &__result {
+    background-color: $whiteColor;
+    height: 48vh;
     display: flex;
     justify-content: space-between;
     border-radius: 60px;
     margin-top: 3%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       margin-bottom: 5%;
       justify-content: center;
       height: 18vh;
@@ -199,25 +201,26 @@
     }
   }
 
-  &__result-rhombus{
+  &__result-rhombus {
     transform: translate(0, 35%);
   }
 
-  &__result-cat{
-    transform: translate(0, 23%);
+  &__result-cat {
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 250px;
   }
 
-  &__result-images{
-    width: 40%;
+  &__result-images {
     display: flex;
-    align-items: flex-end;
-
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    align-items: center;
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       display: none;
     }
   }
 
-  &__result-block{
+  &__result-block {
     width: 55%;
     display: flex;
     flex-direction: column;
@@ -225,90 +228,115 @@
     justify-content: center;
   }
 
-  &__result-arrow{
-    transform: translate(-110%, 15%);
-
-    @media screen and (min-width: 360px) and (max-width: 675px){
-      width: 60%;
-      transform: translate(-90%, 15%);
+  &__result-arrow {
+    max-width: 240px;
+    height: 80px;
+    @media (max-width: 1360px) {
+      display: none;
     }
+
   }
 
-  &__result-text{
+  &__result-text {
     font-size: 18px;
     color: $darkBrownColor;
     font-weight: 700;
     font-family: $familySecond;
     height: 10vh;
-    font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
 
 
-  &__right{
+  &__right {
     max-width: 45%;
     width: 100%;
+    position: relative;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       max-width: 90%;
     }
+
+    .box_sucsessfully {
+      position: absolute;
+      bottom: 30%;
+      left: 20%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      transform: translateY(-400%);
+      animation: cat 1s linear forwards;
+      opacity: 0;
+
+      h3 {
+        color: white;
+        font-size: 24px;
+        font-family: $family;
+      }
+
+      .img_sucsessfully {
+        max-width: 250px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .next_task {
+      animation: restColor 1s linear forwards;;
+    }
+
   }
 
-  &__answer{
-    height: 70vh;
+  &__answer {
+    height: 78vh;
     background-color: #282C34;
     border-radius: 60px;
-    padding-top: 10%;
     width: 100%;
     font-size: 16px;
-
     display: flex;
     justify-content: space-between;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
       height: 32vh;
       border-radius: 30px;
     }
   }
 
-
-  &__hint{
+  &__hint {
     display: flex;
     align-items: flex-end;
     width: 15%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       margin-right: 3%;
     }
   }
 
-  &__hint-btn{
+  &__hint-btn {
     cursor: pointer;
     background-color: $whiteColor;
     border: none;
-    border: 50%;
     padding: 12%;
     border-radius: 50%;
-
     margin-bottom: 40%;
-
-    
   }
 
-  &__hint-img{
+  &__hint-img {
     width: 100%;
     border-radius: 20px;
   }
 
-  &__check{
+  &__check {
     margin-top: 3%;
   }
 
-  &__check-btn{
+  &__check-btn {
     width: 100%;
     border-radius: 50px;
     border: none;
@@ -319,8 +347,71 @@
     font-family: $family;
     cursor: pointer;
 
-    @media screen and (min-width: 360px) and (max-width: 675px){
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       padding: 4%;
     }
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cat {
+  60% {
+    transform: translateY(-40%);
+    opacity: 0.5
+  }
+
+  80% {
+    transform: translateY(-20%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-0%);
+    opacity: 1;
+  }
+
+
+}
+
+.errorBorder {
+  box-shadow: 2px 0px 4px 4px rgba(255, 0, 0, 0.7);
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-15px, 0);
+  }
+
+  50% {
+    transform: translate(15px, 0);
+  }
+
+  75% {
+    transform: translate(-15px, 0);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes restColor {
+  100% {
+    background-color: #e1aa50;
   }
 }
