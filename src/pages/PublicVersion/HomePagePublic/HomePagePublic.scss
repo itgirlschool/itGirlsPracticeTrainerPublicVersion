@@ -1,11 +1,21 @@
 @import '../../../styles/vars';
 
+.cm-line, .cm-gutter{justify-content: space-evenly;
+  font-size: $font-18;
+
+  @media screen and (min-width: 360px) and (max-width: 675px){
+    font-size: $font-16;
+  }
+}
+
+
 
 .homePublicPage {
   display: flex;
   justify-content: space-around;
   height: 91.7vh;
-
+  justify-content: center;
+  margin-top: 1%;
 
   @media screen and (min-width: 360px) and (max-width: 675px) {
     display: flex;
@@ -18,8 +28,7 @@
   &__modal .ant-modal-content {
     border-radius: 60px;
   }
-
-  &__modal-container {
+  &__modal-container{
     padding: 8%;
     height: 70vh;
     display: flex;
@@ -94,6 +103,7 @@
   &__left {
     max-width: 45%;
     width: 100%;
+    margin-right: 1%;
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       max-width: 90%;
@@ -107,7 +117,7 @@
   &__block {
     background-color: $whiteColor;
     border-radius: 60px;
-    height: 37vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -175,22 +185,24 @@
   &__img-calc {
     width: 80%;
     margin-left: 10%;
+
   }
 
   &__img-rhombus {
     width: 50%;
     height: 5%;
-    transform: translate(-80px, 650%);
+    transform: translate(-75px, 740%);
   }
 
 
-  &__result {
-    background-color: $whiteColor;
-    height: 48vh;
+
+  &__result{
+    background-color:$whiteColor;
+    height: 34vh;
     display: flex;
     justify-content: space-between;
     border-radius: 60px;
-    margin-top: 3%;
+    margin-top: 3.5%;
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       margin-bottom: 5%;
@@ -204,6 +216,7 @@
   &__result-rhombus {
     transform: translate(0, 35%);
   }
+
 
   &__result-cat {
     width: 100%;
@@ -249,8 +262,9 @@
     }
   }
 
+  &__right{
+    margin-left: 1%;
 
-  &__right {
     max-width: 45%;
     width: 100%;
     position: relative;
@@ -291,7 +305,8 @@
 
   }
 
-  &__answer {
+
+  &__answer{
     height: 78vh;
     background-color: #282C34;
     border-radius: 60px;
@@ -303,7 +318,7 @@
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
-      height: 32vh;
+      height: 35vh;
       border-radius: 30px;
     }
   }
@@ -325,6 +340,7 @@
     padding: 12%;
     border-radius: 50%;
     margin-bottom: 40%;
+    margin-left: 7%;
   }
 
   &__hint-img {
@@ -332,8 +348,8 @@
     border-radius: 20px;
   }
 
-  &__check {
-    margin-top: 3%;
+  &__check{
+    margin-top: 3.5%;
   }
 
   &__check-btn {
