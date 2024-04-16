@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import MirrorCode from "../../../components/MirrorCode/MirrorCode.jsx";
 import ResultCode from "../../../components/ResultCode/ResultCode.jsx";
 import validateTask from "../../../validateTask/allTasksValidate.js";
+import ProgressBar from "../../../components/ProgressBar/ProgressBar.jsx"
 import {useAuth} from "../../../hooks/use-auth.js";
 import tasksPublic from "../tasksPublic.json";
 import "./HomePagePublic.scss";
@@ -69,6 +70,7 @@ export default function HomePagePublic({setDisabledFooter}) {
                     </div>
                 </Modal>
                 <div className='homePublicPage__left'>
+                <ProgressBar />
                     <div className="homePublicPage__taskPublic">
                         <div className="homePublicPage__block">
                             <div className="homePublicPage__exercise">
