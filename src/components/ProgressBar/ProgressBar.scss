@@ -51,11 +51,6 @@
   background: #EFEFEF;
   }
 
-  @keyframes progressAnimation {
-    0%   { width: 5%; background-color: $disabledBtnBackground;}
-    100% { width: 30%; background-color: $pinkColor; }
-  }
-
 .progress-value {
   height: 10px;
   border-radius: 30px;
@@ -63,5 +58,4 @@
   transition-property: width, background-color;  
   width: 30%; 
   background-color: $pinkColor;  
-  animation: progressAnimation 6s; 
   }
