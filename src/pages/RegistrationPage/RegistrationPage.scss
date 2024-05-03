@@ -160,3 +160,42 @@
   align-items: center;
   gap: 20px;
 }
+
+
+.checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox label {
+  position: relative;
+  padding-left: 30px; 
+  cursor: pointer;
+}
+
+.checkbox label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 15px;
+  height: 15px;
+  border: 2px solid $pinkColor; 
+}
+
+.checkbox input[type="checkbox"]:checked + label:before {
+  content: "\2714"; 
+  font-size: 16px; 
+  color: $black2;
+  line-height: 15px; 
+  text-align: center;
+}
+
+.consent-error {
+  margin-top: 5px;
+  color: red; 
+  text-align: center;
+}

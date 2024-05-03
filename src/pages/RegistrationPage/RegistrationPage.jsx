@@ -16,6 +16,8 @@ import './RegistrationPage.scss'
 export default function RegistrationPage({setShowInfo, burger}) {
     const [existingEmail, setExistingEmail] = useState(false)
     const [existingPhone, setExistingPhone] = useState(false)
+    const [isChecked, setIsChecked] = useState(false);
+    const [showConsentError, setShowConsentError] = useState(false);
     const {register, trigger, watch, handleSubmit, formState: {errors}} = useForm();
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -40,7 +42,10 @@ export default function RegistrationPage({setShowInfo, burger}) {
                // }
           //  })
         // .catch(error => console.log('error', error));
-
+        if (!isChecked) { 
+            setShowConsentError(true);
+            return;
+        }
 
 
         const auth = getAuth()
@@ -122,6 +127,21 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     })} id='pass-reset'/>
                     {errors.passwordReset && <p className='text_err_message-resPass'>{errors.passwordReset.message}</p>}
                 </div>
+                <div className='checkbox'>
+                    <input
+                        type="checkbox"
+                        id="dataProcessingCheckbox"
+                        checked={isChecked}
+                        onChange={() => {
+                            setIsChecked(!isChecked);
+                            setShowConsentError(false);
+                        }}
+                    />
+                    <label for="dataProcessingCheckbox"> Я согласна на обработку персональных данных</label>
+                </div>
+                {showConsentError && (
+                    <p className="consent-error">Для продолжения регистрации необходимо согласиться на обработку персональных данных</p>
+                )}
                 <div className='form-row submit'>
                     <input type="submit" value="Зарегистрироваться"/>
                 </div>
