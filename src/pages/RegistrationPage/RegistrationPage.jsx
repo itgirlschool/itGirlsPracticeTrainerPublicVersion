@@ -42,7 +42,7 @@ export default function RegistrationPage({setShowInfo, burger}) {
         // .catch(error => console.log('error', error));
 
 
-        setExistingPhone(true)
+
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((user) => {
@@ -64,7 +64,7 @@ export default function RegistrationPage({setShowInfo, burger}) {
             .catch(e => {
                 console.error(e)
                 setExistingEmail(true)
-
+                setExistingPhone(true)
             })
 
 
