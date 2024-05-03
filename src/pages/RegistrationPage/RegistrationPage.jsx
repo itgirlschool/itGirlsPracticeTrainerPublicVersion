@@ -1,43 +1,48 @@
 import {useForm} from "react-hook-form";
 import {useRef, useState} from "react";
-import {sendSocial} from "../../common/authLogic/authProvider.js";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setUser} from "../../store/slices/userSlices.js";
 import {useAddData,} from "../../Services/Firebade_realTime/services.js";
+
 import {
     getAuth,
     createUserWithEmailAndPassword,
     updateProfile,
-    GoogleAuthProvider,
-    GithubAuthProvider,
 } from "firebase/auth";
-import line from '../../assets/images/line.png'
-import github from '../../assets/images/icons/github-new.png'
-import google from '../../assets/images/icons/google-new.png'
 import './RegistrationPage.scss'
-
 
 
 export default function RegistrationPage({setShowInfo, burger}) {
     const [existingEmail, setExistingEmail] = useState(false)
+    const [existingPhone, setExistingPhone] = useState(false)
     const {register, trigger, watch, handleSubmit, formState: {errors}} = useForm();
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const password = useRef({});
     password.current = watch("password", "");
-    const auth = getAuth();
-
     const mutation = useAddData()
-    const googleProvider = new GoogleAuthProvider();
-    const githubProvider = new GithubAuthProvider();
-
-
-
-
 
 
     function onSubmit(data) {
+        //!! Не трогать.
+       // const myHeaders = new Headers();
+        //myHeaders.append("apikey", "yKYpvFjCMlXTiVrX1Wgk2bGvA7TPCPV5");
+        //const requestOptions = {
+          //  method: 'GET',
+           // redirect: 'follow',
+           // headers: myHeaders
+        //};
+        //fetch(`https://api.apilayer.com/number_verification/validate?number=${data.phone}`, requestOptions)
+          //  .then(response => response.text())
+            //.then(result => {
+               // if (JSON.parse(result).valid) {
+               // }
+          //  })
+        // .catch(error => console.log('error', error));
+
+
+        setExistingPhone(true)
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((user) => {
@@ -45,30 +50,30 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     displayName: data.lastName + '' + data.firstName,
                     password: data.password,
                     email: data.email,
+                    phone: data.phone,
                     token: user.user.accessToken
                 }
-               const  a =  mutation.mutate(infoUser)
-               console.log(a)
-                return infoUser
+                mutation.mutate(infoUser)
             })
             .then((currentUser) => {
                 dispatch(setUser(currentUser))
-                updateProfile(auth.currentUser,{
+                updateProfile(auth.currentUser, {
                     displayName: data.firstName + ' ' + data.lastName
-                }).catch(e=>console.error(e))
+                }).catch(e => console.error(e))
             })
             .catch(e => {
                 console.error(e)
                 setExistingEmail(true)
+
             })
+
+
+
+
     }
-
-
-
 
     return (
         <>
-
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
                 {existingEmail && <h2 className='error-email'>Пользователь с такой почтой уже есть в базе данных</h2>}
                 <div className={`form-row ${errors?.email && 'red'}`}>
@@ -91,9 +96,18 @@ export default function RegistrationPage({setShowInfo, burger}) {
                         if (existingEmail) setExistingEmail(false)
                     }}/>
                 </div>
+                <div className={`form-row ${errors?.email && 'red'}`}>
+                    {existingPhone && <h2 className='error-phone red'>Укажите корректный номер телефона с кодом</h2>}
+                    <input type="phone" placeholder="Ваш номер телефона" {...register("phone", {
+                        required: true,
+                    })} id='phone' onChange={() => {
+                        if (existingPhone) setExistingPhone(false)
+                    }}/>
+                </div>
+
                 <div className={`form-row ${errors?.password && 'red'}`}>
                     <input type="password" placeholder="Ваш пароль" {...register("password", {
-                        required: "You must specify a password",
+                        required: "Укажите пожалуйста пароль",
                         minLength: {
                             value: 8,
                             message: "Пароль должен содержать больше 8-ми символов."
@@ -110,12 +124,6 @@ export default function RegistrationPage({setShowInfo, burger}) {
                 </div>
                 <div className='form-row submit'>
                     <input type="submit" value="Зарегистрироваться"/>
-                    <div className='line'><img src={line} alt="line"/><Link className='link_reg' to='#'>Войти
-                        через</Link><img src={line} alt="line"/></div>
-                    <div className='submit__btns'>
-                        <button className='google_btn' onClick={()=>sendSocial(dispatch,navigate,auth,googleProvider,mutation)}><img src={google} alt='google'/></button>
-                        <button className='github_btn' onClick={()=>sendSocial(dispatch,navigate,auth,githubProvider,mutation)}><img src={github} alt='github'/></button>
-                    </div>
                 </div>
             </form>
 
