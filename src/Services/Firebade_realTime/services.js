@@ -7,13 +7,9 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.database()
 export function useAddData() {
     const queryClient = useQueryClient();
-
     return useMutation(async (newData) => {
         const ref = db.ref('users').push();
-        const newKey = ref.key;
-        console.log(newKey)
         await ref.set(newData);
-        return newKey;
     }, {
         onSuccess: (newKey) => {
             queryClient.invalidateQueries('users');
