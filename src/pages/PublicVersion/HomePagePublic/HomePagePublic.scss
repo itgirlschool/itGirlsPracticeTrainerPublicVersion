@@ -280,29 +280,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-      transform: translateY(-400%);
-      animation: cat 1s linear forwards;
-      opacity: 0;
-
-      h3 {
-        color: white;
-        font-size: 24px;
-        font-family: $family;
-      }
-
-      .img_sucsessfully {
-        max-width: 250px;
-      }
-
-      img {
-        width: 100%;
-      }
     }
-
-    .next_task {
-      animation: restColor 1s linear forwards;;
-    }
-
   }
 
 
@@ -396,12 +374,6 @@
     opacity: 1;
   }
 
-
-}
-
-.errorBorder {
-  box-shadow: 2px 0px 4px 4px rgba(255, 0, 0, 0.7);
-  animation: shake 0.3s;
 }
 
 @keyframes shake {
