@@ -16,15 +16,12 @@ import './RegistrationPage.scss'
 export default function RegistrationPage({setShowInfo, burger}) {
     const [existingEmail, setExistingEmail] = useState(false)
     const [existingPhone, setExistingPhone] = useState(false)
-    const [isChecked, setIsChecked] = useState(false);
-    const [showConsentError, setShowConsentError] = useState(false);
     const {register, trigger, watch, handleSubmit, formState: {errors}} = useForm();
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const password = useRef({});
     password.current = watch("password", "");
     const mutation = useAddData()
-
 
 
     function onSubmit(data) {
@@ -43,8 +40,10 @@ export default function RegistrationPage({setShowInfo, burger}) {
                // }
           //  })
         // .catch(error => console.log('error', error));
-        if (!isChecked) { 
-            setShowConsentError(true);
+        
+        const consentChecked = data.consent;
+
+        if (!consentChecked) {
             return;
         }
 
@@ -128,21 +127,15 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     })} id='pass-reset'/>
                     {errors.passwordReset && <p className='text_err_message-resPass'>{errors.passwordReset.message}</p>}
                 </div>
-                <div className='checkbox'>
-                    <input
-                        type="checkbox"
-                        id="dataProcessingCheckbox"
-                        checked={isChecked}
-                        onChange={() => {
-                            setIsChecked(!isChecked);
-                            setShowConsentError(false);
-                        }}
-                    />
-                    <label for="dataProcessingCheckbox"> Я согласна на обработку персональных данных</label>
+
+                <div className={`checkbox ${errors?.consent}`}>
+                    <input type="checkbox" {...register("consent", { 
+                        required: true 
+                        })} id="checkbox" />
+                    <label for="checkbox">Я согласен(на) на обработку персональных данных</label>
+                    {errors?.consent && <p className='consent-error red'>Для продолжения регистрации необходимо согласиться на обработку персональных данных</p>}
                 </div>
-                {showConsentError && (
-                    <p className="consent-error">Для продолжения регистрации необходимо согласиться на обработку персональных данных</p>
-                )}
+
                 <div className='form-row submit'>
                     <input type="submit" value="Зарегистрироваться"/>
                 </div>
@@ -151,7 +144,3 @@ export default function RegistrationPage({setShowInfo, burger}) {
         </>
     )
 }
-
-
-
-
