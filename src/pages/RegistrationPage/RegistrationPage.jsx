@@ -24,6 +24,7 @@ export default function RegistrationPage({setShowInfo, burger}) {
     const mutation = useAddData()
 
 
+
     function onSubmit(data) {
         //!! Не трогать.
        // const myHeaders = new Headers();

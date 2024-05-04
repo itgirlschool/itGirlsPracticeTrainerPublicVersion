@@ -45,58 +45,17 @@ export default function HomePagePublic({ setDisabledFooter }) {
     setNumberTask((prevState) => prevState + 1);
   }
 
-  return (
-    <>
-      <div className="homePublicPage">
-        <Modal
-          open={openModal}
-          footer={null}
-          closeIcon={null}
-          width={"614px"}
-          className="homePublicPage__modal"
-        >
-          <div className="homePublicPage__modal-container">
-            <h2 className="homePublicPage__modal-title">
-              {tasksPublic[numberTask].title}{" "}
-              <img
-                src={stripesModal}
-                alt="stripes modal"
-                className="homePublicPage__modal-stripes"
-              />
-            </h2>
-            <p className="homePublicPage__modal-text">
-              {tasksPublic[numberTask].theory}
-            </p>
-            <img
-              src={arrowModal}
-              alt="arrow modal"
-              className="homePublicPage__modal-arrow"
-            />
-            <button
-              onClick={() => getTaskUser()}
-              className="homePublicPage__modal-btn"
-            >
-              Мне все понятно! Показать задание
-            </button>
-          </div>
-        </Modal>
-        <div className="homePublicPage__left">
-          <div className="homePublicPage__taskPublic">
-            <div className="homePublicPage__block">
-              <div className="homePublicPage__exercise">
-                <h2 className="homePublicPage__exercise-title">
-                  Задание {numberTask + 1}{" "}
-                </h2>
-                <p className="homePublicPage__exercise-text">
-                  {tasksPublic[numberTask].task}
-                </p>
-                <a
-                  onClick={() => {
-                    setOpenModal(true);
-                  }}
-                  href="#"
-                  className="homePublicPage__exercise-a"
+    return (
+        <>
+            <div className="homePublicPage">
+                <Modal
+                    open={openModal}
+                    footer={null}
+                    closeIcon={null}
+                    width={'614px'}
+                    className="homePublicPage__modal"
                 >
+
                     <div className="homePublicPage__modal-container">
                         <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask].title} <img
                             src={stripesModal} alt="stripes modal" className="homePublicPage__modal-stripes"/></h2>
@@ -107,8 +66,8 @@ export default function HomePagePublic({ setDisabledFooter }) {
                         </button>
                     </div>
                 </Modal>
+                <ProgressBar allTasks={15} currentTask={4}/>
                 <div className='homePublicPage__left'>
-                <ProgressBar allTasks={10} currentTask={4}/>
                     <div className="homePublicPage__taskPublic">
                         <div className="homePublicPage__block">
                             <div className="homePublicPage__exercise">
@@ -180,51 +139,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                             <button className="homePublicPage__check-btn next_task" onClick={nextTask} >Следующая задача</button>}
                     </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-        <div
-          className={`homePublicPage__right ${
-            trueValidate ? "right_true" : null
-          } `}
-        >
-          <div className={!falseValidate ? "homePublicPage__answer" : null}>
-            <MirrorCode
-              value={value}
-              setValue={setValue}
-              setFalseValidate={setFalseValidate}
-            />
-            <div className="homePublicPage__hint">
-              <button className="homePublicPage__hint-btn">
-                <img
-                  src={bulb}
-                  alt="bulb"
-                  className="homePublicPage__hint-img"
-                  title="Воспользуйтесь подсказкой"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="homePublicPage__check">
-            {!trueValidate ? (
-              <button
-                className="homePublicPage__check-btn"
-                onClick={sendValidate}
-              >
-                Проверить
-              </button>
-            ) : (
-              <button
-                className="homePublicPage__check-btn next_task"
-                onClick={nextTask}
-              >
-                Следующая задача
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 }

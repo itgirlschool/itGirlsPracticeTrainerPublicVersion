@@ -65,11 +65,11 @@ export default function LoginPage() {
 
                 <div className='form-row submit'>
                     <input type="submit" value="Войти" />
-                    <div className='line'><img src={line} alt="line" /><Link to='#'>Войти через</Link><img src={line} alt="line" /></div>
+                    {/*<div className='line'><img src={line} alt="line" /><Link to='#'>Войти через</Link><img src={line} alt="line" /></div>
                     <div className='submit__btns'>
                         <button className='google_btn' type='button' onClick={()=>sendSocial(dispatch,navigate,auth,providerGoogle,mutation)}  ><img src={google} alt='google' /></button>
                         <button className='github_btn' type='button' onClick={()=>sendSocial(dispatch,navigate,auth,providerGitHub,mutation)} ><img src={github} alt='github' /></button>
-                    </div>
+                    </div>*/}
                 </div>
             </form>
 
