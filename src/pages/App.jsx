@@ -17,7 +17,6 @@ import { setUser } from "../store/slices/userSlices.js";
 
 import "../styles/App.scss";
 import 'normalize.css';
-import {useGetData} from "../Services/Firebade_realTime/services.js";
 
 
 
@@ -26,7 +25,6 @@ function App() {
     const [showInfo, setShowInfo] = useState(true)
     const [disabledFooter, setDisabledFooter] = useState(true)
     const [loader, setLoader] = useState('loading')
-    const {data,isLoading} = useGetData()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -64,8 +62,8 @@ function App() {
             {showInfo && (burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />)}
             <div className={`content ${loader ? null : 'content_spinner'}`}>
                 {loader === 'uploaded' ? <Routes>
-                    <Route path='/login' element={<LoginPage allUsers={data} setShowInfo={setShowInfo} burger={burger} />} />
-                    <Route path='/registration' element={<RegistrationPage allUsers={data} setShowInfo={setShowInfo} />} />
+                    <Route path='/login' element={<LoginPage/>} />
+                    <Route path='/registration' element={<RegistrationPage />} />
                     <Route path='/' element={<Home setShowInfo={setShowInfo} />} />
                     <Route path='/home' element={<HomePagePublic />} />
                     <Route path='/tabs' element={<AuthenticationForm />} />

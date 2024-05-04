@@ -1,12 +1,12 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import MirrorCode from "../../../components/MirrorCode/MirrorCode.jsx";
 import ResultCode from "../../../components/ResultCode/ResultCode.jsx";
 import validateTask from "../../../validateTask/allTasksValidate.js";
+import ProgressBar from "../../../components/ProgressBar/ProgressBar.jsx"
 import {useAuth} from "../../../hooks/use-auth.js";
 import tasksPublic from "../tasksPublic.json";
 import "./HomePagePublic.scss";
-import {Modal} from "antd";
-
+import { Modal } from "antd";
 
 import arrowModal from "../../../assets/images/homePage/arrow-modal.png";
 import stripesModal from "../../../assets/images/homePage/stripes-modal.png";
@@ -15,38 +15,35 @@ import rhombus from "../../../assets/images/homePage/rhombus.png";
 import catHomePage from "../../../assets/images/homePage/cat-home-page.png";
 import arrowHeart from "../../../assets/images/homePage/arrow-heart.png";
 import bulb from "../../../assets/images/homePage/bulb.png";
-import catSucs from '../../../assets/images/homePage/cat_sucssefully.png'
 
-export default function HomePagePublic({setDisabledFooter}) {
-    const [value, setValue] = useState("");
-    const [numberTask, setNumberTask] = useState(0);
-    const [openModal, setOpenModal] = useState(true);
-    const [falseValidate, setFalseValidate] = useState(false)
-    const [trueValidate, setTrueValidate] = useState(false)
-    const {id,token} =useAuth()
+export default function HomePagePublic({ setDisabledFooter }) {
+  const [value, setValue] = useState("");
+  const [numberTask, setNumberTask] = useState(0);
+  const [openModal, setOpenModal] = useState(true);
+  const [falseValidate, setFalseValidate] = useState(false);
+  const [trueValidate, setTrueValidate] = useState(false);
+  const { id, token } = useAuth();
 
-    useEffect(() => {
-        setValue(tasksPublic[numberTask].valueRedactor);
-    }, [numberTask]);
+  useEffect(() => {
+    setValue(tasksPublic[numberTask].valueRedactor);
+  }, [numberTask]);
 
+  function getTaskUser() {
+    setOpenModal(false);
+  }
 
-    function getTaskUser() {
-        setOpenModal(false);
-    }
+  function sendValidate() {
+    const result = validateTask(value, `task${numberTask + 1}`);
+    if (!result) setFalseValidate(true);
+    if (result) setTrueValidate(true);
 
-    function sendValidate() {
-        const result = validateTask(value, `task${numberTask + 1}`)
-        if (!result) setFalseValidate(true)
-        if (result) setTrueValidate(true)
-        console.log(token)
+    console.log(token);
+  }
 
-    }
-
-    function nextTask(){
-        setTrueValidate(false)
-        setNumberTask(prevState => prevState + 1)
-    }
-
+  function nextTask() {
+    setTrueValidate(false);
+    setNumberTask((prevState) => prevState + 1);
+  }
 
     return (
         <>
@@ -58,6 +55,7 @@ export default function HomePagePublic({setDisabledFooter}) {
                     width={'614px'}
                     className="homePublicPage__modal"
                 >
+
                     <div className="homePublicPage__modal-container">
                         <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask].title} <img
                             src={stripesModal} alt="stripes modal" className="homePublicPage__modal-stripes"/></h2>
@@ -68,6 +66,7 @@ export default function HomePagePublic({setDisabledFooter}) {
                         </button>
                     </div>
                 </Modal>
+                <ProgressBar allTasks={15} currentTask={4}/>
                 <div className='homePublicPage__left'>
                     <div className="homePublicPage__taskPublic">
                         <div className="homePublicPage__block">
