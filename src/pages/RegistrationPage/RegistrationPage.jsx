@@ -3,11 +3,7 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/slices/userSlices.js';
-import {
-  useAddData,
-  getAllUsers,
-} from '../../Services/Firebade_realTime/services.js';
-import { Modal } from 'antd';
+import { useAddData } from '../../Services/Firebade_realTime/services.js';
 
 import {
   getAuth,
@@ -31,23 +27,6 @@ export default function RegistrationPage({ setShowInfo, burger }) {
   const password = useRef({});
   password.current = watch('password', '');
   const mutation = useAddData();
-
-  const [openModal, setOpenModal] = useState(false);
-  const [emailForPass, setEmailForPass] = useState('');
-  const [passRemember, setPassRemember] = useState('');
-
-  const handleClick = () => {
-    setOpenModal(!openModal);
-  };
-
-  const handleGetPass = async () => {
-    const allUsersObj = await getAllUsers();
-    const allUsersArr = Object.values(allUsersObj);
-    const userEmail = allUsersArr.find((user) => user.email === emailForPass);
-    setPassRemember(
-      userEmail ? userEmail.password : 'Пользователь с таким email не найден'
-    );
-  };
 
   function onSubmit(data) {
     //!! Не трогать.
@@ -189,60 +168,6 @@ export default function RegistrationPage({ setShowInfo, burger }) {
         </div>
         <div className='form-row submit'>
           <input type='submit' value='Зарегистрироваться' />
-        </div>
-
-        <div className='form-row forgetPass'>
-          <div className='forgetPass__link'>
-            <a href='#' onClick={handleClick}>
-              Я не помню пароль
-            </a>
-            <div className='forgetPass__modal-container'>
-              <Modal
-                open={openModal}
-                footer={null}
-                // closeIcon={handleClick}
-                onCancel={handleClick}
-                width={'614px'}
-                className='forgetPass__modal'
-              >
-                <div className='forgetPass__modal-container'>
-                  <h2 className='forgetPass__modal-title'>
-                    Давай поможем восстановить твой пароль
-                  </h2>
-                  <div
-                    className={`form-row ${
-                      errors?.email && 'red' && 'modal-input'
-                    }`}
-                  >
-                    <label htmlFor='modal-input'></label>
-                    <input
-                      type='text'
-                      name='email'
-                      id='email'
-                      placeholder='Введи свой Email'
-                      {...register('email', {
-                        pattern: /^\S+@\S+$/i,
-                      })}
-                      value={emailForPass}
-                      onChange={(e) => setEmailForPass(e.target.value)}
-                    ></input>
-                  </div>
-                  <div>
-                    <p className='forgetPass__modal-result'>{passRemember}</p>
-                  </div>
-                  <div className='form-row submit'>
-                    <input
-                      type='submit'
-                      value='Получить пароль'
-                      onClick={(e) => handleGetPass(e)}
-                      className='getPassBtn'
-                      disabled={!emailForPass}
-                    />
-                  </div>
-                </div>
-              </Modal>
-            </div>
-          </div>
         </div>
       </form>
     </>
