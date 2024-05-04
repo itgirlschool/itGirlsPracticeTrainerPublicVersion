@@ -2,23 +2,23 @@
 
 .postcard {
   font-family: $family;
-  color      : #605756;
+  color: #605756;
 
   .submit {
-    display       : flex;
+    display: flex;
     flex-direction: column;
-    align-items   : center;
+    align-items: center;
 
     a {
-      font-size      : 14px;
-      color          : $black2;
-      margin         : 0;
+      font-size: 14px;
+      color: $black2;
+      margin: 0;
       text-decoration: none;
     }
 
     .solid {
       border-bottom: 1px solid black;
-      display      : inline-block;
+      display: inline-block;
     }
   }
 
@@ -27,75 +27,74 @@
   }
 
   .erLogin {
-    text-align   : center;
+    text-align: center;
     margin-bottom: 20px;
-    font-family  : $familySecond;
-    font-size    : 16px;
+    font-family: $familySecond;
+    font-size: 16px;
   }
 
   .text_err_message-pass {
     font-size: 14px;
-    color    : $pinkColor;
+    color: $pinkColor;
   }
 
   .text_err_message-resPass {
     font-size: 14px;
-    color    : $pinkColor;
+    color: $pinkColor;
   }
 }
 
-.form-row input[type="text"],
-.form-row input[type="email"],
-.form-row input[type="password"] {
-  width             : 100%;
-  margin-bottom     : 10px;
-  padding           : 19px 30px;
-  line-height       : $font-16;
+.form-row input[type='text'],
+.form-row input[type='email'],
+.form-row input[type='password'] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 19px 30px;
+  line-height: $font-16;
   // border-width   : 0;
   // outline        : none;
   // background     : transparent url(https://html5book.ru/wp-content/uploads/2016/12/bg-form.png) bottom left repeat-x;
-  border            : 1px solid rgba(243, 243, 243, 1);
-  border-radius     : 50px;
-  background-color  : rgba(243, 243, 243, 1);
-  background-size   : 8px 35px;
-  font-family       : $family;
-  color             : $black2;
-
-}
-
-.form-row input[type="text"]:focus,
-.form-row input[type="email"]:focus,
-.form-row input[type="password"]:focus {
-  outline     : none;
-  border-color: $pinkColor;
-  caret-color : $pinkColor;
-}
-
-.form-row input[type="text"]::placeholder,
-.form-row input[type="email"]::placeholder,
-.form-row input[type="password"]::placeholder {
+  border: 1px solid rgba(243, 243, 243, 1);
+  border-radius: 50px;
+  background-color: rgba(243, 243, 243, 1);
+  background-size: 8px 35px;
+  font-family: $family;
   color: $black2;
 }
 
-.form-row input[type="submit"] {
-  width         : 100%;
-  height        : 60px;
-  padding       : 10px 60px;
-  margin        : 45px auto;
-  background    : $pinkColor;
-  border        : 1px solid $pinkColor;
-  border-radius : 50px;
-  cursor        : pointer;
-  outline       : none;
-  font-family   : $family;
-  font-size     : $font-16;
-  letter-spacing: 1px;
-  color         : #fffdee;
-  transition    : 1s cubic-bezier(.165, .84, .44, 1);
+.form-row input[type='text']:focus,
+.form-row input[type='email']:focus,
+.form-row input[type='password']:focus {
+  outline: none;
+  border-color: $pinkColor;
+  caret-color: $pinkColor;
 }
 
-.form-row input[type=submit]:hover {
-  background: #C42061;
+.form-row input[type='text']::placeholder,
+.form-row input[type='email']::placeholder,
+.form-row input[type='password']::placeholder {
+  color: $black2;
+}
+
+.form-row input[type='submit'] {
+  width: 100%;
+  height: 60px;
+  padding: 10px 60px;
+  margin: 45px auto;
+  background: $pinkColor;
+  border: 1px solid $pinkColor;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  font-family: $family;
+  font-size: $font-16;
+  letter-spacing: 1px;
+  color: #fffdee;
+  transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.form-row input[type='submit']:hover {
+  background: #c42061;
 }
 
 .form-row {
@@ -106,45 +105,109 @@
   }
 
   button {
-    width           : 48px;
-    height          : 48px;
-    display         : flex;
-    align-items     : center;
-    justify-content : center;
-    column-gap      : 10px;
-    cursor          : pointer;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    cursor: pointer;
     background-color: rgba(255, 255, 255, 1);
-    box-shadow      : 0px 4px 8px rgba(105, 105, 105, 0.3);
-    border          : 1px solid transparent;
-    border-radius   : 100px;
-    outline         : none;
-    font-family     : $familySecond;
-    font-size       : 16px;
+    box-shadow: 0px 4px 8px rgba(105, 105, 105, 0.3);
+    border: 1px solid transparent;
+    border-radius: 100px;
+    outline: none;
+    font-family: $familySecond;
+    font-size: 16px;
 
     img {
       width: 50%;
-
     }
   }
 }
 
 .line {
-  width          : 182px;
-  display        : flex;
+  width: 182px;
+  display: flex;
   justify-content: space-between;
-  align-items    : center;
+  align-items: center;
 
   img {
-    width : 31px;
+    width: 31px;
     height: 1px;
   }
 }
 
 .submit__btns {
-  width          : 116px;
-  display        : flex;
-  margin-top     : 40px;
+  width: 116px;
+  display: flex;
+  margin-top: 40px;
   justify-content: space-between;
-  align-items    : center;
-  gap            : 20px;
+  align-items: center;
+  gap: 20px;
+}
+
+.forgetPass {
+  // height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__modal-container {
+    @media screen and (min-width: 220px) and (max-width: 340px) {
+      max-width: 180px;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    text-align: center;
+    color: $pinkColor;
+    cursor: pointer;
+  }
+  //модальное окно
+  &__modal .ant-modal-content {
+    display: flex;
+    align-items: center;
+    height: 60vh;
+    border-radius: 60px;
+    padding: 8%;
+    .ant-modal-close {
+      right: 40px;
+      top: 20px;
+      color: $pinkColor;
+    }
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 675px) {
+    height: 130vh;
+  }
+
+  &__modal-title {
+    font-size: $font-32;
+    color: $pinkColor;
+    text-align: center;
+    font-family: $family;
+    margin-bottom: 70px;
+
+    @media screen and (min-width: 360px) and (max-width: 675px) {
+      font-size: $font-24;
+    }
+  }
+  &__modal-result {
+    color: $pinkColor;
+    font-size: 18px;
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+
+.getPassBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-input {
+  @media screen and (min-width: 200px) and (max-width: 370px) {
+    max-width: 150px;
+  }
 }
