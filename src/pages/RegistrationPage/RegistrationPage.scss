@@ -33,7 +33,7 @@
     font-size: 16px;
   }
 
-  .error-phone{
+  .error-phone {
     font-size: 15px;
     font-family: $family;
     margin-bottom: 10px;
@@ -47,17 +47,17 @@
     font-size: 14px;
     color: $pinkColor;
   }
-  .error-email{
-  font-size: 16px;
+  .error-email {
+    font-size: 16px;
     text-align: center;
-    color: $pinkColor;;
+    color: $pinkColor;
   }
 }
 
-.form-row input[type="text"],
-.form-row input[type="phone"],
-.form-row input[type="email"],
-.form-row input[type="password"] {
+.form-row input[type='text'],
+.form-row input[type='phone'],
+.form-row input[type='email'],
+.form-row input[type='password'] {
   width: 100%;
   margin-bottom: 10px;
   padding: 19px 30px;
@@ -71,26 +71,25 @@
   background-size: 8px 35px;
   font-family: $family;
   color: $black2;
-
 }
 
-.form-row input[type="text"]:focus,
-.form-row input[type="email"]:focus,
-.form-row input[type="phone"]:focus,
-.form-row input[type="password"]:focus {
+.form-row input[type='text']:focus,
+.form-row input[type='email']:focus,
+.form-row input[type='phone']:focus,
+.form-row input[type='password']:focus {
   outline: none;
   border-color: $pinkColor;
   caret-color: $pinkColor;
 }
 
-.form-row input[type="text"]::placeholder,
-.form-row input[type="email"]::placeholder,
-.form-row input[type="phone"]::placeholder,
-.form-row input[type="password"]::placeholder {
+.form-row input[type='text']::placeholder,
+.form-row input[type='email']::placeholder,
+.form-row input[type='phone']::placeholder,
+.form-row input[type='password']::placeholder {
   color: $black2;
 }
 
-.form-row input[type="submit"] {
+.form-row input[type='submit'] {
   width: 90%;
   height: 50px;
   margin: 25px auto;
@@ -103,11 +102,11 @@
   font-size: $font-16;
   letter-spacing: 1px;
   color: #fffdee;
-  transition: 1s cubic-bezier(.165, .84, .44, 1);
+  transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.form-row input[type=submit]:hover {
-  background: #C42061;
+.form-row input[type='submit']:hover {
+  background: #c42061;
 }
 
 .form-row {
@@ -135,7 +134,6 @@
 
     img {
       width: 50%;
-
     }
   }
 }
@@ -159,4 +157,71 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+}
+
+.forgetPass {
+  // height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__modal-container {
+    @media screen and (min-width: 220px) and (max-width: 340px) {
+      max-width: 180px;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    text-align: center;
+    color: $pinkColor;
+  }
+  //модальное окно
+  &__modal .ant-modal-content {
+    display: flex;
+    align-items: center;
+    height: 60vh;
+    border-radius: 60px;
+    padding: 8%;
+    .ant-modal-close {
+      right: 40px;
+      top: 20px;
+      color: $pinkColor;
+    }
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 675px) {
+    height: 130vh;
+  }
+
+  &__modal-title {
+    font-size: $font-32;
+    color: $pinkColor;
+    text-align: center;
+    font-family: $family;
+    margin-bottom: 70px;
+
+    @media screen and (min-width: 360px) and (max-width: 675px) {
+      font-size: $font-24;
+    }
+  }
+  &__modal-result {
+    color: $pinkColor;
+    font-size: 18px;
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+
+.getPassBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:disabled {
+    background-color: grey;
+  }
+}
+
+.modal-input {
+  @media screen and (min-width: 200px) and (max-width: 370px) {
+    max-width: 150px;
+  }
 }
