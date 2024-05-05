@@ -68,7 +68,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                 </Modal>
                 <div className='homePublicPage__left'>
                     <div className="homePublicPage__taskPublic">
-                        <ProgressBar allTasks={tasksPublic.length} currentTask={1} />
+                        <ProgressBar allTasks={tasksPublic.length} currentTask={numberTask} />
                         <div className="homePublicPage__block">
                             <div className="homePublicPage__exercise">
                                 <h2 className="homePublicPage__exercise-title">
