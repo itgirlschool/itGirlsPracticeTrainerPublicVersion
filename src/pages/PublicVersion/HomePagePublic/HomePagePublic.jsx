@@ -16,7 +16,6 @@ import rhombus from "../../../assets/images/homePage/rhombus.png";
 import catHomePage from "../../../assets/images/homePage/cat-home-page.png";
 import arrowHeart from "../../../assets/images/homePage/arrow-heart.png";
 import bulb from "../../../assets/images/homePage/bulb.png";
-import { log } from "loglevel";
 
 export default function HomePagePublic({ setDisabledFooter }) {
     const [value, setValue] = useState("");
@@ -43,20 +42,13 @@ export default function HomePagePublic({ setDisabledFooter }) {
 
     function sendValidate() {
         const result = validateTask(value, `task${numberTask + 1}`);
-        console.log(result);
         if (!result) setFalseValidate(true);
         if (result) setTrueValidate(true);
-
-
     }
 
 
 
-    function editUserProgressRealTime(){
-
-        setShowResultImages(false);
-        console.log(token);
-    }
+    function editUserProgressRealTime(){}
 
     function nextTask() {
         setTrueValidate(false);
