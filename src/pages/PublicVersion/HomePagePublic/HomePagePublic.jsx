@@ -22,6 +22,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
     const [openModal, setOpenModal] = useState(true);
     const [falseValidate, setFalseValidate] = useState(false);
     const [trueValidate, setTrueValidate] = useState(false);
+    const [showResultImages, setShowResultImages] = useState(true);
     const { id, token } = useAuth();
 
     useEffect(() => {
@@ -101,10 +102,12 @@ export default function HomePagePublic({ setDisabledFooter }) {
                             </div>
                         </div>
                         <div className="homePublicPage__result">
-                            <div className="homePublicPage__result-images">
-                                <img src={catHomePage} alt="cat" className="homePublicPage__result-cat" />
-                                <img src={arrowHeart} alt="arrow heart" className="homePublicPage__result-arrow" />
-                            </div>
+                            {showResultImages && (
+                                <div className="homePublicPage__result-images">
+                                    <img src={catHomePage} alt="cat" className="homePublicPage__result-cat" />
+                                    <img src={arrowHeart} alt="arrow heart" className="homePublicPage__result-arrow" />
+                                </div>
+                            )}
                             <div className="homePublicPage__result-block">
                                 <div className="homePublicPage__result-text">
                                     <ResultCode value={value} />
@@ -115,7 +118,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                 </div>
                 <div className={`homePublicPage__right ${trueValidate ? 'right_true' : null} `}>
                     <div className={!falseValidate ? 'homePublicPage__answer' : 'homePublicPage__answer errorBorder'}>
-                        <MirrorCode value={value} setValue={setValue} setFalseValidate={setFalseValidate} />
+                        <MirrorCode setShowResultImages={setShowResultImages} value={value} setValue={setValue} setFalseValidate={setFalseValidate} />
                         <div className="homePublicPage__hint">
                             <button className="homePublicPage__hint-btn">
                                 <img
