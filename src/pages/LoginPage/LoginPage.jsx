@@ -52,10 +52,7 @@ export default function LoginPage() {
     const allUsersObj = await getAllUsers();
     const allUsersArr = Object.values(allUsersObj);
     const userEmail = allUsersArr.find((user) => user.email === emailForPass);
-    setPassRemember(
-      userEmail ? userEmail.password : 'Пользователь с таким email не найден'
-      // userEmail ? userEmail.password : false
-    );
+    setPassRemember(userEmail ? userEmail.password : false);
   };
 
   function onSubmit(data) {

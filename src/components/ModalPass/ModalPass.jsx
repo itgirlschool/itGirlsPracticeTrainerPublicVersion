@@ -1,4 +1,5 @@
 import { Modal } from 'antd';
+import Password from 'antd/es/input/Password';
 
 import React from 'react';
 
@@ -30,7 +31,7 @@ export default function ModalPass({
           <p className='forgetPass__modal-result'>
             <span>Твой пароль: </span> {passRemember}
           </p>
-        ) : (
+        ) : passRemember === '' ? (
           <>
             <div
               className={`form-row ${errors?.email && 'red' && 'modal-input'}`}
@@ -53,7 +54,46 @@ export default function ModalPass({
               <input
                 type='submit'
                 value='Получить пароль'
-                onClick={(e) => handleGetPass(e)}
+                onClick={(e) => {
+                  if (emailForPass.trim() !== '') {
+                    handleGetPass(e);
+                  }
+                }}
+                className='getPassBtn'
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className={`form-row ${errors?.email && 'red' && 'modal-input'}`}
+            >
+              <label htmlFor='modal-input'></label>
+              <input
+                type='text'
+                name='email'
+                id='email'
+                placeholder='Введи свой Email'
+                {...register('email', {
+                  pattern: /^\S+@\S+$/i,
+                })}
+                value={emailForPass}
+                onChange={onChange}
+              ></input>
+            </div>
+            <p className='forgetPass__modal-result'>
+              <span>Такой пользователь </span> не найден
+            </p>
+
+            <div className='form-row submit'>
+              <input
+                type='submit'
+                value='Получить пароль'
+                onClick={(e) => {
+                  if (emailForPass.trim() !== '') {
+                    handleGetPass(e);
+                  }
+                }}
                 className='getPassBtn'
               />
             </div>
