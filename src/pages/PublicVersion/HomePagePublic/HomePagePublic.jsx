@@ -128,7 +128,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                         </div>
                         {trueValidate && <div className='box_sucsessfully'>
                             <div className='img_sucsessfully'>
-                                <img src={catSucs} alt='cat' />
+
                             </div>
                             <h3>Ура! У тебя получлилось, мы можем идти дальше</h3>
                         </div>}
