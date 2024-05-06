@@ -6,11 +6,10 @@ import { atomone } from '@uiw/codemirror-theme-atomone';
 import {EditorView} from "@codemirror/view"
 import './MirrorCode.scss'
 
-function MirrorCode({value,setValue,setFalseValidate}) {
+function MirrorCode({setShowResultImages,value,setValue,setFalseValidate}) {
     const onChange = React.useCallback((val, viewUpdate) => {
         setValue(val);
         setFalseValidate(false)
-
     }, []);
     if(!value && !(value ==='')){
         return <Spinner color={'white'} />
@@ -19,6 +18,6 @@ function MirrorCode({value,setValue,setFalseValidate}) {
         "&": {height: "300px"},
         ".cm-scroller": {"white-space":"pre-wrap"}
     })
-    return <CodeMirror theme={atomone} value={value}  extensions={[html(),EditorView.lineWrapping]} onChange={onChange}/>;
+    return <CodeMirror onKeyDown={()=>{setShowResultImages(false)}} theme={atomone} value={value}  extensions={[html(),EditorView.lineWrapping]} onChange={onChange}/>;
 }
 export default MirrorCode;
