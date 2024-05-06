@@ -148,7 +148,6 @@
 }
 
 .forgetPass {
-  // height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,6 +196,12 @@
     font-size: 18px;
     margin-top: 40px;
     text-align: center;
+  }
+
+  &__modal-result {
+    span {
+      color: black;
+    }
   }
 }
 
