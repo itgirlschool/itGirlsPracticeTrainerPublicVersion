@@ -19,6 +19,7 @@ import {
 import { sendSocial } from '../../common/authLogic/authProvider.js';
 import { setUser } from '../../store/slices/userSlices.js';
 import { Modal } from 'antd';
+import ModalPass from '../../components/ModalPass/ModalPass.jsx';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -41,15 +42,19 @@ export default function LoginPage() {
   const [passRemember, setPassRemember] = useState('');
 
   const handleClick = () => {
+    setEmailForPass('');
+    setPassRemember('');
     setOpenModal(!openModal);
   };
 
   const handleGetPass = async () => {
+    setEmailForPass('');
     const allUsersObj = await getAllUsers();
     const allUsersArr = Object.values(allUsersObj);
     const userEmail = allUsersArr.find((user) => user.email === emailForPass);
     setPassRemember(
       userEmail ? userEmail.password : 'Пользователь с таким email не найден'
+      // userEmail ? userEmail.password : false
     );
   };
 
@@ -115,49 +120,17 @@ export default function LoginPage() {
           <div className='forgetPass__link'>
             <a onClick={handleClick}>Я не помню пароль</a>
             <div className='forgetPass__modal-container'>
-              <Modal
+              <ModalPass
                 open={openModal}
                 footer={null}
-                // closeIcon={handleClick}
                 onCancel={handleClick}
-                width={'614px'}
-                className='forgetPass__modal'
-              >
-                <div className='forgetPass__modal-container'>
-                  <h2 className='forgetPass__modal-title'>
-                    Давай поможем восстановить твой пароль
-                  </h2>
-                  <div
-                    className={`form-row ${
-                      errors?.email && 'red' && 'modal-input'
-                    }`}
-                  >
-                    <label htmlFor='modal-input'></label>
-                    <input
-                      type='text'
-                      name='email'
-                      id='email'
-                      placeholder='Введи свой Email'
-                      {...register('email', {
-                        pattern: /^\S+@\S+$/i,
-                      })}
-                      value={emailForPass}
-                      onChange={(e) => setEmailForPass(e.target.value)}
-                    ></input>
-                  </div>
-                  <div>
-                    <p className='forgetPass__modal-result'>{passRemember}</p>
-                  </div>
-                  <div className='form-row submit'>
-                    <input
-                      type='submit'
-                      value='Получить пароль'
-                      onClick={(e) => handleGetPass(e)}
-                      className='getPassBtn'
-                    />
-                  </div>
-                </div>
-              </Modal>
+                emailForPass={emailForPass}
+                onChange={(e) => setEmailForPass(e.target.value)}
+                handleGetPass={handleGetPass}
+                passRemember={passRemember}
+                errors={errors}
+                register={register}
+              />
             </div>
           </div>
         </div>
