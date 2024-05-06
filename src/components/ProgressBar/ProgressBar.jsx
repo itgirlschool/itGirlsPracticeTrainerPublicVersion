@@ -1,6 +1,6 @@
 //import React, { useState, useEffect } from 'react';
 import './ProgressBar.scss';
-import progressIcon from "../../assets/images/icons/progress-bar.png";
+import ProgressBarSVG from "../ProgressBarSVG/ProgressBarSVG"
 
 
 const ProgressBar = ({allTasks, currentTask}) => {
@@ -8,7 +8,7 @@ const ProgressBar = ({allTasks, currentTask}) => {
     
     return (
         <div className="progress">
-            <div className="progress-icon"><img src={progressIcon} alt="" /></div>
+            <div className="progress-icon"><ProgressBarSVG/></div>
             <div className='progress-wrapper'>
                 <div className="progress-count">
                     <p className="progress-percent">{progress}%</p>
