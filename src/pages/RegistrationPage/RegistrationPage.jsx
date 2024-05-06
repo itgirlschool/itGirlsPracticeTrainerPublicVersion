@@ -24,7 +24,6 @@ export default function RegistrationPage({setShowInfo, burger}) {
     const mutation = useAddData()
 
 
-
     function onSubmit(data) {
         //!! Не трогать.
        // const myHeaders = new Headers();
@@ -41,7 +40,12 @@ export default function RegistrationPage({setShowInfo, burger}) {
                // }
           //  })
         // .catch(error => console.log('error', error));
+        
+        const consentChecked = data.consent;
 
+        if (!consentChecked) {
+            return;
+        }
 
 
         const auth = getAuth()
@@ -123,6 +127,15 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     })} id='pass-reset'/>
                     {errors.passwordReset && <p className='text_err_message-resPass'>{errors.passwordReset.message}</p>}
                 </div>
+
+                <div className={`checkbox ${errors?.consent}`}>
+                    <input type="checkbox" {...register("consent", { 
+                        required: true 
+                        })} id="checkbox" />
+                    <label for="checkbox">Я согласен(на) на обработку персональных данных</label>
+                    {errors?.consent && <p className='consent-error red'>Для продолжения регистрации необходимо согласиться на обработку персональных данных</p>}
+                </div>
+
                 <div className='form-row submit'>
                     <input type="submit" value="Зарегистрироваться"/>
                 </div>
@@ -131,7 +144,3 @@ export default function RegistrationPage({setShowInfo, burger}) {
         </>
     )
 }
-
-
-
-
