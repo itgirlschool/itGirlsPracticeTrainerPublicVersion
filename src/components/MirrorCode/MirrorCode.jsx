@@ -9,7 +9,7 @@ import './MirrorCode.scss'
 function MirrorCode({setShowResultImages,value,setValue,setFalseValidate}) {
     const onChange = React.useCallback((val, viewUpdate) => {
         setValue(val);
-        // setFalseValidate(false)
+        setFalseValidate(false)
     }, []);
     if(!value && !(value ==='')){
         return <Spinner color={'white'} />

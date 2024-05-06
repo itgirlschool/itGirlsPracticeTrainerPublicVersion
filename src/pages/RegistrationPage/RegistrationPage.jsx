@@ -40,7 +40,7 @@ export default function RegistrationPage({setShowInfo, burger}) {
                // }
           //  })
         // .catch(error => console.log('error', error));
-        
+
         const consentChecked = data.consent;
 
         if (!consentChecked) {
@@ -56,7 +56,10 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     password: data.password,
                     email: data.email,
                     phone: data.phone,
-                    token: user.user.accessToken
+                    id:user.user.uid,
+                    token: user.user.accessToken,
+                    date: new Date().getTime(),
+                    statusUser: 'new'
                 }
                 mutation.mutate(infoUser)
             })
@@ -129,8 +132,8 @@ export default function RegistrationPage({setShowInfo, burger}) {
                 </div>
 
                 <div className={`checkbox ${errors?.consent}`}>
-                    <input type="checkbox" {...register("consent", { 
-                        required: true 
+                    <input type="checkbox" {...register("consent", {
+                        required: true
                         })} id="checkbox" />
                     <label for="checkbox">Я согласен(на) на обработку персональных данных</label>
                     {errors?.consent && <p className='consent-error red'>Для продолжения регистрации необходимо согласиться на обработку персональных данных</p>}
