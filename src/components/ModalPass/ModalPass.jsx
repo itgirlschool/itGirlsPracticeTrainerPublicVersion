@@ -1,6 +1,4 @@
 import { Modal } from 'antd';
-import Password from 'antd/es/input/Password';
-
 import React from 'react';
 
 export default function ModalPass({
