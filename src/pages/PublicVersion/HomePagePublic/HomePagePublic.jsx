@@ -15,6 +15,7 @@ import rhombus from "../../../assets/images/homePage/rhombus.png";
 import catHomePage from "../../../assets/images/homePage/cat-home-page.png";
 import arrowHeart from "../../../assets/images/homePage/arrow-heart.png";
 import bulb from "../../../assets/images/homePage/bulb.png";
+import { log } from "loglevel";
 
 export default function HomePagePublic({ setDisabledFooter }) {
     const [value, setValue] = useState("");
@@ -33,11 +34,17 @@ export default function HomePagePublic({ setDisabledFooter }) {
         setOpenModal(false);
     }
 
+    useEffect(()=>{
+        console.log(`trueValidate: ${trueValidate}`);
+        console.log(`falseValidate: ${falseValidate}`);
+    },[sendValidate])
+
     function sendValidate() {
         const result = validateTask(value, `task${numberTask + 1}`);
+        console.log(result);
         if (!result) setFalseValidate(true);
         if (result) setTrueValidate(true);
-
+        setShowResultImages(false);
         console.log(token);
     }
 
@@ -102,17 +109,29 @@ export default function HomePagePublic({ setDisabledFooter }) {
                             </div>
                         </div>
                         <div className="homePublicPage__result">
+                            {trueValidate && (
+                                <div>
+                                    <h2>Ура! У тебя получлилось, мы можем идти дальше</h2>
+                                </div>
+                            )}
+                            {falseValidate && (
+                                <div>
+                                    <h2>Хм, кажется, это не совсем верно. Попробуйте еще раз.</h2>
+                                </div>
+                            )}
                             {showResultImages && (
                                 <div className="homePublicPage__result-images">
                                     <img src={catHomePage} alt="cat" className="homePublicPage__result-cat" />
                                     <img src={arrowHeart} alt="arrow heart" className="homePublicPage__result-arrow" />
                                 </div>
                             )}
-                            <div className="homePublicPage__result-block">
-                                <div className="homePublicPage__result-text">
-                                    <ResultCode value={value} />
+                            {!(trueValidate || falseValidate) && (
+                                <div className="homePublicPage__result-block">
+                                    <div className="homePublicPage__result-text">
+                                        <ResultCode value={value} />
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -129,12 +148,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
                                 />
                             </button>
                         </div>
-                        {trueValidate && <div className='box_sucsessfully'>
-                            <div className='img_sucsessfully'>
-
-                            </div>
-                            <h3>Ура! У тебя получлилось, мы можем идти дальше</h3>
-                        </div>}
                     </div>
                     <div className="homePublicPage__check">
                         {!trueValidate ?
