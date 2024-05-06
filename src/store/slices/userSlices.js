@@ -8,6 +8,9 @@ const userSlice = createSlice({
         displayName:null,
         password:null,
         phone:null,
+        date:null,
+        statusUser:null,
+        id:null,
         progress: []
     },
     reducers: {
@@ -17,6 +20,11 @@ const userSlice = createSlice({
             state.displayName =action.payload.displayName
             state.password = action.payload.password
             state.phone = action.payload.phone
+            state.date = action.payload.data
+            state.statusUser = action.payload.statusUser
+            state.id = action.payload.id
+
+
         },
         removeUser(state) {
             state.email = null
@@ -25,6 +33,9 @@ const userSlice = createSlice({
             state.displayName = null
             state.password = null
             state.phone = null
+            state.date = null
+            state.statusUser = null
+            state.id = null
         }
     },
 

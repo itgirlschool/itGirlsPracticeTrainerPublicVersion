@@ -17,13 +17,13 @@ import { setUser } from "../store/slices/userSlices.js";
 
 import "../styles/App.scss";
 import 'normalize.css';
+import Admin from "./Admin/Admin.jsx";
 
 
 
 function App() {
     const [burger, setBurger] = useState(false)
     const [showInfo, setShowInfo] = useState(true)
-    const [disabledFooter, setDisabledFooter] = useState(true)
     const [loader, setLoader] = useState('loading')
 
     const navigate = useNavigate()
@@ -36,11 +36,18 @@ function App() {
     useEffect(() => {
 
         onAuthStateChanged(auth, (currentUser) => {
+
             if (!currentUser) {
                 setLoader('uploaded')
                  navigate('/')
                 return
             }
+            if (currentUser.email === 'admin@gmail.com' ) {
+                navigate('/admin')
+                setLoader('uploaded')
+                return;
+            }
+
             dispatch(setUser({
                email: currentUser.email,
                 token: currentUser.accessToken,
@@ -68,6 +75,7 @@ function App() {
                     <Route path='/home' element={<HomePagePublic />} />
                     <Route path='/tabs' element={<AuthenticationForm />} />
                     <Route path="*" element={<ErrorPage />} />
+                    <Route path='/admin' element={<Admin setShowInfo={setShowInfo}  />} />
                 </Routes>
                     :
                     <Spinner color={'rgb(234 93 128)'} />}

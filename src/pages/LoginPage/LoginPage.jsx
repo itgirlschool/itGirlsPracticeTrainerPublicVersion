@@ -2,15 +2,16 @@ import { useForm } from 'react-hook-form';
 import './LoginPage.scss'
 import { useState } from "react";
 import {useAddData} from "../../Services/Firebade_realTime/services.js";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { getAuth, signInWithEmailAndPassword,GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
+import  {getAllUsers} from '../../Services/Firebade_realTime/services.js'
+import {setUser} from "../../store/slices/userSlices.js";
+import getCurrentUserId from '../../common/authLogic/getCurrentUserId.js'
 import github from '../../assets/images/icons/github-new.png'
 import google from '../../assets/images/icons/google-new.png'
 import line from '../../assets/images/line.png'
-import { getAuth, signInWithEmailAndPassword,GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
 import {sendSocial} from "../../common/authLogic/authProvider.js";
-import {setUser} from "../../store/slices/userSlices.js";
-
 
 export default function LoginPage() {
     const dispatch = useDispatch()
@@ -26,25 +27,30 @@ export default function LoginPage() {
         setErrorLogin(false)
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((user) => {
-                dispatch(setUser({
-                    displayName: user.user.displayName,
-                    password: data.password,
-                    email: data.email,
-                    token: user.user.accessToken
-                }))
-                navigate('/home')
+                getAllUsers().then((userRealTimeArr) => {
+                        const userRealtime = getCurrentUserId(userRealTimeArr,user.user.uid)
+                        dispatch(setUser({
+                            displayName: userRealtime.displayName,
+                            password: data.password,
+                            email: data.email,
+                            token: user.user.accessToken,
+                            id: user.user.uid,
+                            date:userRealtime.date,
+                            phone: userRealtime.phone,
+                            statusUser: userRealtime.statusUser,
+
+                        }))
+                        navigate('/home')
+                }
+
+                )
+
             })
             .catch((error) => {
                 console.log(error)
                 setErrorLogin(true)
             })
     }
-
-
-
-
-
-
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="postcard">
@@ -61,8 +67,6 @@ export default function LoginPage() {
                         pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
                     })} id='pass' />
                 </div>
-
-
                 <div className='form-row submit'>
                     <input type="submit" value="Войти" />
                     {/*<div className='line'><img src={line} alt="line" /><Link to='#'>Войти через</Link><img src={line} alt="line" /></div>

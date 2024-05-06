@@ -3,6 +3,7 @@ import MirrorCode from "../../../components/MirrorCode/MirrorCode.jsx";
 import ResultCode from "../../../components/ResultCode/ResultCode.jsx";
 import validateTask from "../../../validateTask/allTasksValidate.js";
 import ProgressBar from "../../../components/ProgressBar/ProgressBar.jsx"
+import {useEditData} from "../../../Services/Firebade_realTime/services.js";
 import { useAuth } from "../../../hooks/use-auth.js";
 import tasksPublic from "../tasksPublic.json";
 import "./HomePagePublic.scss";
@@ -22,7 +23,8 @@ export default function HomePagePublic({ setDisabledFooter }) {
     const [openModal, setOpenModal] = useState(true);
     const [falseValidate, setFalseValidate] = useState(false);
     const [trueValidate, setTrueValidate] = useState(false);
-    const { id, token } = useAuth();
+    const { email,id,displayName,phone,date,statusUser,password} = useAuth();
+    const mutateEdit = useEditData();
 
     useEffect(() => {
         setValue(tasksPublic[numberTask].valueRedactor);
@@ -37,7 +39,13 @@ export default function HomePagePublic({ setDisabledFooter }) {
         if (!result) setFalseValidate(true);
         if (result) setTrueValidate(true);
 
-        console.log(token);
+
+    }
+
+
+
+    function editUserProgressRealTime(){
+
     }
 
     function nextTask() {
