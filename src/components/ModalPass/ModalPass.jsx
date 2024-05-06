@@ -1,5 +1,5 @@
 import { Modal } from 'antd';
-import React from 'react';
+import './ModalPass.scss';
 
 export default function ModalPass({
   open,

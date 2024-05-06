@@ -151,18 +151,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &__modal-container {
-    @media screen and (min-width: 220px) and (max-width: 340px) {
-      max-width: 180px;
-    }
-  }
+
   &__link {
     text-decoration: none;
     text-align: center;
     color: $pinkColor;
     cursor: pointer;
   }
-  //модальное окно
+
   &__modal .ant-modal-content {
     display: flex;
     align-items: center;
@@ -174,45 +170,5 @@
       top: 20px;
       color: $pinkColor;
     }
-  }
-
-  @media screen and (min-width: 360px) and (max-width: 675px) {
-    height: 130vh;
-  }
-
-  &__modal-title {
-    font-size: $font-32;
-    color: $pinkColor;
-    text-align: center;
-    font-family: $family;
-    margin-bottom: 70px;
-
-    @media screen and (min-width: 360px) and (max-width: 675px) {
-      font-size: $font-24;
-    }
-  }
-  &__modal-result {
-    color: $pinkColor;
-    font-size: 18px;
-    margin-top: 40px;
-    text-align: center;
-  }
-
-  &__modal-result {
-    span {
-      color: black;
-    }
-  }
-}
-
-.getPassBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-input {
-  @media screen and (min-width: 200px) and (max-width: 370px) {
-    max-width: 150px;
   }
 }
