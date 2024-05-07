@@ -6,10 +6,9 @@ import { atomone } from '@uiw/codemirror-theme-atomone';
 import {EditorView} from "@codemirror/view"
 import './MirrorCode.scss'
 
-function MirrorCode({setShowResultImages,value,setValue,setFalseValidate}) {
+function MirrorCode({setShowResultImages,value,setValue}) {
     const onChange = React.useCallback((val, viewUpdate) => {
         setValue(val);
-        setFalseValidate(false)
     }, []);
     if(!value && !(value ==='')){
         return <Spinner color={'white'} />
