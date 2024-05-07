@@ -37,17 +37,13 @@ export default function HomePagePublic({ setDisabledFooter }) {
         setOpenModal(false);
     }
 
-    useEffect(() => {
-        console.log(validate);
-    }, [sendValidate])
-
     function sendValidate() {
         const result = validateTask(value, `task${numberTask + 1}`)
         if (result) {
             setValidate('success');
             return
         }
-        sendValidate('error')
+        setValidate('error')
     }
 
 
