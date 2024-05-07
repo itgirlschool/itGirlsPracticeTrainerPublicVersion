@@ -135,7 +135,7 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     <input type="checkbox" {...register("consent", {
                         required: true
                         })} id="checkbox" />
-                    <label for="checkbox">Я согласен(на) на обработку персональных данных</label>
+                    <label htmlFor="checkbox">Я согласен(на) на обработку персональных данных</label>
                     {errors?.consent && <p className='consent-error red'>Для продолжения регистрации необходимо согласиться на обработку персональных данных</p>}
                 </div>
 
