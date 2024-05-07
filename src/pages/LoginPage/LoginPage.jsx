@@ -17,6 +17,7 @@ import github from '../../assets/images/icons/github-new.png';
 import google from '../../assets/images/icons/google-new.png';
 import line from '../../assets/images/line.png';
 import { sendSocial } from '../../common/authLogic/authProvider.js';
+import ModalPass from '../../components/ModalPass/ModalPass.jsx';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
