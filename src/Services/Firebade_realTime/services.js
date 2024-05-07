@@ -5,6 +5,8 @@ import {useQuery, useMutation, useQueryClient} from "react-query";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.database()
+
+
 export function useAddData() {
     const queryClient = useQueryClient();
     return useMutation(async (newData) => {
@@ -29,7 +31,7 @@ export function useEditData() {
         })
 }
 export function useGetData() {
-    return useQuery('test', async () => {
+    return useQuery('users', async () => {
         const snapshot = await db.ref('users').once('value');
         return snapshot.val();
     });

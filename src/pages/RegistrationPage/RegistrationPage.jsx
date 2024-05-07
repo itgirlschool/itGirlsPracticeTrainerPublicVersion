@@ -70,6 +70,57 @@ export default function RegistrationPage({ setShowInfo, burger }) {
       });
   }
 
+  function onSubmit(data) {
+    //!! Не трогать.
+    // const myHeaders = new Headers();
+    //myHeaders.append("apikey", "yKYpvFjCMlXTiVrX1Wgk2bGvA7TPCPV5");
+    //const requestOptions = {
+    //  method: 'GET',
+    // redirect: 'follow',
+    // headers: myHeaders
+    //};
+    //fetch(`https://api.apilayer.com/number_verification/validate?number=${data.phone}`, requestOptions)
+    //  .then(response => response.text())
+    //.then(result => {
+    // if (JSON.parse(result).valid) {
+    // }
+    //  })
+    // .catch(error => console.log('error', error));
+
+    const consentChecked = data.consent;
+
+    if (!consentChecked) {
+      return;
+    }
+
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((user) => {
+        const infoUser = {
+          displayName: data.lastName + '' + data.firstName,
+          password: data.password,
+          email: data.email,
+          phone: data.phone,
+          id: user.user.uid,
+          token: user.user.accessToken,
+          date: new Date().getTime(),
+          statusUser: 'new',
+        };
+        mutation.mutate(infoUser);
+      })
+      .then((currentUser) => {
+        dispatch(setUser(currentUser));
+        updateProfile(auth.currentUser, {
+          displayName: data.firstName + ' ' + data.lastName,
+        }).catch((e) => console.error(e));
+      })
+      .catch((e) => {
+        console.error(e);
+        setExistingEmail(true);
+        setExistingPhone(true);
+      });
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className='postcard'>
@@ -166,6 +217,26 @@ export default function RegistrationPage({ setShowInfo, burger }) {
             </p>
           )}
         </div>
+
+        <div className={`checkbox ${errors?.consent}`}>
+          <input
+            type='checkbox'
+            {...register('consent', {
+              required: true,
+            })}
+            id='checkbox'
+          />
+          <label htmlFor='checkbox'>
+            Я согласен(на) на обработку персональных данных
+          </label>
+          {errors?.consent && (
+            <p className='consent-error red'>
+              Для продолжения регистрации необходимо согласиться на обработку
+              персональных данных
+            </p>
+          )}
+        </div>
+
         <div className='form-row submit'>
           <input type='submit' value='Зарегистрироваться' />
         </div>
