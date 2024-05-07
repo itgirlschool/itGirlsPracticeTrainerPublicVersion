@@ -28,3 +28,26 @@
   align-items: center;
   justify-content: center;
 }
+
+.form-row input[type='text'] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 19px 30px;
+  line-height: $font-16;
+  border: 1px solid rgba(243, 243, 243, 1);
+  border-radius: 50px;
+  background-color: rgba(243, 243, 243, 1);
+  background-size: 8px 35px;
+  font-family: $family;
+  color: $black2;
+}
+
+.form-row input[type='text']:focus {
+  outline: none;
+  border-color: $pinkColor;
+  caret-color: $pinkColor;
+}
+
+.form-row input[type='text']::placeholder {
+  color: $black2;
+}
