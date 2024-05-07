@@ -1,0 +1,53 @@
+@import '../../styles/vars';
+
+.forgetPass__modal-title {
+  font-size: $font-32;
+  color: $pinkColor;
+  text-align: center;
+  font-family: $family;
+  margin-bottom: 70px;
+
+  @media screen and (min-width: 320px) and (max-width: 675px) {
+    font-size: $font-24;
+    margin-bottom: 50px;
+  }
+}
+
+.forgetPass__modal-result {
+  color: $pinkColor;
+  font-size: 18px;
+  margin-top: 40px;
+  text-align: center;
+  span {
+    color: $black2;
+  }
+}
+
+.getPassBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-row input[type='text'] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 19px 30px;
+  line-height: $font-16;
+  border: 1px solid rgba(243, 243, 243, 1);
+  border-radius: 50px;
+  background-color: rgba(243, 243, 243, 1);
+  background-size: 8px 35px;
+  font-family: $family;
+  color: $black2;
+}
+
+.form-row input[type='text']:focus {
+  outline: none;
+  border-color: $pinkColor;
+  caret-color: $pinkColor;
+}
+
+.form-row input[type='text']::placeholder {
+  color: $black2;
+}
