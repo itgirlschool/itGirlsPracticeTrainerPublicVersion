@@ -1,14 +1,14 @@
 @import '../../../styles/vars';
 
-.cm-line, .cm-gutter{justify-content: space-evenly;
+.cm-line,
+.cm-gutter {
+  justify-content: space-evenly;
   font-size: $font-18;
 
-  @media screen and (min-width: 360px) and (max-width: 675px){
+  @media screen and (min-width: 360px) and (max-width: 675px) {
     font-size: $font-16;
   }
 }
-
-
 
 .homePublicPage {
   display: flex;
@@ -23,21 +23,23 @@
     align-items: center;
   }
 
-
   //мобальное окно
   &__modal .ant-modal-content {
     border-radius: 60px;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      padding: 0px 0px;
+    }
   }
-  &__modal-container{
+  &__modal-container {
     padding: 8%;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    @media screen and (min-width: 360px) and (max-width: 675px) {
-      height: 130vh;
+    @media screen and (min-width: 320px) and (max-width: 1400px) {
+      padding: 8%;
+      height: 90vh;
     }
   }
 
@@ -46,19 +48,23 @@
     color: $pinkColor;
     text-align: center;
     font-family: $family;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      font-size: $font-24;
+    }
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 70%;
-      font-size: $font-24;
     }
   }
 
   &__modal-stripes {
     transform: translate(-10px, -9px);
+    @media screen and (min-width: 320px) and (max-width: 577px) {
+      transform: none;
+    }
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 12%;
-      transform: translate(20px, -50px);
     }
   }
 
@@ -67,16 +73,21 @@
     font-size: 16px;
     color: $colorText;
     font-family: $family;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      font-size: $font-12;
+    }
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 481px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
 
   &__modal-arrow {
     padding: 2%;
-
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      width: 30%;
+    }
+    @media screen and (min-width: 481px) {
       width: 28%;
     }
   }
@@ -91,8 +102,7 @@
     cursor: pointer;
     font-family: $family;
 
-
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       font-size: $font-14;
       padding: 6% 10%;
     }
@@ -185,7 +195,6 @@
   &__img-calc {
     width: 80%;
     margin-left: 10%;
-
   }
 
   &__img-rhombus {
@@ -194,10 +203,8 @@
     transform: translate(-75px, 740%);
   }
 
-
-
-  &__result{
-    background-color:$whiteColor;
+  &__result {
+    background-color: $whiteColor;
     height: 34vh;
     display: flex;
     justify-content: space-between;
@@ -216,7 +223,6 @@
   &__result-rhombus {
     transform: translate(0, 35%);
   }
-
 
   &__result-cat {
     width: 100%;
@@ -247,7 +253,6 @@
     @media (max-width: 1360px) {
       display: none;
     }
-
   }
 
   &__result-text {
@@ -262,7 +267,7 @@
     }
   }
 
-  &__right{
+  &__right {
     margin-left: 1%;
 
     max-width: 45%;
@@ -283,16 +288,14 @@
     }
   }
 
-
-  &__answer{
+  &__answer {
     height: 78vh;
-    background-color: #282C34;
+    background-color: #282c34;
     border-radius: 60px;
     width: 100%;
     font-size: 16px;
     display: flex;
     justify-content: space-between;
-
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
@@ -326,7 +329,7 @@
     border-radius: 20px;
   }
 
-  &__check{
+  &__check {
     margin-top: 3.5%;
   }
 
@@ -362,7 +365,7 @@
 @keyframes cat {
   60% {
     transform: translateY(-40%);
-    opacity: 0.5
+    opacity: 0.5;
   }
 
   80% {
@@ -373,7 +376,6 @@
     transform: translateY(-0%);
     opacity: 1;
   }
-
 }
 
 @keyframes shake {
