@@ -1,47 +1,74 @@
-@import "../../../styles/vars";
+@import '../../../styles/vars';
 
 .containerBurger {
-  position       : relative;
-  flex-basis     : 80px;
-  display        : flex;
+  flex-basis: 80px;
+  display: flex;
   justify-content: space-between;
-  align-items    : center;
+  align-items: center;
+  @media screen and (min-width: 320px) {
+    align-items: normal;
+    width: 90%;
+    margin: 0 auto;
+  }
 
-  .logo {
-    width       : 180px;
-    padding-left: 20px;
-
-    img {
+  .test {
+    display: flex;
+    @media screen and (min-width: 320px) {
       width: 100%;
+      align-items: center;
+      gap: 40px;
+      justify-content: space-between;
+    }
+    @media screen and (min-width: 550px) {
+      width: auto;
+    }
+
+    .logo {
+      width: 180px;
+      padding-left: 20px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .logout-container {
+      @media screen and (min-width: 320px) and (max-width: 550px) {
+        padding-left: 20px;
+        width: 170px;
+      }
     }
   }
 
   .wrapper_menu {
     background-color: $pinkColor;
-    border-radius   : 133px;
-    position        : relative;
-    width           : 50px;
-    right           : 30px;
-    top             : 1px;
-    display         : flex;
-    justify-content : center;
-    height          : 60%
+    border-radius: 133px;
+    position: relative;
+    width: 50px;
+    right: 30px;
+    top: 1px;
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    @media screen and (min-width: 550x) {
+      position: static;
+    }
   }
 }
 
 #page-wrap {
   text-align: center;
-  overflow  : auto;
-  top       : 45%;
-  position  : relative;
+  overflow: auto;
+  top: 45%;
+  position: relative;
 }
 
 .bm-item {
-  display        : inline-block;
+  display: inline-block;
   text-decoration: none;
-  margin-bottom  : 30px;
-  color          : black;
-  transition     : color 0.2s;
+  margin-bottom: 30px;
+  color: black;
+  transition: color 0.2s;
 }
 
 .bm-item:hover {
@@ -49,23 +76,23 @@
 }
 
 .bm-burger-button {
-  color   : white;
-  left    : 9px;
-  top     : 13px;
-  padding : 5px;
+  color: white;
+  left: 9px;
+  top: 13px;
+  padding: 5px;
   position: absolute;
-  width   : 30px;
-  height  : 20px;
+  width: 30px;
+  height: 20px;
 }
 
 .bm-burger-bars {
-  background   : white;
+  background: white;
   border-radius: 10px;
 }
 
 .bm-cross-button {
   height: 24px;
-  width : 24px;
+  width: 24px;
 }
 
 .bm-cross {
@@ -73,9 +100,9 @@
 }
 
 .bm-menu {
-  background : white;
-  padding    : 6.5em 1.5em 0;
-  font-size  : 1em;
+  background: white;
+  padding: 6.5em 1.5em 0;
+  font-size: 1em;
   font-family: $family;
 }
 
@@ -88,3 +115,14 @@
 }
 
 // .bm-overlay {}
+
+.logo {
+  @media screen and (min-width: 320px) and (max-width: 550px) {
+    display: none;
+  }
+}
+.logo img {
+  @media screen and (min-width: 550px) {
+    margin: 25px 30px;
+  }
+}

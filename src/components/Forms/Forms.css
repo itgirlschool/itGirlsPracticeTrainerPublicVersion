@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: "Rubik";
+}
+.forms-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.forms-container .formsAll {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #3f8efc;
+}
+.forms-container .formsAll .form {
+  border: 1px dotted #000000;
+  background: #ffffff;
+  padding: 10px;
+  width: 25%;
+}
+.forms-container .formsAll .form h2 {
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: "Jost", sans-serif;
+  color: #000000;
+}
+.forms-container .formsAll .form .firstForm,
+.forms-container .formsAll .form .secondForm,
+.forms-container .formsAll .form .thirdForm,
+.forms-container .formsAll .form .fourthForm {
+  margin-bottom: 2rem;
+}
+.forms-container .formsAll .form label, .forms-container .formsAll .form legend {
+  display: block;
+  margin-left: 10px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Jost", sans-serif;
+  color: #000000;
+}
+.forms-container .formsAll .form input[type=email],
+.forms-container .formsAll .form input[type=number],
+.forms-container .formsAll .form input[type=search],
+.forms-container .formsAll .form input[type=text],
+.forms-container .formsAll .form input[type=tel],
+.forms-container .formsAll .form input[type=url],
+.forms-container .formsAll .form input[type=password],
+.forms-container .formsAll .form textarea,
+.forms-container .formsAll .form select {
+  height: 38px;
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.forms-container .formsAll .form .flex {
+  display: flex;
+  align-items: center;
+}
+.forms-container .formsAll .form .form__submit {
+  height: 38px;
+  width: 100%;
+  margin-top: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #D1D1D1;
+}
+.forms-container .formsAll .form .error-message {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Jost", sans-serif;
+  color: rgb(234, 93, 128);
+}/*# sourceMappingURL=Forms.css.map */

@@ -103,6 +103,8 @@
   letter-spacing: 1px;
   color: #fffdee;
   transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  justify-content: center;
 }
 
 .form-row input[type='submit']:hover {
@@ -159,8 +161,7 @@
   gap: 20px;
 }
 
-
-.checkbox input[type="checkbox"] {
+.checkbox input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -170,25 +171,25 @@
 
 .checkbox label {
   position: relative;
-  padding-left: 30px; 
+  padding-left: 30px;
   cursor: pointer;
 }
 
 .checkbox label:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 2px;
   width: 15px;
   height: 15px;
-  border: 2px solid $pinkColor; 
+  border: 2px solid $pinkColor;
 }
 
-.checkbox input[type="checkbox"]:checked + label:before {
-  content: "\2714"; 
-  font-size: 16px; 
+.checkbox input[type='checkbox']:checked + label:before {
+  content: '\2714';
+  font-size: 16px;
   color: $black2;
-  line-height: 15px; 
+  line-height: 15px;
   text-align: center;
 }
 

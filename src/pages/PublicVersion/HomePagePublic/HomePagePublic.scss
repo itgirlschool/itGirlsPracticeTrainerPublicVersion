@@ -5,7 +5,7 @@
   justify-content: space-evenly;
   font-size: $font-18;
 
-  @media screen and (min-width: 360px) and (max-width: 675px) {
+  @media screen and (min-width: 320px) and (max-width: 675px) {
     font-size: $font-16;
   }
 }
@@ -13,17 +13,16 @@
 .homePublicPage {
   display: flex;
   justify-content: space-around;
-  height: 91.7vh;
   justify-content: center;
   margin-top: 1%;
 
-  @media screen and (min-width: 360px) and (max-width: 675px) {
+  @media screen and (min-width: 320px) and (max-width: 990px) {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  //мобальное окно
+  //модальное окно
   &__modal .ant-modal-content {
     border-radius: 60px;
     @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -38,7 +37,6 @@
     justify-content: space-between;
     align-items: center;
     @media screen and (min-width: 320px) and (max-width: 1400px) {
-      padding: 8%;
       height: 90vh;
     }
   }
@@ -115,7 +113,7 @@
     width: 100%;
     margin-right: 1%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 990px) {
       max-width: 90%;
     }
   }
@@ -127,29 +125,35 @@
   &__block {
     background-color: $whiteColor;
     border-radius: 60px;
-    height: 40vh;
+    min-height: 40vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 4% 0 4% 4%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
-      height: 28vh;
+    @media screen and (min-width: 320px) and (max-width: 675px) {
+      min-height: 30vh;
       border-radius: 30px;
       padding: 0;
+    }
+    @media screen and (min-width: 990px) {
+      min-height: 30vh;
     }
   }
 
   &__exercise {
     width: 55%;
-    height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 700px) {
       width: 100%;
       padding: 4%;
+    }
+    @media screen and (min-width: 990px) and (max-width: 1200px) {
+      width: 75%;
     }
   }
 
@@ -159,7 +163,7 @@
     padding-bottom: 5%;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       font-size: $font-18;
     }
   }
@@ -169,7 +173,7 @@
     color: $darkBrownColor;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
@@ -180,14 +184,14 @@
     padding-top: 5%;
     font-family: $family;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       font-size: $font-14;
     }
   }
 
   &__img {
     display: flex;
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       display: none;
     }
   }
@@ -205,18 +209,27 @@
 
   &__result {
     background-color: $whiteColor;
-    height: 34vh;
+    min-height: 34vh;
     display: flex;
     justify-content: space-between;
     border-radius: 60px;
     margin-top: 3.5%;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       margin-bottom: 5%;
       justify-content: center;
-      height: 18vh;
+      min-height: 18vh;
+      height: auto;
       margin-top: 5%;
       border-radius: 30px;
+    }
+    @media screen and (min-width: 676px) and (max-width: 990px) {
+      height: auto;
+      justify-content: center;
+      margin: 4% 0 4% 0;
+    }
+    @media screen and (min-width: 991px) {
+      height: auto;
     }
   }
 
@@ -234,7 +247,7 @@
   &__result-images {
     display: flex;
     align-items: center;
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       display: none;
     }
   }
@@ -245,6 +258,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media screen and (min-width: 320px) and (max-width: 675px) {
+      width: auto;
+    }
+    @media screen and (min-width: 676px) {
+      width: 60%;
+    }
   }
 
   &__result-arrow {
@@ -260,21 +279,22 @@
     color: $darkBrownColor;
     font-weight: 700;
     font-family: $familySecond;
-    height: 10vh;
+    height: auto;
+    padding: 15px;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 675px) {
       font-size: $font-14;
+      text-align: center;
     }
   }
 
   &__right {
     margin-left: 1%;
-
     max-width: 45%;
     width: 100%;
     position: relative;
 
-    @media screen and (min-width: 360px) and (max-width: 675px) {
+    @media screen and (min-width: 320px) and (max-width: 990px) {
       max-width: 90%;
     }
 
@@ -285,11 +305,17 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      text-align: center;
+      @media screen and (min-width: 320px) and (max-width: 990px) {
+        bottom: 15%;
+        left: 0%;
+      }
     }
   }
 
   &__answer {
-    height: 78vh;
+    min-height: 60vh;
+    height: auto;
     background-color: #282c34;
     border-radius: 60px;
     width: 100%;
@@ -299,8 +325,11 @@
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
-      height: 35vh;
       border-radius: 30px;
+    }
+    @media screen and (min-width: 990px) {
+      min-height: 82vh;
+      height: auto;
     }
   }
 
@@ -309,6 +338,9 @@
     align-items: flex-end;
     width: 15%;
 
+    @media screen and (min-width: 320px) and (max-width: 460px) {
+      width: 25%;
+    }
     @media screen and (min-width: 360px) and (max-width: 675px) {
       margin-right: 3%;
     }
@@ -404,4 +436,8 @@
   100% {
     background-color: #e1aa50;
   }
+}
+
+.cm-theme {
+  width: auto;
 }

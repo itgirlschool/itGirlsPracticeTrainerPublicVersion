@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+.forgetPass__modal-title {
+  font-size: 32px;
+  color: rgb(234, 93, 128);
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  margin-bottom: 70px;
+}
+@media screen and (min-width: 320px) and (max-width: 675px) {
+  .forgetPass__modal-title {
+    font-size: 24px;
+    margin-bottom: 50px;
+  }
+}
+
+.forgetPass__modal-result {
+  color: rgb(234, 93, 128);
+  font-size: 18px;
+  margin-top: 40px;
+  text-align: center;
+}
+.forgetPass__modal-result span {
+  color: rgb(54, 54, 58);
+}
+
+.getPassBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-row input[type=text] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 19px 30px;
+  line-height: 16px;
+  border: 1px solid rgb(243, 243, 243);
+  border-radius: 50px;
+  background-color: rgb(243, 243, 243);
+  background-size: 8px 35px;
+  font-family: "Jost", sans-serif;
+  color: rgb(54, 54, 58);
+}
+
+.form-row input[type=text]:focus {
+  outline: none;
+  border-color: rgb(234, 93, 128);
+  caret-color: rgb(234, 93, 128);
+}
+
+.form-row input[type=text]::-moz-placeholder {
+  color: rgb(54, 54, 58);
+}
+
+.form-row input[type=text]::placeholder {
+  color: rgb(54, 54, 58);
+}/*# sourceMappingURL=ModalPass.css.map */

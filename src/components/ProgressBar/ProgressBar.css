@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+.progress {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: start;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  background-color: white;
+  border-radius: 24px;
+  margin-bottom: 3.5%;
+}
+
+.progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.progress-count {
+  display: flex;
+  align-items: baseline;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  font-family: "Jost", sans-serif;
+  color: #3C3C3C;
+  text-align: center;
+}
+
+.progress-percent {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.progress-text {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+
+.progress-container {
+  height: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.progress-bar {
+  border-radius: 64px;
+  background: #efefef;
+}
+
+.progress-value {
+  height: 10px;
+  border-radius: 30px;
+  transition: 0.4s linear;
+  transition-property: width, background-color;
+  width: 30%;
+  background-color: rgb(234, 93, 128);
+}/*# sourceMappingURL=ProgressBar.css.map */

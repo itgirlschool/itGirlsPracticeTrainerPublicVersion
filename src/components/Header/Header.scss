@@ -1,6 +1,5 @@
-@use '../../styles/mixins.scss'as mixins;
-@import "../../styles/vars.scss";
-
+@use '../../styles/mixins.scss' as mixins;
+@import '../../styles/vars.scss';
 
 .header-container {
   display: flex;
@@ -27,18 +26,6 @@
     line-height: 24px;
     color: rgb(60, 60, 60);
 
-    .container_accaount {
-      background-color: $pinkColor;
-      padding: 2px;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: 700;
-    }
-
     .header-link {
       text-decoration: none;
       @include mixins.font($bold, $font-14, $blackColor);
@@ -46,12 +33,17 @@
 
     .header-text {
       @include mixins.font($bold, $font-14, $darkPinkColor);
-
     }
 
     @media screen and (min-width: 360px) and (max-width: 675px) {
       padding-bottom: 20px;
     }
+  }
+
+  .container_account {
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 
   .header-info-container-btn {
@@ -68,7 +60,6 @@
     font-size: 14px;
     line-height: 28px;
     cursor: pointer;
-
   }
 
   .progress_user-info {
@@ -80,7 +71,6 @@
       font-family: $familySecond;
       display: flex;
       align-items: center;
-
     }
 
     img {
