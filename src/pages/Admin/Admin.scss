@@ -1,0 +1,99 @@
+@import '../../styles/vars.scss';
+
+body,
+html {
+    font-family: $family;
+}
+
+.tableContainer {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+    .tableContainer__pagination{
+        background: $pinkColor;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        button, .tableContainer__pagination-btn, .active{
+            display: inherit;
+            align-items: inherit;
+            justify-content: inherit;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            color: $whiteColor;
+            font-weight: $bold;
+            background: $lightOrangeColor;
+            transition: 0.3s all ease-in-out;
+            &:hover{
+                background: $orangeColor;
+            }
+        }
+        .active{
+            background: $orangeColor;
+        }
+    }
+}
+
+.adminTable {
+    width: 100%;
+    background: #eeeeee;
+    border-collapse: collapse;
+
+    .adminTable__header {
+        background: $pinkColor;
+
+        th {
+            color: $whiteColor;
+            text-align: center;
+            padding: 25px 15px;
+
+            &:nth-child(1) {
+                padding: 5px;
+            }
+        }
+    }
+
+    .adminTable__body {
+
+        border-radius: 20px;
+
+        .adminTable__body-row {
+            td {
+                text-align: center;
+                padding: 15px 15px;
+            }
+
+            &:nth-child(2n) {
+                background: $whiteColor;
+            }
+
+            .adminTable__body-status {
+                padding: 10px 20px;
+                border-radius: 10px;
+                display: inline-block;
+                color: $whiteColor;
+                font-weight: $bold;
+            }
+
+            .new {
+                background: $lightOrangeColor;
+            }
+
+            .active {
+                background: $orangeColor;
+            }
+
+            .critical {
+                background: $darkPinkColor;
+            }
+        }
+
+    }
+}
