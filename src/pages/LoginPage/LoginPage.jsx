@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import './LoginPage.scss';
 import { useState } from 'react';
-import { useAddData } from '../../Services/Firebade_realTime/services.js';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
@@ -31,7 +30,6 @@ export default function LoginPage() {
     watch,
   } = useForm();
   const auth = getAuth();
-  const mutation = useAddData();
   const providerGoogle = new GoogleAuthProvider();
   const providerGitHub = new GithubAuthProvider();
 
@@ -43,6 +41,7 @@ export default function LoginPage() {
       .then((user) => {
         getAllUsers().then((userRealTimeArr) => {
           const userRealtime = getCurrentUserId(userRealTimeArr, user.user.uid);
+          console.log(userRealtime);
           dispatch(
             setUser({
               displayName: userRealtime.displayName,
@@ -53,6 +52,7 @@ export default function LoginPage() {
               date: userRealtime.date,
               phone: userRealtime.phone,
               statusUser: userRealtime.statusUser,
+              uid:userRealtime.key
             })
           );
           navigate('/home');

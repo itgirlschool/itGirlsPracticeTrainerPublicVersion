@@ -11,10 +11,13 @@ export function useAddData() {
     const queryClient = useQueryClient();
     return useMutation(async (newData) => {
         const ref = db.ref('users').push();
-        await ref.set(newData);
+        const uid = ref.key;
+        const dataWidthKey ={...newData, uid}
+        await ref.set(dataWidthKey);
     }, {
-        onSuccess: (newKey) => {
+        onSuccess: () => {
             queryClient.invalidateQueries('users');
+
         },
     });
 }
@@ -42,3 +45,10 @@ export async function  getAllUsers(){
     return snapshot.val();
 }
 
+export async function addUser(userData) {
+    const ref = db.ref('users').push();
+    const newKey = ref.key;
+    const dataWithKey = { ...userData, key: newKey };
+    await ref.set(dataWithKey);
+    return newKey;
+}
