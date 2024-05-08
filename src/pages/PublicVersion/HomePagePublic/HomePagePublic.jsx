@@ -8,6 +8,7 @@ import { useAuth } from "../../../hooks/use-auth.js";
 import tasksPublic from "../tasksPublic.json";
 import "./HomePagePublic.scss";
 import { Modal } from "antd";
+import "../../../validateTask/Task.scss"
 
 import arrowModal from "../../../assets/images/homePage/arrow-modal.png";
 import stripesModal from "../../../assets/images/homePage/stripes-modal.png";

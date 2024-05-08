@@ -1,3 +1,14 @@
 export default function  task4 (value){
     return true
 }
+
+// export default function task4(value) {
+//     value = value.trim();
+    
+//     if (value.includes('<h2>Front-End Developer</h2>') &&
+//         value.indexOf('<h1>') < value.indexOf('<h2>')) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }

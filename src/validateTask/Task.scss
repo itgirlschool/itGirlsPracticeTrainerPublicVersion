@@ -1,0 +1,42 @@
+.resume {
+    display: block;
+    color: white;
+    font-family: 'Trebuchet MS';
+    text-align: center;
+    width: 500px;
+    padding: 15px 0;
+    background-color: #EA5D80;
+
+    &__img {
+        border-radius: 75px;
+        width: 150px;
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    &__subtitle {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    &__text {
+        margin: 15px;
+    }
+
+    &__link {
+        background-color: white;
+        font-size: 20px;
+        border-radius: 10px;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        margin: 10px;
+        color: #EA5D80;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
