@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../styles/vars.scss","../../styles/mixins.scss","ErrorPage.css","ErrorPage.scss"],"names":[],"mappings":"AAAQ,iMAAA;AACA,yGAAA;AADA,iMAAA;AACA,yGAAA;ACCR;EACE,oBAAA;ACGF;ACHA;EACE,sCAAA;EACA,mBHuBsB;EGtBtB,kBAAA;ADKF;ACHE;EACE,iBAAA;EFFF,gBAAA;EACA,eDOQ;ECNR,+BDPkB;ECQlB,cDYsB;AEJxB","file":"ErrorPage.css"}

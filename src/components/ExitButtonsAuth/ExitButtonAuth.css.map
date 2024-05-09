@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../styles/vars.scss","ExitButtonAuth.scss","ExitButtonAuth.css"],"names":[],"mappings":"AAAQ,iMAAA;AACA,yGAAA;ACCR;EACE,iBAAA;EACA,iBAAA;EACA,6BDwBsB;ECvBtB,mCAAA;EACA,mBAAA;EACA,eAAA;EACA,aAAA;EACA,+BDRkB;ECSlB,eDEQ;ECDR,mBAAA;EACA,cAAA;EACA,iDAAA;EACA,YAAA;EACA,YAAA;ACCF;ADAE;EAfF;IAgBI,YAAA;ECGF;AACF","file":"ExitButtonAuth.css"}
