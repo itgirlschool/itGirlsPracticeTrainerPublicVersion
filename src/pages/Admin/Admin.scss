@@ -5,45 +5,101 @@ html {
     font-family: $family;
 }
 
-.tableContainer {
-    border-radius: 10px;
-    overflow: hidden;
-    width: 90%;
+.adminPage {
+    width: 95%;
     margin: 0 auto;
-    .tableContainer__pagination{
-        background: $pinkColor;
-        padding: 15px;
+
+    .adminPage__header {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        button, .tableContainer__pagination-btn, .active{
-            display: inherit;
-            align-items: inherit;
-            justify-content: inherit;
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-            color: $whiteColor;
-            font-weight: $bold;
-            background: $lightOrangeColor;
-            transition: 0.3s all ease-in-out;
-            &:hover{
-                background: $orangeColor;
-            }
-        }
-        .active{
-            background: $orangeColor;
-        }
+        justify-content: space-between;
     }
 }
 
-.adminTable {
+.filterBox {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+    background-color: $pinkColor;
+
+    .filterBox__tab {
+        border: none;
+    }
+
+    .activeTab {
+        border: 1px solid;
+    }
+}
+
+.tableContainer {
+    border-radius: 10px;
+    overflow: hidden;
     width: 100%;
-    background: #eeeeee;
+    margin: 0 auto;
+
+    .tableContainer__actions {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: $pinkColor;
+        padding: 15px;
+
+        .tableContainer__filter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & select {
+                height: 40px;
+                width: 100px;
+                outline: none;
+                border: none;
+                border-radius: 10px;
+                padding: 0 5px;
+            }
+        }
+
+        .tableContainer__pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            button,
+            .tableContainer__pagination-btn,
+            .active {
+                display: inherit;
+                align-items: inherit;
+                justify-content: inherit;
+                width: 40px;
+                height: 40px;
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                cursor: pointer;
+                color: $whiteColor;
+                font-weight: $bold;
+                background: $lightOrangeColor;
+                transition: 0.3s all ease-in-out;
+
+                &:hover {
+                    background: $orangeColor;
+                }
+            }
+
+            .active {
+                background: $orangeColor;
+            }
+        }
+    }
+
+}
+
+.adminTable {
+    min-width: 100%;
+    max-width: 100%;
+    background: #f6f6f6;
     border-collapse: collapse;
 
     .adminTable__header {

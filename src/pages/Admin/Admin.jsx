@@ -1,5 +1,7 @@
 import { useGetData } from "../../Services/Firebade_realTime/services.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
+import Dropdown from "antd/es/dropdown/dropdown.js";
+import DropdownButton from "antd/es/dropdown/dropdown-button.js";
 import ExitButtonAuth from "../../components/ExitButtonsAuth/ExitButtonAuth.jsx";
 import { useEffect, useState } from "react";
 import { log } from "loglevel";
@@ -13,13 +15,19 @@ import { MdLastPage } from "react-icons/md";
 export default function Admin({ setShowInfo }) {
     const { data, isLoading } = useGetData([]);
     const [users, setUsers] = useState([]);
-    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
+    const [filterValue, setFilterValue] = useState('all');
+    const [totalPages, setTotalPages] = useState(0);
+    const [adaptive, setAdaptive] = useState(true);
+    const [openDropdown, setOpenDropdown] = useState(false);
 
     useEffect(() => {
-        if (data) {
-            setUsers(Object.values(data));
-        }
+        if (window.innerWidth < 760) setAdaptive(false);
+    }, []);
+
+    useEffect(() => {
+        if (data) setUsers(Object.values(data))
     }, [data]);
 
     useEffect(() => {
@@ -28,6 +36,15 @@ export default function Admin({ setShowInfo }) {
             setShowInfo(true);
         }
     });
+
+    useEffect(() => {
+        if (users.length > 0) {
+            const filteredUsers = filterValue === 'all' ? users : users.filter(item => item.statusUser === filterValue);
+            const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
+            setCurrentPage(1);
+            setTotalPages(totalPages);
+        }
+    }, [users, itemsPerPage, filterValue]);
 
     const changePage = (page) => {
         setCurrentPage(page);
@@ -46,25 +63,40 @@ export default function Admin({ setShowInfo }) {
         }
     }
 
-    const totalPages = Math.ceil(users.length / itemsPerPage);
-
     function formatDate(date) {
         const formattedDate = new Date(date);
         return `${formattedDate.getDate()}/${formattedDate.getMonth() + 1}/${formattedDate.getFullYear()} в ${formattedDate.getHours()}:${(formattedDate.getMinutes() < 10 ? (`0${formattedDate.getMinutes()}`) : (formattedDate.getMinutes()))}`;
     }
 
     const displayItems = () => {
+        const filteredUsers = filterValue === 'all' ? users : users.filter(item => item.statusUser === filterValue);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
-        return users.slice(startIndex, endIndex).map((item, index) => (
-            <tr className="adminTable__body-row" key={index}>
-                <td>{startIndex + index + 1}</td>
-                <td>{item.displayName}</td>
-                <td>{item.email}</td>
-                <td>{item.phone}</td>
-                <td><p className={`adminTable__body-status ${getColorForStatus(item.statusUser)}`}>{item.statusUser}</p></td>
-                <td>{formatDate(item.date)}</td>
-            </tr>
+        return filteredUsers.slice(startIndex, endIndex).map((item, index) => (
+            adaptive ? (
+                <tr className="adminTable__body-row" key={index}>
+                    <td>{startIndex + index + 1}</td>
+                    <td>{item.displayName}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phone}</td>
+                    <td><p className={`adminTable__body-status ${getColorForStatus(item.statusUser)}`}>{item.statusUser}</p></td>
+                    <td>{formatDate(item.date)}</td>
+                </tr>
+            ) : (
+                <>
+                    <DropdownButton onClick={() => {
+                        setOpenDropdown(true);
+                    }} />
+                    <Dropdown key={index} open={openDropdown}>
+                        <p>{startIndex + index + 1}</p>
+                        <p>{item.displayName}</p>
+                        <p>{item.email}</p>
+                        <p>{item.phone}</p>
+                        <p className={`adminTable__body-status ${getColorForStatus(item.statusUser)}`}>{item.statusUser}</p>
+                        <p>{formatDate(item.date)}</p>
+                    </Dropdown>
+                </>
+            )
         ));
     };
 
@@ -102,31 +134,51 @@ export default function Admin({ setShowInfo }) {
     });
 
     return (
-        <>
-            <ExitButtonAuth />
-            <h1>Admin</h1>
-            <div className="tableContainer">
-                <table className="adminTable">
-                    <tbody className="adminTable__body">
-                        <tr className="adminTable__header">
-                            <th>#</th>
-                            <th>Имя пользователя</th>
-                            <th>Електронная почта</th>
-                            <th>Телефон</th>
-                            <th>Статус</th>
-                            <th>Последняя активность</th>
-                        </tr>
-                        {displayItems()}
-                    </tbody>
-                </table>
-                <div className="tableContainer__pagination">
-                    <button onClick={firstPage}><MdFirstPage /></button>
-                    <button onClick={prevPage}><MdOutlineKeyboardArrowLeft /></button>
-                    {paginationButtons}
-                    <button onClick={nextPage}><MdOutlineKeyboardArrowRight /></button>
-                    <button onClick={lastPage}><MdLastPage /></button>
+        <div className="adminPage">
+            {adaptive ? (
+                <>
+                    <div className="adminPage__header">
+                        <h1>Администратор</h1>
+                        <ExitButtonAuth className="exitBtn" />
+                    </div>
+                    <div className="tableContainer">
+                        <div className="tableContainer__actions">
+                            <div className="tableContainer__filter">
+                                <select onChange={(e) => { setFilterValue(e.target.value) }}>
+                                    <option value="all" defaultValue>Все</option>
+                                    <option value="active">Active</option>
+                                    <option value="new">New</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </div>
+                            <div className="tableContainer__pagination">
+                                <button onClick={firstPage}><MdFirstPage /></button>
+                                <button onClick={prevPage}><MdOutlineKeyboardArrowLeft /></button>
+                                {paginationButtons}
+                                <button onClick={nextPage}><MdOutlineKeyboardArrowRight /></button>
+                                <button onClick={lastPage}><MdLastPage /></button>
+                            </div>
+                        </div>
+                        <table className="adminTable">
+                            <tbody className="adminTable__body">
+                                <tr className="adminTable__header">
+                                    <th>#</th>
+                                    <th>Имя пользователя</th>
+                                    <th>Електронная почта</th>
+                                    <th>Телефон</th>
+                                    <th>Статус</th>
+                                    <th>Последняя активность</th>
+                                </tr>
+                                {displayItems()}
+                            </tbody>
+                        </table>
+                    </div>
+                </>
+            ) : (
+                <div className="adminPage__container">
+
                 </div>
-            </div>
-        </>
+            )}
+        </div>
     );
 }
