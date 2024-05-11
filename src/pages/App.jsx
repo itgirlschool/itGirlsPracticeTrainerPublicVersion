@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState,memo } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
+import {getAllUsers} from '../Services/Firebade_realTime/services.js';
 import Header from "../components/Header/Header.jsx";
 import ErrorPage from "./ErrorPage/ErrorPage.jsx";
 import SideBar from "../components/Header/SideBar/SideBar.jsx";
@@ -18,6 +18,7 @@ import { setUser } from "../store/slices/userSlices.js";
 import "../styles/App.scss";
 import 'normalize.css';
 import Admin from "./Admin/Admin.jsx";
+import getCurrentUserId from "../common/authLogic/getCurrentUserId.js";
 
 
 
@@ -25,7 +26,6 @@ function App() {
     const [burger, setBurger] = useState(false)
     const [showInfo, setShowInfo] = useState(true)
     const [loader, setLoader] = useState('loading')
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const auth = getAuth();
@@ -34,9 +34,7 @@ function App() {
         if (window.innerWidth < 1110) setBurger(true)
     }, [])
     useEffect(() => {
-
         onAuthStateChanged(auth, (currentUser) => {
-
             if (!currentUser) {
                 setLoader('uploaded')
                  navigate('/')
@@ -47,13 +45,21 @@ function App() {
                 setLoader('uploaded')
                 return;
             }
-
-            dispatch(setUser({
-               email: currentUser.email,
-                token: currentUser.accessToken,
-                id: currentUser.uid,
-                displayName: currentUser.displayName
-            }))
+            getAllUsers().then((userRealTimeArr) => {
+                const userRealtime = getCurrentUserId(userRealTimeArr, currentUser.uid);
+                dispatch(setUser({
+                     displayName: userRealtime.displayName,
+                     password: userRealtime.password,
+                     email: userRealtime.email,
+                     token: userRealtime.token,
+                     id: userRealtime.id,
+                     date: userRealtime.date,
+                     phone: userRealtime.phone,
+                     statusUser: userRealtime.statusUser,
+                     key:userRealtime.key,
+                     progress: userRealtime.progress,
+                }));
+            })
              navigate('/home')
             setLoader('uploaded')
         })

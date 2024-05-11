@@ -9,9 +9,6 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
 } from 'firebase/auth';
-import { getAllUsers } from '../../Services/Firebade_realTime/services.js';
-import { setUser } from '../../store/slices/userSlices.js';
-import getCurrentUserId from '../../common/authLogic/getCurrentUserId.js';
 import github from '../../assets/images/icons/github-new.png';
 import google from '../../assets/images/icons/google-new.png';
 import line from '../../assets/images/line.png';
@@ -39,25 +36,8 @@ export default function LoginPage() {
     setErrorLogin(false);
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((user) => {
-        getAllUsers().then((userRealTimeArr) => {
-          const userRealtime = getCurrentUserId(userRealTimeArr, user.user.uid);
-          console.log(userRealtime);
-          dispatch(
-            setUser({
-              displayName: userRealtime.displayName,
-              password: data.password,
-              email: data.email,
-              token: user.user.accessToken,
-              id: user.user.uid,
-              date: userRealtime.date,
-              phone: userRealtime.phone,
-              statusUser: userRealtime.statusUser,
-              uid:userRealtime.key
-            })
-          );
           navigate('/home');
-        });
-      })
+        })
       .catch((error) => {
         console.log(error);
         setErrorLogin(true);

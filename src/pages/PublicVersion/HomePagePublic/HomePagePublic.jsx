@@ -10,6 +10,8 @@ import { useAuth } from '../../../hooks/use-auth.js';
 import tasksPublic from '../tasksPublic.json';
 import './HomePagePublic.scss';
 import { Modal } from 'antd';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../store/slices/userSlices.js';
 
 import arrowModal from '../../../assets/images/homePage/arrow-modal.png';
 import stripesModal from '../../../assets/images/homePage/stripes-modal.png';
@@ -22,37 +24,85 @@ import { log } from 'loglevel';
 
 export default function HomePagePublic({ setDisabledFooter }) {
   const [value, setValue] = useState('');
-  const [numberTask, setNumberTask] = useState(0);
+  const [numberTask, setNumberTask] = useState(-1);
   const [openModal, setOpenModal] = useState(true);
   const [validate, setValidate] = useState('default');
-  const { email, id, displayName, phone, date, statusUser, password } =
+  const { email, id, displayName, phone, password, key, progress, token } =
     useAuth();
-  const mutateEdit = useEditData();
   const [showResultImages, setShowResultImages] = useState(true);
   const [openAnswerModal, setOpenAnswerModal] = useState(false);
 
   const [openModalHint, setOpenModalHint] = useState(false);
   const [errorCount, setErrorCount] = useState(0);
 
+  const dispatch = useDispatch();
+  const editData = useEditData();
   useEffect(() => {
-    setValue(tasksPublic[numberTask].valueRedactor);
+    setValue(tasksPublic[numberTask]?.valueRedactor);
   }, [numberTask]);
+
+  useEffect(() => {
+    if (!progress) {
+      setNumberTask(0);
+      return;
+    }
+    if (progress[progress.length - 1].valid === 'success') {
+      console.log(1);
+      setNumberTask(progress[progress.length - 1]?.numberTask + 1);
+      return;
+    }
+    setNumberTask(progress[progress.length - 1]?.numberTask);
+  }, [key]);
 
   function getTaskUser() {
     setOpenModal(false);
   }
 
   function sendValidate() {
+    console.log(numberTask);
     const result = validateTask(value, `task${numberTask + 1}`);
-    if (!result) {
+    if (result) {
       setValidate('success');
+      editUserProgressRealTime('success');
       return;
     }
     setValidate('error');
+    editUserProgressRealTime('error');
     setErrorCount((prevErrorCount) => prevErrorCount + 1);
   }
 
-  function editUserProgressRealTime() {}
+  function editUserProgressRealTime(valid) {
+    const objUser = {
+      codeUser: value,
+      numberTask: numberTask,
+      valid,
+    };
+    const progressResult = progress
+      ? progress[progress.length - 1].numberTask === objUser.numberTask
+        ? progress.map((item) => {
+            if (item.numberTask === objUser.numberTask) {
+              item = objUser;
+              return item;
+            }
+            return item;
+          })
+        : [...progress, objUser]
+      : [objUser];
+    const newProgress = {
+      displayName,
+      email,
+      id,
+      key,
+      password,
+      phone,
+      progress: progressResult,
+      date: new Date().getTime(),
+      statusUser: 'active',
+      token,
+    };
+    editData.mutate({ id: key, updateData: newProgress });
+    dispatch(setUser(newProgress));
+  }
 
   function nextTask() {
     setValidate('default');
@@ -72,7 +122,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
         >
           <div className='homePublicPage__modal-container'>
             <h2 className='homePublicPage__modal-title'>
-              {tasksPublic[numberTask].title}{' '}
+              {tasksPublic[numberTask]?.title}
               <img
                 src={stripesModal}
                 alt='stripes modal'
@@ -80,7 +130,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
               />
             </h2>
             <p className='homePublicPage__modal-text'>
-              {tasksPublic[numberTask].theory}
+              {tasksPublic[numberTask]?.theory}
             </p>
             <img
               src={arrowModal}
@@ -107,7 +157,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                   Задание {numberTask + 1}{' '}
                 </h2>
                 <p className='homePublicPage__exercise-text'>
-                  {tasksPublic[numberTask].task}
+                  {tasksPublic[numberTask]?.task}
                 </p>
                 <a
                   onClick={() => {
