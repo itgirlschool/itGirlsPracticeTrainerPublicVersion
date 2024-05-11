@@ -118,6 +118,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                         <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask]?.title} <img
                             src={stripesModal} alt="stripes modal" className="homePublicPage__modal-stripes" /></h2>
                         <p className="homePublicPage__modal-text">{tasksPublic[numberTask]?.theory}</p>
+                        <p className="homePublicPage__modal-example"> Пример: <pre>{tasksPublic[numberTask]?.example}</pre></p>
                         <img src={arrowModal} alt="arrow modal" className="homePublicPage__modal-arrow" />
                         <button onClick={() => getTaskUser()} className="homePublicPage__modal-btn">
                             Мне все понятно! Показать задание
@@ -135,7 +136,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
                                 <p className="homePublicPage__exercise-text">
                                     {tasksPublic[numberTask]?.task}
                                 </p>
-                                <p className="homePublicPage__exercise-example">{tasksPublic[numberTask]?.example}</p>
                                 <a
                                     onClick={() => {
                                         setOpenModal(true);

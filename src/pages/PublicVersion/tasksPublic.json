@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Тег <head>",
     "theory":"Подумаем об архитектуре здания. На первый взгляд, мы видим его фасад, окна, двери. Однако за этой внешней оболочкой скрывается множество элементов, неотъемлемых для его функционирования: структура фундамента, проводка, вентиляционные системы. Точно так же и веб-страницы имеют свою видимую и невидимую структуру. В то время как пользователь видит только содержимое страницы и ее дизайн, внутри расположены скрытые элементы: метаданные, скрипты, база данных, которые обеспечивают ее работу и взаимодействие с пользователем.\nТег <head> в HTML представляет собой важную часть структуры веб-страницы. Он используется для хранения метаданных и другой информации о странице, которая не отображается напрямую на экране пользователя.\nОн располагается перед тегом <body>.\n",
-    "example": "Пример: <!DOCTYPE html>\n <html lang=\"ru\">\n<head>\n<title>Заголовок страницы</title>\n</head>\n<body>\nСодержимое страницы\n</body>\n </html>",
+    "example": "<!DOCTYPE html>\n <html lang=\"ru\">\n<head>\n<title>Заголовок страницы</title>\n</head>\n<body>\nСодержимое страницы\n</body>\n </html>",
     "task": "Расположи в окне кода все элементы в правильном порядке.",
     "valueRedactor": "<!DOCTYPE html>\n<body>Я содержимое страницы</body>\n<html lang=\"ru\"></html>\n<title>Я заголовок страницы</title>\n<head></head>",
     "correctAnswer":"<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n<title>Я заголовок страницы</title>\n</head>\n<body>\nЯ содержимое страницы\n</body>\n </html>"
@@ -12,7 +12,7 @@
     "id": 2,
     "title": "Тег <title>",
     "theory":"Тег <title> в HTML используется для определения заголовка веб-страницы, который отображается во вкладке браузера или в заголовке окна при открытии страницы. Заголовок страницы помогает пользователям определить содержание страницы и легко переключаться между вкладками в браузере.\nНа изображении ниже показаны два заголовка веб-страницы: \"Моя веб-страница\" и \"Google\".\nЧтобы присвоить веб-странице заголовок, мы добавляем <title> и </title> внутри тегов <head>. Заголовок не отображается непосредственно на странице, он предоставляет информацию браузеру о названии страницы.\n",
-    "example": "Пример:\n <!DOCTYPE html>\n <html lang=\"ru\">\n<head>\n<title>Заголовок страницы</title>\n</head>\n<body>\nСодержимое страницы\n</body>\n </html>",
+    "example": "<!DOCTYPE html>\n <html lang=\"ru\">\n<head>\n<title>Заголовок страницы</title>\n</head>\n<body>\nСодержимое страницы\n</body>\n </html>",
     "task": "Задай веб-странице заголовок, добавь теги <title> и </title>.",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    Document\n  </head>\n  <body>\n  <h1><strong>Вышел зайчик погулять</strong></h1>\n<p>\nРаз, два, три, четыре, пять,<br>\nВышел <em>зайчик</em> погулять<br>\nВдруг охотник выбегает<br>\nПрямо в зайчика стреляет.<br>\nПиф — паф! Ой-ой-ой!<br>\nУмирает зайчик мой.\n</body>\n</html>\n",
     "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1><strong>Вышел зайчик погулять</strong></h1>\n<p>\nРаз, два, три, четыре, пять,<br>\nВышел <em>зайчик</em> погулять<br>\nВдруг охотник выбегает<br>\nПрямо в зайчика стреляет.<br>\nПиф — паф! Ой-ой-ой!<br>\nУмирает зайчик мой.\n</body>\n</html>\n"
@@ -21,7 +21,7 @@
     "id": 3,
     "title": "Тег <!DOCTYPE html>",
     "theory":"Тег <!DOCTYPE html> в HTML используется для указания веб-браузеру используемой версии HTML. Без него браузер может неправильно отображать страницу.\nПоскольку мы используем последнюю версию HTML, мы используем <!DOCTYPE html>.\nТег doctype выглядит как пустой тег doctype с пустым атрибутом html: <!DOCTYPE html>.",
-    "example": "Пример:\n <!DOCTYPE html>\n <html lang=\"ru\">\n<head>\n<title>Заголовок страницы</title>\n</head>\n<body>\nСодержимое страницы\n</body>\n </html>",
+    "example": "<!DOCTYPE html>\n <html lang=\"ru\">\n<head>\n<title>Заголовок страницы</title>\n</head>\n<body>\nСодержимое страницы\n</body>\n </html>",
     "task": "Правильно этот веб-сайт указывает какую версию HTML нужно использовать? Исправь, если нет.",
     "valueRedactor": "<doctype>html</doctype>\n <html>\n <body>\n <h1>IT Girls School</h1>\n </body>\n </html>",
     "correctAnswer": "<!DOCTYPE html>\n <html>\n <body>\n <h1>IT Girls School</h1>\n </body>\n </html>"
@@ -30,7 +30,7 @@
     "id": 4,
     "title": "Параграфы",
     "theory":"Основная часть текста на сайте состоит из абзацев. Их заключают в специальные теги <p></p>. Например, чтобы создать параграф с текстом \"ItGirlSchool is Fun!\", нужно использовать следующий код:\n<p>ItGirlSchool is Fun!</p>\nНам нужен открывающий тег, за которым следует текст, и закрывающий тег. Таким образом, для создания параграфа с текстом \"Нello\" мы напишем <p>Hello</p>.",
-    "example": "Пример:\n <p>ItGirlSchool is Fun!</p>",
+    "example": "<p>ItGirlSchool is Fun!</p>",
     "task": "Давай создадим небольшую приветственную страничку! Добавь элемент <p>. В него добавь приветственное сообщение: “Welcome to my page!”.",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n\n  </body>\n</html>",
     "correctAnswer":"<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n    <p>Welcome to my page!</p>\n </body>\n</html>\n"
@@ -39,7 +39,7 @@
     "id": 5,
     "title": "Заголовок первого уровня",
     "theory":"В HTML мы можем создавать заголовки, чтобы выделить определенный текст. В HTML существует шесть тегов заголовков разного размера: h1, h2, h3, h4, h5, h6. Каждый следующий заголовок по убыванию размера.\nЗаголовок первого уровня — самый крупный.\nЧтобы создать заголовок первого уровня, отображающий текст \"Code is cool\", мы используем тег <h1>:\n<h1>Code is cool</h1>",
-    "example": "Пример:\n <h1>Code is cool</h1>",
+    "example": "<h1>Code is cool</h1>",
     "task": "Добавь элемент h1 между открывающим и закрывающим тегами над тегами <p> с текстом: \"IT Girl\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n    <p>Welcome to my page!</p>\n </body>\n</html>\n",
     "correctAnswer":"<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n  <p>Welcome to my page!</p>\n </body>\n</html>\n"
@@ -48,7 +48,7 @@
     "id": 6,
     "title": "Заголовки",
     "theory":"Теги заголовков в HTML используются для выделения текста, делая его крупнее и жирнее. Как мы уже знаем в HTML существует 6 уровней заголовков, от h1 до h6. Если заголовки правильно распределены в тексте по важности, поисковым системам легче анализировать сайт, а пользователям проще его читать.\nЗаголовок с тегом <h6> - самый маленький и менее выделенный.\nДля создания заголовка с открытыми и закрытыми тегами <h6> используется следующий код:\n<h6>Little Things</h6>",
-    "example": "Пример:\n <h6>Little Things</h6>",
+    "example": "<h6>Little Things</h6>",
     "task": "Под элементом <h1> создай элемент <h2>. Добавь между открывающим и закрывающим тегами текст: “Front-End Developer”.",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n  <p>Welcome to my page!</p>\n </body>\n</html>\n",
     "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n </body>\n</html>\n"
@@ -57,7 +57,7 @@
     "id": 7,
     "title": "Ссылки",
     "theory":"Ссылка в HTML используется для создания перехода с одной веб-страницы на другую или для перехода к определенному месту на той же странице.\nДля создания ссылки мы помещаем текст между тегами <a> и </a>.\nОднако, только добавление текста между тегами не делает его кликабельным.\nТег <a> означает \"anchor\" (якорь).\n<a>Научиться программировать</a>\nДля создания ссылки на веб-страницу мы добавляем href=\"\" вместе с URL. href - это сокращение от \"hypertext reference\" (гипертекстовая ссылка).\n<a href=\"https://itgirlschool.com\">Научиться программировать</a>",
-    "example": "Пример:\n <a>Научиться программировать</a>",
+    "example": "<a>Научиться программировать</a>",
     "task": "Давай добавим две ссылки на нашу страничку! Под элементом <p> создайте элемент ссылки, используя тег <a>. Внутри элемента <a> добавь текст с указанием имени веб-сайта: \"Telegram\". Повтори то же самое еще раз, только добавь текст \"VKontakte\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n </body>\n</html>\n",
     "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a>Telegram</a>\n <a>VKontakte</a>\n  </body>\n</html>\n"
@@ -66,7 +66,7 @@
     "id": 8,
     "title": "Атрибуты",
     "theory":"href - это атрибут.\nАтрибут - это специальный параметр, который предоставляет дополнительную информацию о том, как должен работать или выглядеть HTML-элемент  (по-латыни «признаки»). Все атрибуты имеют две общие характеристики: они предоставляют дополнительную информацию и находятся внутри открывающего тега.\nАтрибуты добавляются после имени тега и перед закрывающим знаком >. Например, значение атрибута с именем href представляет собой адрес ресурса, куда можно перейти:\n<a href=\"https://itgirlschool.com\">Научиться программировать</a>\nМы создаём ссылку на веб-страницу, добавляя = после атрибута и URL в качестве значения в одинарных (’https://itgirlschool.com’) или двойных кавычках (\"https://itgirlschool.com\"). Выбор кавычек значения не имеет.",
-    "example": "Пример:\n <a href=\"https://itgirlschool.com\">Научиться программировать</a>",
+    "example": "<a href=\"https://itgirlschool.com\">Научиться программировать</a>",
     "task": "Внутри открывающих тегов <a> введи href=\"\". Внутри кавычек после href в первом случае добавь ссылку на \"https://t.me/itgirlschool\", во втором на \"https://vk.com/itgirlschool\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a>Telegram</a>\n <a>VKontakte</a>\n  </body>\n</html>\n",
     "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
@@ -75,18 +75,18 @@
     "id": 9,
     "title": "Изображения",
     "theory":"Подобно тегу <br>, тег <img> является одинарным тегом. Это означает, что у него нет закрывающего тега.\n<h3>Рисунок <em>Восход Солнца</em> </h3><img>\nДля отображения изображения тегу <img> нужен атрибут src.\nsrc расшифровывается как источник (source).\n<h3>Рисунок <em>Восход Солнца</em></h3>\n<img src=\"https://itgirlschool.com/sun.png\">\nМы указываем изображение, которое хотим отобразить, с помощью знака =, а также адреса изображения в кавычках.",
-    "example": "Пример:\n <h3>Рисунок <em>Восход Солнца</em></h3>\n<img src=\"https://itgirlschool.com/sun.png\">",
-    "task": "Вверху страницы, прямо над элементом h1, добавь элемент img. Внутри элемента img добавь атрибут src с ссылкой на изображение: \"https://static.tildacdn.one/tild3265-3236-4131-b461-613339343237/girl_.svg\".",
+    "example": "<h3>Рисунок <em>Восход Солнца</em></h3>\n<img src=\"https://itgirlschool.com/sun.png\">",
+    "task": "Вверху страницы, прямо над элементом h1, добавь элемент img. Внутри элемента img добавь атрибут src с ссылкой на изображение: \"cat.png\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p><br>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <img src=\"https://static.tildacdn.one/tild3265-3236-4131-b461-613339343237/girl_.svg\">\n <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p><br>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <img src=\"cat.png\">\n <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p><br>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
   },
   {
     "id": 10,
     "title": "Классы",
     "theory": "Итак, структура уже готова, но сама страничка выглядет серой, хочется добавить яркости! Для этого используются стили (подробнее ты можешь познакомиться с ними в тренажере по CSS). Атрибут class используется для добавления CSS-классов элементам HTML. Например: <p class=\"paragraph\"></p>",
-    "example": "Пример:\n <p class=\"paragraph\"></p>",
+    "example": "<p class=\"paragraph\"></p>",
     "task": "Давай добавим магии к нашей страничке! Мы уже создали стили за тебя, тебе лишь нужно правильно расставить имена классов (resume__text, resume__link, resume__subtitle, resume, resume__link, resume__title, resume__img)",
-    "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <div class=\"\">\n <img class=\"\" src=\"https://static.tildacdn.one/tild3265-3236-4131-b461-613339343237/girl_.svg\">\n <h1 class=\"\">IT Girl</h1>\n <h2 class=\"\">Front-End Developer</h2>\n <p class=\"\">Welcome to my page!</p>\n <a class=\"\" href=\"https://t.me/itgirlschool\">Telegram</a>\n <a class=\"\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n </div>\n </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <div class=\"resume\">\n <img class=\"resume__img\" src=\"https://static.tildacdn.one/tild3265-3236-4131-b461-613339343237/girl_.svg\">\n <h1 class=\"resume__title\">IT Girl</h1>\n <h2 class=\"resume__subtitle\">Front-End Developer</h2>\n <p class=\"resume__text\">Welcome to my page!</p>\n <a class=\"resume__link\" href=\"https://t.me/itgirlschool\">Telegram</a>\n <a class=\"resume__link\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n </div>\n </body>\n</html>\n"
+    "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <div class=\"\">\n <img class=\"\" src=\"cat.png\">\n <h1 class=\"\">IT Girl</h1>\n <h2 class=\"\">Front-End Developer</h2>\n <p class=\"\">Welcome to my page!</p>\n <a class=\"\" href=\"https://t.me/itgirlschool\">Telegram</a>\n <a class=\"\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n </div>\n </body>\n</html>\n",
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <div class=\"resume\">\n <img class=\"resume__img\" src=\"cat.png\">\n <h1 class=\"resume__title\">IT Girl</h1>\n <h2 class=\"resume__subtitle\">Front-End Developer</h2>\n <p class=\"resume__text\">Welcome to my page!</p>\n <a class=\"resume__link\" href=\"https://t.me/itgirlschool\">Telegram</a>\n <a class=\"resume__link\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n </div>\n </body>\n</html>\n"
   }
 ]
