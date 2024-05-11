@@ -164,6 +164,16 @@
     }
   }
 
+  &__exercise-example {
+    font-size: $font-16;
+    color: $darkPinkColor;
+    font-family: $family;
+
+    @media screen and (min-width: 360px) and (max-width: 675px) {
+      font-size: $font-14;
+    }
+  }
+
   &__exercise-a {
     font-size: $font-16;
     color: $pinkColor;

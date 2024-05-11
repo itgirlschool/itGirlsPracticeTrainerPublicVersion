@@ -135,6 +135,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                                 <p className="homePublicPage__exercise-text">
                                     {tasksPublic[numberTask]?.task}
                                 </p>
+                                <p className="homePublicPage__exercise-example">{tasksPublic[numberTask]?.example}</p>
                                 <a
                                     onClick={() => {
                                         setOpenModal(true);
