@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import MirrorCode from "../../../components/MirrorCode/MirrorCode.jsx";
 import ResultCode from "../../../components/ResultCode/ResultCode.jsx";
 import validateTask from "../../../validateTask/allTasksValidate.js";
-import ProgressBar from "../../../components/ProgressBar/ProgressBar.jsx"
-import {useEditData} from "../../../Services/Firebade_realTime/services.js";
+import ProgressBar from "../../../components/ProgressBar/ProgressBar.jsx";
+import ModalAnswer from "../../../components/ModalAnswer/ModalAnswer.jsx";
+import { useEditData } from "../../../Services/Firebade_realTime/services.js";
 import { useAuth } from "../../../hooks/use-auth.js";
 import tasksPublic from "../tasksPublic.json";
 import "./HomePagePublic.scss";
 import { Modal } from "antd";
+import {useDispatch} from "react-redux";
+import {setUser} from "../../../store/slices/userSlices.js";
 import "../../../validateTask/Task.scss"
 
 import arrowModal from "../../../assets/images/homePage/arrow-modal.png";
@@ -17,40 +20,86 @@ import rhombus from "../../../assets/images/homePage/rhombus.png";
 import catHomePage from "../../../assets/images/homePage/cat-home-page.png";
 import arrowHeart from "../../../assets/images/homePage/arrow-heart.png";
 import bulb from "../../../assets/images/homePage/bulb.png";
+import { log } from "loglevel";
 
 export default function HomePagePublic({ setDisabledFooter }) {
     const [value, setValue] = useState("");
-    const [numberTask, setNumberTask] = useState(0);
+    const [numberTask, setNumberTask] = useState(-1);
     const [openModal, setOpenModal] = useState(true);
-    const [falseValidate, setFalseValidate] = useState(false);
-    const [trueValidate, setTrueValidate] = useState(false);
-    const { email,id,displayName,phone,date,statusUser,password} = useAuth();
-    const mutateEdit = useEditData();
+    const [validate, setValidate] = useState('default');
+    const { email, id, displayName, phone,password,key,progress,token} = useAuth();
+    const [showResultImages, setShowResultImages] = useState(true);
+    const [openAnswerModal, setOpenAnswerModal] = useState(false);
+    const dispatch = useDispatch();
+    const editData = useEditData();
+    useEffect(() => {
+        setValue(tasksPublic[numberTask]?.valueRedactor);
+    }, [numberTask]);
 
     useEffect(() => {
-        setValue(tasksPublic[numberTask].valueRedactor);
-    }, [numberTask]);
+        if(!progress){
+            setNumberTask(0);
+            return
+        }
+        if(progress[progress.length-1].valid ==='success') {
+            console.log(1)
+            setNumberTask(progress[progress.length - 1]?.numberTask + 1)
+            return;
+        }
+        setNumberTask(progress[progress.length - 1]?.numberTask)
+    },[key])
 
     function getTaskUser() {
         setOpenModal(false);
     }
 
     function sendValidate() {
-        const result = validateTask(value, `task${numberTask + 1}`);
-        if (!result) setFalseValidate(true);
-        if (result) setTrueValidate(true);
-
-
+        console.log(numberTask)
+        const result = validateTask(value, `task${numberTask+1}`)
+        if (result) {
+            setValidate('success');
+            editUserProgressRealTime('success');
+            return
+        }
+        setValidate('error')
+        editUserProgressRealTime('error');
     }
 
 
-
-    function editUserProgressRealTime(){
+    function editUserProgressRealTime(valid) {
+        const  objUser = {
+            codeUser: value,
+            numberTask: numberTask,
+            valid,
+        }
+        const progressResult = progress ? progress[progress.length - 1].numberTask === objUser.numberTask ?  progress.map(item=>{
+            if(item.numberTask === objUser.numberTask){
+                item = objUser
+                return item
+            }
+            return item
+        }) : [...progress, objUser] : [objUser]
+        const  newProgress = {
+            displayName,
+            email,
+            id,
+            key,
+            password,
+            phone,
+            progress:progressResult,
+            date:new Date().getTime(),
+            statusUser:'active',
+            token
+        }
+       editData.mutate({id:key,updateData:newProgress});
+        dispatch(setUser(newProgress))
 
     }
+
 
     function nextTask() {
-        setTrueValidate(false);
+        setValidate('default')
+        setShowResultImages(true);
         setNumberTask((prevState) => prevState + 1);
     }
 
@@ -66,9 +115,9 @@ export default function HomePagePublic({ setDisabledFooter }) {
                 >
 
                     <div className="homePublicPage__modal-container">
-                        <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask].title} <img
+                        <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask]?.title} <img
                             src={stripesModal} alt="stripes modal" className="homePublicPage__modal-stripes" /></h2>
-                        <p className="homePublicPage__modal-text">{tasksPublic[numberTask].theory}</p>
+                        <p className="homePublicPage__modal-text">{tasksPublic[numberTask]?.theory}</p>
                         <img src={arrowModal} alt="arrow modal" className="homePublicPage__modal-arrow" />
                         <button onClick={() => getTaskUser()} className="homePublicPage__modal-btn">
                             Мне все понятно! Показать задание
@@ -84,9 +133,8 @@ export default function HomePagePublic({ setDisabledFooter }) {
                                     Задание {numberTask + 1}{" "}
                                 </h2>
                                 <p className="homePublicPage__exercise-text">
-                                    {tasksPublic[numberTask].task}
+                                    {tasksPublic[numberTask]?.task}
                                 </p>
-                                <p className="homePublicPage__exercise-example">{tasksPublic[numberTask].example}</p>
                                 <a
                                     onClick={() => {
                                         setOpenModal(true);
@@ -111,21 +159,26 @@ export default function HomePagePublic({ setDisabledFooter }) {
                             </div>
                         </div>
                         <div className="homePublicPage__result">
-                            <div className="homePublicPage__result-images">
-                                <img src={catHomePage} alt="cat" className="homePublicPage__result-cat" />
-                                <img src={arrowHeart} alt="arrow heart" className="homePublicPage__result-arrow" />
-                            </div>
-                            <div className="homePublicPage__result-block">
-                                <div className="homePublicPage__result-text">
-                                    <ResultCode value={value} />
+                            {showResultImages ? (
+                                <div className="homePublicPage__result-images">
+                                    <img src={catHomePage} alt="cat" className="homePublicPage__result-cat" />
+                                    <img src={arrowHeart} alt="arrow heart" className="homePublicPage__result-arrow" />
+                                    <h2>Приступай к выполнению задания и ты увидишь тут результат</h2>
                                 </div>
-                            </div>
+                            ) :
+                                <div className="homePublicPage__result-block">
+                                    <div className="homePublicPage__result-text">
+                                        <ResultCode value={value} />
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
-                <div className={`homePublicPage__right ${trueValidate ? 'right_true' : null} `}>
-                    <div className={!falseValidate ? 'homePublicPage__answer' : 'homePublicPage__answer errorBorder'}>
-                        <MirrorCode value={value} setValue={setValue} setFalseValidate={setFalseValidate} />
+                <div className='homePublicPage__right'>
+                    <div className='homePublicPage__answer'>
+                        <MirrorCode setShowResultImages={setShowResultImages} value={value} setValue={setValue}
+                            setValidate={validate} />
                         <div className="homePublicPage__hint">
                             <button className="homePublicPage__hint-btn">
                                 <img
@@ -136,19 +189,18 @@ export default function HomePagePublic({ setDisabledFooter }) {
                                 />
                             </button>
                         </div>
-                        {trueValidate && <div className='box_sucsessfully'>
-                            <div className='img_sucsessfully'>
-
-                            </div>
-                            <h3>Ура! У тебя получлилось, мы можем идти дальше</h3>
-                        </div>}
                     </div>
                     <div className="homePublicPage__check">
-                        {!trueValidate ?
-                            <button className="homePublicPage__check-btn" onClick={sendValidate}>Проверить</button> :
-                            <button className="homePublicPage__check-btn next_task" onClick={nextTask} >Следующая задача</button>}
+
+                        {validate === 'default' || validate === 'error'  ?
+                            <button className="homePublicPage__check-btn" onClick={() => {
+                                sendValidate(); setOpenAnswerModal(true);}}>Проверить</button> :
+                            <button className="homePublicPage__check-btn next_task" onClick={nextTask}>Следующая
+                                задача</button>
+                        }
                     </div>
                 </div>
+                {openAnswerModal && (<ModalAnswer setOpenAnswerModal={setOpenAnswerModal} validate={validate} openAnswerModal={openAnswerModal}/>)}
             </div>
         </>
     );

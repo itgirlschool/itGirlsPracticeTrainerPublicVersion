@@ -11,7 +11,8 @@ const userSlice = createSlice({
         date:null,
         statusUser:null,
         id:null,
-        progress: []
+        key:null,
+        progress: null
     },
     reducers: {
         setUser(state, action) {
@@ -23,6 +24,8 @@ const userSlice = createSlice({
             state.date = action.payload.data
             state.statusUser = action.payload.statusUser
             state.id = action.payload.id
+            state.key = action.payload.key
+            state.progress = action.payload.progress
 
 
         },
@@ -36,6 +39,8 @@ const userSlice = createSlice({
             state.date = null
             state.statusUser = null
             state.id = null
+            state.key = null
+            state.progress = null
         }
     },
 
