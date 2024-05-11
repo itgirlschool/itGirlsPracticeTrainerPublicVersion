@@ -8,10 +8,8 @@ import task7 from "./task-7.js";
 import task8 from "./task-8.js";
 import task9 from "./task-9.js";
 import task10 from "./task-10.js";
-import task11 from "./task-11.js";
 
-
-const objTasks = {task1,task2,task3,task4,task5,task6,task7,task8,task9,task10,task11}
+const objTasks = {task1,task2,task3,task4,task5,task6,task7,task8,task9,task10}
 
 
 export default  function validateTask (value,numberTask){

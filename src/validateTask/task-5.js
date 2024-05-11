@@ -1,8 +1,8 @@
 export default function task5(value) {
     value = value.trim();
-
-    if (value.includes('<a>Telegram</a>') && value.includes('<a>VKontakte</a>') &&
-        value.indexOf('<p>') < value.indexOf('<a>')) {
+    
+    if (value.includes('<h1>IT Girl</h1>') &&
+        value.indexOf('<h1>') < value.indexOf('<p>')) {
         return true;
     } else {
         return false;

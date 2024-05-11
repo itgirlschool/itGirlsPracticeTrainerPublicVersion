@@ -1,8 +1,7 @@
 export default function task4(value) {
     value = value.trim();
-    
-    if (value.includes('<h2>Front-End Developer</h2>') &&
-        value.indexOf('<h1>') < value.indexOf('<h2>')) {
+
+    if (value.includes('<p>Welcome to my page!</p>')) {
         return true;
     } else {
         return false;

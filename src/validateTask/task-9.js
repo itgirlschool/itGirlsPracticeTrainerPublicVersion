@@ -1,12 +1,10 @@
 export default function task9(value) {
     value = value.trim();
-    
-    if (value.includes('<title>') && value.includes('</title>')) {
+
+    if (value.includes('<img src="https://static.tildacdn.one/tild3265-3236-4131-b461-613339343237/girl_.svg">') &&
+        value.indexOf('<img>') < value.indexOf('<h1>')) {
         return true;
     } else {
         return false;
     }
 }
-
-
-

@@ -1,7 +1,8 @@
-export default function  task6 (value){
+export default function task6(value) {
     value = value.trim();
     
-    if (value.includes('<a href=\"https://t.me/itgirlschool\">') && value.includes('<a href=\"https://vk.com/itgirlschool\">')) {
+    if (value.includes('<h2>Front-End Developer</h2>') &&
+        value.indexOf('<h1>') < value.indexOf('<h2>')) {
         return true;
     } else {
         return false;

@@ -1,18 +1,9 @@
-export default function task8(value) {
+export default function  task8 (value){
+    value = value.trim();
     
-    const correctAnswer = '<!DOCTYPE html>\n' +
-    '<html lang="ru">\n' +
-    '  <head>\n' +
-    '    <title>Я заголовок страницы</title>\n' +
-    '  </head>\n' +
-    '  <body>Я содержимое страницы</body>\n' +
-    '</html>';
-    console.log(correctAnswer); 
-    console.log(value === correctAnswer);
-
-    if (value.trim() !== correctAnswer.trim()) {
-        return false;
-    } else {
+    if (value.includes('<a href=\"https://t.me/itgirlschool\">') && value.includes('<a href=\"https://vk.com/itgirlschool\">')) {
         return true;
-    } 
+    } else {
+        return false;
+    }
 }

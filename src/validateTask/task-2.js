@@ -1,7 +1,7 @@
 export default function task2(value) {
     value = value.trim();
-
-    if (value.includes('<p>Welcome to my page!</p>')) {
+    
+    if (value.includes('<title>') && value.includes('</title>')) {
         return true;
     } else {
         return false;

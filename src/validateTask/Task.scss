@@ -1,11 +1,13 @@
+@import '../styles/vars';
+
 .resume {
     display: block;
-    color: white;
-    font-family: 'Trebuchet MS';
+    color: $whiteColor;
+    font-family: $family;
     text-align: center;
     width: 500px;
     padding: 15px 0;
-    background-color: #EA5D80;
+    background-color: $pinkColor;
 
     &__img {
         border-radius: 75px;
@@ -13,29 +15,34 @@
     }
 
     &__title {
-        font-size: 32px;
-        font-weight: bold;
+        font-size: $font-28;
+        font-weight: $bold;
         margin: 10px;
     }
 
     &__subtitle {
-        font-size: 24px;
-        font-weight: bold;
+        font-size: $font-24;
+        font-weight: $normal;
     }
 
     &__text {
         margin: 15px;
+        font-size: $font-16;
+        font-weight: $normal;
     }
 
     &__link {
-        background-color: white;
-        font-size: 20px;
-        border-radius: 10px;
+        background-color: $whiteColor;
+        font-size: $font-16;
+        font-weight: $light;
+        border-radius: 50px;
         padding: 10px;
         display: block;
         text-align: center;
-        margin: 10px;
-        color: #EA5D80;
+        margin: 12px;
+        margin-left: 42px;
+        margin-right: 42px;
+        color: $pinkColor;
         cursor: pointer;
         text-decoration: underline;
     }
