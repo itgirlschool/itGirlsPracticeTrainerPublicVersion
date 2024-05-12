@@ -4,8 +4,6 @@ import ExitButtonAuth from "../../components/ExitButtonsAuth/ExitButtonAuth.jsx"
 import { Dropdown, Menu, Space, Pagination, ConfigProvider } from 'antd';
 import { useEffect, useState } from "react";
 import { log } from "loglevel";
-
-import paginationStyles from "./paginationStyles.js";
 import './Admin.scss'
 
 import { MdArrowDropDown } from "react-icons/md";
