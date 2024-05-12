@@ -14,8 +14,16 @@
       }
     }
   }
+  .reactour__close {
+    color: $pinkColor;
+    top: 12px;
+  }
 
   @media screen and (min-width: 360px) and (max-width: 675px) {
     font-size: $font-14;
   }
 }
+
+// .reactour__close {
+//   color: red;
+// }
