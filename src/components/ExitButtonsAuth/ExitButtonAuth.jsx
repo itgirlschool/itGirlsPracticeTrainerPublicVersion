@@ -2,9 +2,12 @@ import { getAuth, signOut } from 'firebase/auth';
 import { removeUser } from '../../store/slices/userSlices.js';
 import { useDispatch } from 'react-redux';
 import React from 'react';
+
 import './ExitButtonAuth.scss';
 
-const ExitButton = React.memo(() => {
+import { IoMdExit } from 'react-icons/io';
+
+const ExitButton = React.memo(({ adaptive }) => {
   const dispatch = useDispatch();
   const handleSignOut = async () => {
     const auth = getAuth();
@@ -19,7 +22,7 @@ const ExitButton = React.memo(() => {
 
   return (
     <button className='exitBtnStudy' onClick={handleSignOut}>
-      Выйти из личного кабинета
+      <IoMdExit />
     </button>
   );
 });

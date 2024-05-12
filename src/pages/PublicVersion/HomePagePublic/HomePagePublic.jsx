@@ -9,6 +9,8 @@ import { useAuth } from "../../../hooks/use-auth.js";
 import tasksPublic from "../tasksPublic.json";
 import "./HomePagePublic.scss";
 import { Modal } from "antd";
+import {useDispatch} from "react-redux";
+import {setUser} from "../../../store/slices/userSlices.js";
 
 import arrowModal from "../../../assets/images/homePage/arrow-modal.png";
 import stripesModal from "../../../assets/images/homePage/stripes-modal.png";
@@ -21,35 +23,78 @@ import { log } from "loglevel";
 
 export default function HomePagePublic({ setDisabledFooter }) {
     const [value, setValue] = useState("");
-    const [numberTask, setNumberTask] = useState(0);
+    const [numberTask, setNumberTask] = useState(-1);
     const [openModal, setOpenModal] = useState(true);
     const [validate, setValidate] = useState('default');
-    const { email, id, displayName, phone, date, statusUser, password } = useAuth();
-    const mutateEdit = useEditData();
+    const { email, id, displayName, phone,password,key,progress,token} = useAuth();
     const [showResultImages, setShowResultImages] = useState(true);
     const [openAnswerModal, setOpenAnswerModal] = useState(false);
+    const dispatch = useDispatch();
+    const editData = useEditData();
+    useEffect(() => {
+        setValue(tasksPublic[numberTask]?.valueRedactor);
+    }, [numberTask]);
 
     useEffect(() => {
-        setValue(tasksPublic[numberTask].valueRedactor);
-    }, [numberTask]);
+        if(!progress){
+            setNumberTask(0);
+            return
+        }
+        if(progress[progress.length-1].valid ==='success') {
+            console.log(1)
+            setNumberTask(progress[progress.length - 1]?.numberTask + 1)
+            return;
+        }
+        setNumberTask(progress[progress.length - 1]?.numberTask)
+    },[key])
 
     function getTaskUser() {
         setOpenModal(false);
     }
 
     function sendValidate() {
-        const result = validateTask(value, `task${numberTask + 1}`)
+        console.log(numberTask)
+        const result = validateTask(value, `task${numberTask+1}`)
         if (result) {
             setValidate('success');
+            editUserProgressRealTime('success');
             return
         }
         setValidate('error')
+        editUserProgressRealTime('error');
     }
 
 
-    function editUserProgressRealTime() {
+    function editUserProgressRealTime(valid) {
+        const  objUser = {
+            codeUser: value,
+            numberTask: numberTask,
+            valid,
+        }
+        const progressResult = progress ? progress[progress.length - 1].numberTask === objUser.numberTask ?  progress.map(item=>{
+            if(item.numberTask === objUser.numberTask){
+                item = objUser
+                return item
+            }
+            return item
+        }) : [...progress, objUser] : [objUser]
+        const  newProgress = {
+            displayName,
+            email,
+            id,
+            key,
+            password,
+            phone,
+            progress:progressResult,
+            date:new Date().getTime(),
+            statusUser:'active',
+            token
+        }
+       editData.mutate({id:key,updateData:newProgress});
+        dispatch(setUser(newProgress))
 
     }
+
 
     function nextTask() {
         setValidate('default')
@@ -69,9 +114,9 @@ export default function HomePagePublic({ setDisabledFooter }) {
                 >
 
                     <div className="homePublicPage__modal-container">
-                        <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask].title} <img
+                        <h2 className="homePublicPage__modal-title">{tasksPublic[numberTask]?.title} <img
                             src={stripesModal} alt="stripes modal" className="homePublicPage__modal-stripes" /></h2>
-                        <p className="homePublicPage__modal-text">{tasksPublic[numberTask].theory}</p>
+                        <p className="homePublicPage__modal-text">{tasksPublic[numberTask]?.theory}</p>
                         <img src={arrowModal} alt="arrow modal" className="homePublicPage__modal-arrow" />
                         <button onClick={() => getTaskUser()} className="homePublicPage__modal-btn">
                             Мне все понятно! Показать задание
@@ -87,7 +132,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                                     Задание {numberTask + 1}{" "}
                                 </h2>
                                 <p className="homePublicPage__exercise-text">
-                                    {tasksPublic[numberTask].task}
+                                    {tasksPublic[numberTask]?.task}
                                 </p>
                                 <a
                                     onClick={() => {
@@ -145,8 +190,10 @@ export default function HomePagePublic({ setDisabledFooter }) {
                         </div>
                     </div>
                     <div className="homePublicPage__check">
-                        {validate === 'default' || validate === 'error' ?
-                            <button className="homePublicPage__check-btn" onClick={() => { sendValidate(); setOpenAnswerModal(true); }}>Проверить</button> :
+
+                        {validate === 'default' || validate === 'error'  ?
+                            <button className="homePublicPage__check-btn" onClick={() => {
+                                sendValidate(); setOpenAnswerModal(true);}}>Проверить</button> :
                             <button className="homePublicPage__check-btn next_task" onClick={nextTask}>Следующая
                                 задача</button>
                         }

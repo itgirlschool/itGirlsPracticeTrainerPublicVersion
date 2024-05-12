@@ -1,21 +1,12 @@
 @import '../../styles/vars.scss';
 
 .exitBtnStudy {
-  padding: 0px 10px;
-  margin: 25px auto;
-  background: $pinkColor;
-  border: 1px solid $pinkColor;
+  height: 46px;
   border-radius: 50px;
+  border: none;
+  background-color: $pinkColor;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 15px;
   cursor: pointer;
-  outline: none;
-  font-family: $family;
-  font-size: $font-16;
-  letter-spacing: 1px;
-  color: #fffdee;
-  transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-  width: 221px;
-  height: 42px;
-  @media screen and (min-width: 320px) and (max-width: 380px) {
-    width: 170px;
-  }
 }
