@@ -1,7 +1,9 @@
-import { useGetData } from "../../Services/Firebade_realTime/services.js";
+import { useGetData, useEditData } from "../../Services/Firebade_realTime/services.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
 import ExitButtonAuth from "../../components/ExitButtonsAuth/ExitButtonAuth.jsx";
 import { Dropdown, Menu, Space, Pagination, ConfigProvider } from 'antd';
+import { setUser } from "../../store/slices/userSlices.js";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { log } from "loglevel";
 import './Admin.scss'
@@ -16,6 +18,46 @@ export default function Admin({ setShowInfo }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterValue, setFilterValue] = useState('all');
     const [adaptive, setAdaptive] = useState(true);
+
+    const dispatch = useDispatch();
+    const editData = useEditData();
+
+    useEffect(() => {
+        compareDate();
+    }, [filteredUsers]);
+
+    const compareDate = () => {
+        const currentDate = new Date();
+        filteredUsers.forEach(user => {
+            const formattedDate = new Date(user.date);
+            const difference = currentDate - formattedDate;
+            const oneWeek = 7 * 24 * 60 * 60 * 1000;
+            if (difference > oneWeek) {
+                switchUserStatus('critical', user.id);
+            }
+        });
+    };
+
+    function switchUserStatus(status, id) {
+        const updateUser = users.find(user => user.id === id);
+        if (updateUser) {
+            const { displayName, email, id, key, password, phone, progress = [], date, token } = updateUser;
+            const newStatus = {
+                displayName,
+                email,
+                id,
+                key,
+                password,
+                phone,
+                progress,
+                date,
+                statusUser: status,
+                token
+            }
+            editData.mutate({ id: key, updateData: newStatus });
+            dispatch(setUser(newStatus));
+        }
+    }
 
     useEffect(() => {
         if (window.innerWidth < 768) setAdaptive(false);
