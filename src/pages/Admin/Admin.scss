@@ -8,93 +8,90 @@ html {
 .adminPage {
     width: 95%;
     margin: 0 auto;
+    padding-bottom: 50px;
 
     .adminPage__header {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-}
 
-.filterBox {
-    display: flex;
-    padding: 15px;
-    gap: 10px;
-    background-color: $pinkColor;
-
-    .filterBox__tab {
-        border: none;
-    }
-
-    .activeTab {
-        border: 1px solid;
-    }
-}
-
-.tableContainer {
-    border-radius: 10px;
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-
-    .tableContainer__actions {
+    .adminPage__tableContainer {
+        border-radius: 10px;
+        overflow: hidden;
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: $pinkColor;
-        padding: 15px;
+        margin: 0 auto;
 
-        .tableContainer__filter {
+        .adminPage__tableContainer-actions {
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-
-            & select {
-                height: 40px;
-                width: 100px;
-                outline: none;
-                border: none;
-                border-radius: 10px;
-                padding: 0 5px;
-            }
+            justify-content: space-between;
+            background: $pinkColor;
+            padding: 15px;
         }
 
-        .tableContainer__pagination {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+    }
 
-            button,
-            .tableContainer__pagination-btn,
-            .active {
-                display: inherit;
-                align-items: inherit;
-                justify-content: inherit;
-                width: 40px;
-                height: 40px;
-                border: none;
-                border-radius: 10px;
-                outline: none;
-                cursor: pointer;
-                color: $whiteColor;
-                font-weight: $bold;
-                background: $lightOrangeColor;
-                transition: 0.3s all ease-in-out;
+    .adminPage__users {
+        margin: 30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
 
-                &:hover {
-                    background: $orangeColor;
+        .dropdown {
+            width: 100%;
+
+            .dropdown__space {
+                display: flex;
+                align-items: center;
+
+                .dropdown__space-index {
+                    width: 35px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
 
-            .active {
-                background: $orangeColor;
+            .dropdown__menu {
+                .dropdown__menu-item {
+                    font-weight: $bold;
+
+                }
             }
         }
     }
-
 }
+
+.dropdown__menu-item--new {
+    color: $lightOrangeColor;
+}
+
+.dropdown__menu-item--active {
+    color: $orangeColor;
+}
+
+.dropdown__menu-item--critical {
+    color: $darkPinkColor;
+}
+
+.filter {
+    height: 40px;
+    width: 100px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 
 .adminTable {
     min-width: 100%;
@@ -102,23 +99,22 @@ html {
     background: #f6f6f6;
     border-collapse: collapse;
 
-    .adminTable__header {
-        background: $pinkColor;
+    .adminTable__body {
+        border-radius: 20px;
 
-        th {
-            color: $whiteColor;
-            text-align: center;
-            padding: 25px 15px;
+        .adminTable__header {
+            background: $pinkColor;
 
-            &:nth-child(1) {
-                padding: 5px;
+            th {
+                color: $whiteColor;
+                text-align: center;
+                padding: 25px 15px;
+
+                &:nth-child(1) {
+                    padding: 5px;
+                }
             }
         }
-    }
-
-    .adminTable__body {
-
-        border-radius: 20px;
 
         .adminTable__body-row {
             td {
@@ -130,7 +126,7 @@ html {
                 background: $whiteColor;
             }
 
-            .adminTable__body-status {
+            .adminTable__body-row-status {
                 padding: 10px 20px;
                 border-radius: 10px;
                 display: inline-block;

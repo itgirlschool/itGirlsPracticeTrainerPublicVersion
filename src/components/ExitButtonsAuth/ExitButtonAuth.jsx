@@ -5,8 +5,10 @@ import React from "react";
 
 import './ExitButtonAuth.scss'
 
+import { IoMdExit } from "react-icons/io";
 
-const ExitButton = React.memo(() => {
+
+const ExitButton = React.memo(({ adaptive }) => {
     const dispatch = useDispatch()
     const handleSignOut = async () => {
         const auth = getAuth();
@@ -21,7 +23,7 @@ const ExitButton = React.memo(() => {
 
     return (
         <button className="exitBtnStudy" onClick={handleSignOut}>
-            Выйти
+            <IoMdExit />
         </button>
     );
 });
