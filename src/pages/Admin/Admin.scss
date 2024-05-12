@@ -1,0 +1,151 @@
+@import '../../styles/vars.scss';
+
+body,
+html {
+    font-family: $family;
+}
+
+.adminPage {
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+
+    .adminPage__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .adminPage__tableContainer {
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        margin: 0 auto;
+
+        .adminPage__tableContainer-actions {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: $pinkColor;
+            padding: 15px;
+        }
+
+    }
+
+    .adminPage__users {
+        margin: 30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+
+        .dropdown {
+            width: 100%;
+
+            .dropdown__space {
+                display: flex;
+                align-items: center;
+
+                .dropdown__space-index {
+                    width: 35px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .dropdown__menu {
+                .dropdown__menu-item {
+                    font-weight: $bold;
+
+                }
+            }
+        }
+    }
+}
+
+.dropdown__menu-item--new {
+    color: $lightOrangeColor;
+}
+
+.dropdown__menu-item--active {
+    color: $orangeColor;
+}
+
+.dropdown__menu-item--critical {
+    color: $darkPinkColor;
+}
+
+.filter {
+    height: 40px;
+    width: 100px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.adminTable {
+    min-width: 100%;
+    max-width: 100%;
+    background: #f6f6f6;
+    border-collapse: collapse;
+
+    .adminTable__body {
+        border-radius: 20px;
+
+        .adminTable__header {
+            background: $pinkColor;
+
+            th {
+                color: $whiteColor;
+                text-align: center;
+                padding: 25px 15px;
+
+                &:nth-child(1) {
+                    padding: 5px;
+                }
+            }
+        }
+
+        .adminTable__body-row {
+            td {
+                text-align: center;
+                padding: 15px 15px;
+            }
+
+            &:nth-child(2n) {
+                background: $whiteColor;
+            }
+
+            .adminTable__body-row-status {
+                padding: 10px 20px;
+                border-radius: 10px;
+                display: inline-block;
+                color: $whiteColor;
+                font-weight: $bold;
+            }
+
+            .new {
+                background: $lightOrangeColor;
+            }
+
+            .active {
+                background: $orangeColor;
+            }
+
+            .critical {
+                background: $darkPinkColor;
+            }
+        }
+
+    }
+}
