@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../../store/slices/userSlices.js';
 import CustomTour from '../../../components/CustomTour/CustomTour.jsx';
 import ModalGreeting from '../../../components/ModalGreeting/ModalGreeting.jsx';
+import "../../../validateTask/Task.scss"
 import {steps} from './step.js';
 import arrowModal from '../../../assets/images/homePage/arrow-modal.png';
 import stripesModal from '../../../assets/images/homePage/stripes-modal.png';
@@ -151,6 +152,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
             <p className='homePublicPage__modal-text'>
               {tasksPublic[numberTask]?.theory}
             </p>
+            <p className="homePublicPage__modal-example"> Пример: <pre>{tasksPublic[numberTask]?.example}</pre></p>
             <img
               src={arrowModal}
               alt='arrow modal'
