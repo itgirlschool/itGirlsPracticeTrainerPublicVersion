@@ -122,11 +122,11 @@ export default function HomePagePublic({ setDisabledFooter }) {
 
   function clickBtnValidate(){
     if(numberTask === 9 && !validateTask(value, `task${numberTask + 1}`)){
-      console.log(1);
       setNumberTask(prevState => prevState + 1);
+      sendValidate();
       return
     }
-    sendValidate();
+
     setOpenAnswerModal(true);
   }
 
