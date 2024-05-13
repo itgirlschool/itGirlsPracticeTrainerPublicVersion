@@ -29,7 +29,9 @@ export default function ModalHint({
     >
       <div className='hint__modal-content'>
         <h2 className='hint__modal-title'>Правильный ответ</h2>
-        <p className='hint__modal-answer'>{correctAnswer}</p>
+        <pre>
+          <p className='hint__modal-answer'>{correctAnswer}</p>
+        </pre>
       </div>
     </Modal>
   );
