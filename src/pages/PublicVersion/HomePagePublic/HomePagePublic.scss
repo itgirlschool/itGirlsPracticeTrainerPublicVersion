@@ -4,8 +4,7 @@
 .cm-gutter {
   justify-content: space-evenly;
   font-size: $font-18;
-
-  @media screen and (min-width: 320px) and (max-width: 675px) {
+  @media screen and (min-width: 360px) and (max-width: 675px) {
     font-size: $font-16;
   }
 }
@@ -21,8 +20,6 @@
     flex-direction: column;
     align-items: center;
   }
-
-  //модальное окно
   &__modal .ant-modal-content {
     border-radius: 60px;
     @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -100,7 +97,8 @@
     cursor: pointer;
     font-family: $family;
 
-    @media screen and (min-width: 320px) and (max-width: 675px) {
+
+    @media screen and (min-width: 360px) and (max-width: 675px) {
       font-size: $font-14;
       padding: 6% 10%;
     }
@@ -209,7 +207,7 @@
 
   &__result {
     background-color: $whiteColor;
-    min-height: 34vh;
+    height: 34vh;
     display: flex;
     justify-content: space-between;
     border-radius: 60px;
@@ -314,8 +312,7 @@
   }
 
   &__answer {
-    min-height: 60vh;
-    height: auto;
+    height: 78vh;
     background-color: #282c34;
     border-radius: 60px;
     width: 100%;
@@ -379,6 +376,29 @@
     @media screen and (min-width: 360px) and (max-width: 675px) {
       padding: 4%;
     }
+  }
+}
+
+.greeting__modal .ant-modal-content {
+  display: flex;
+  align-items: center;
+  height: 85vh;
+  border-radius: 60px;
+  padding: 8%;
+  justify-content: center;
+  @media screen and (min-width: 320px) and (max-width: 700px) {
+    height: 95vh;
+  }
+  .ant-modal-close {
+    right: 40px;
+    top: 20px;
+    color: $pinkColor;
+  }
+}
+
+.cVioWK {
+  svg {
+    color: rgba(0, 0, 0, 0.5);
   }
 }
 
