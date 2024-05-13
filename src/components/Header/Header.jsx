@@ -244,7 +244,7 @@ const about = [
   },
 ];
 
-const Header = () => {
+const Header = ( {isAuthenticated} ) => {
   const { firstName } = useAuth();
 
   return (
@@ -269,9 +269,8 @@ const Header = () => {
         <Select items={about} content='О школе' />
       </div>
       <div className='container_account'>
-        <div>
-          <ExitButtonAuth />
-        </div>
+      {isAuthenticated && <ExitButtonAuth />}
+
 
         <div className='header-info-container-btn'>
           <p className='header-text'>Нас уже 600+ учениц</p>
