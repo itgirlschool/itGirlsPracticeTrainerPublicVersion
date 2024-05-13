@@ -58,6 +58,8 @@ function App() {
                      statusUser: userRealtime.statusUser,
                      key:userRealtime.key,
                      progress: userRealtime.progress,
+                    onboarding: userRealtime.onboarding,
+                    descrAdmin: userRealtime.descrAdmin,
                 }));
             })
              navigate('/home')

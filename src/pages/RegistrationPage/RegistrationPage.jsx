@@ -49,7 +49,9 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     token: user.user.accessToken,
                     date: new Date().getTime(),
                     statusUser: 'new',
-                    progress: false
+                    progress: false,
+                    onboarding: true,
+                    descrAdmin:false
                 }).catch((e) => console.error(e));
             })
             .then(() => {

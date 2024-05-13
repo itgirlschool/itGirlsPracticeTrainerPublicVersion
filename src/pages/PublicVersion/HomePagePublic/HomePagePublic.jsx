@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../../store/slices/userSlices.js';
 import CustomTour from '../../../components/CustomTour/CustomTour.jsx';
 import ModalGreeting from '../../../components/ModalGreeting/ModalGreeting.jsx';
-
+import {steps} from './step.js';
 import arrowModal from '../../../assets/images/homePage/arrow-modal.png';
 import stripesModal from '../../../assets/images/homePage/stripes-modal.png';
 import catCalculator from '../../../assets/images/homePage/cat-calculator.png';
@@ -21,57 +21,19 @@ import rhombus from '../../../assets/images/homePage/rhombus.png';
 import catHomePage from '../../../assets/images/homePage/cat-home-page.png';
 import arrowHeart from '../../../assets/images/homePage/arrow-heart.png';
 import bulb from '../../../assets/images/homePage/bulb.png';
-import { log } from 'loglevel';
 
 export default function HomePagePublic({ setDisabledFooter }) {
   const [value, setValue] = useState('');
   const [numberTask, setNumberTask] = useState(-1);
   const [openModal, setOpenModal] = useState(false);
   const [validate, setValidate] = useState('default');
-  const { email, id, displayName, phone, password, key, progress, token } =
+  const { email,date, id, displayName, phone, password, key, progress, token,onboarding,statusUser } =
     useAuth();
   const [showResultImages, setShowResultImages] = useState(true);
   const [openAnswerModal, setOpenAnswerModal] = useState(false);
   const [openModalGreeting, setOpenModalGreeting] = useState(true);
   const [isTourActive, setIsTourActive] = useState(false);
 
-  const steps = [
-    {
-      selector: '.progress',
-      content:
-        'По мере выполнения заданий, твой прогресс будет расти. Чем больше заданий ты решишь верно — тем выше будет % твоего прогресса. Всё просто!',
-    },
-    {
-      selector: '.homePublicPage__block',
-      content:
-        'Здесь ты можешь ознакомиться с заданиями, они будут высвечиваться по одному. Перейти к следующему ты сможешь, когда решишь текущее. Внимательно читай, что нужно сделать, большинство ошибок - чаще по невнимательности, чем от глупости.',
-    },
-    {
-      selector: '.homePublicPage__exercise-a',
-      content:
-        'После знакомства с этим гайдом, мы обязательно проведем тебе небольшой экскурс, о том, что такое тэги и из чего состоят веб-страницы. Если вдруг ты захочешь вернуться к этой теории, ты всегда сможешь это сделать в этом разделе. ',
-    },
-    {
-      selector: '.homePublicPage__answer',
-      content: 'Это редактор. Сюда тебе нужно будет написать свое решение. ',
-    },
-    {
-      selector: '.homePublicPage__result',
-      content:
-        'В этом поле ты увидишь "чистый" результат того, что ты написала в редакторе. Проще говоря, в редакторе будет HTML-разметка, а здесь - то же самое, но уже бэз тэгов, на языке людей, а не программистов :) .',
-    },
-
-    {
-      selector: '.homePublicPage__hint-btn',
-      content:
-        'Если решение никак не дается, мы подскажем его! После 3ех неправильных ответов, вот здесь у тебя появится "лампочка". Ты сможешь нажать на нее и увидеть ответ. Но постарайся прибегать к этому инструменту как можно реже, ведь в реальных задачах готового решения может и не быть! ',
-    },
-    {
-      selector: '.homePublicPage__check',
-      content:
-        'Наконец, кнопка "Проверить" скажет тебе, верно ли ты решила задание. Просто нажми и узнай результат! Вот и всё, теперь ты готова начать! Желаем тебе удачи, у тебя точно получится! ',
-    },
-  ];
 
   const dispatch = useDispatch();
   const editData = useEditData();
@@ -141,6 +103,13 @@ export default function HomePagePublic({ setDisabledFooter }) {
     dispatch(setUser(newProgress));
   }
 
+  function editOnboardingStatus(){
+
+    const obj = {displayName, email, id, key, password, phone, progress, date:new Date().getTime(), statusUser, token, onboarding: false}
+    editData.mutate({id: key, updateData:obj});
+    dispatch(setUser(obj));
+  }
+
   function nextTask() {
     setValidate('default');
     setShowResultImages(true);
@@ -150,11 +119,13 @@ export default function HomePagePublic({ setDisabledFooter }) {
   return (
     <>
       <ModalGreeting
-        openModalGreeting={openModalGreeting}
-        setOpenModalGreeting={setOpenModalGreeting}
-        setIsTourActive={setIsTourActive}
+          openModalGreeting={openModalGreeting}
+          setOpenModalGreeting={setOpenModalGreeting}
+          setIsTourActive={setIsTourActive}
+          onboarding={onboarding}
       />
       <CustomTour
+          editOnboardingStatus={editOnboardingStatus}
         steps={steps}
         isTourActive={isTourActive}
         setIsTourActive={setIsTourActive}
