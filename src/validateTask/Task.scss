@@ -1,6 +1,6 @@
 @import '../styles/vars';
 
-.resume {
+.page {
     border-radius: 40px;
     display: block;
     color: $whiteColor;
@@ -10,28 +10,28 @@
     padding: 15px 0;
     background-color: $pinkColor;
 
-    &__img {
+    .img {
         width: 200px;
     }
 
-    &__title {
+    .title {
         font-size: $font-28;
         font-weight: $bold;
         margin: 10px;
     }
 
-    &__subtitle {
+    .subtitle {
         font-size: $font-24;
         font-weight: $normal;
     }
 
-    &__text {
+    .text {
         margin: 15px;
         font-size: $font-16;
         font-weight: $normal;
     }
 
-    &__link {
+    .link {
         background-color: $whiteColor;
         font-size: $font-16;
         font-weight: $light;
