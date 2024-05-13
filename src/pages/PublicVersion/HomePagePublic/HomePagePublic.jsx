@@ -39,6 +39,9 @@ export default function HomePagePublic({ setDisabledFooter }) {
   const dispatch = useDispatch();
   const editData = useEditData();
   useEffect(() => {
+    if(numberTask > 9){
+      return
+    }
     setValue(tasksPublic[numberTask]?.valueRedactor);
   }, [numberTask]);
 
@@ -60,7 +63,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }
 
   function sendValidate() {
-    console.log(numberTask);
+
     const result = validateTask(value, `task${numberTask + 1}`);
     if (result) {
       setValidate('success');
@@ -105,7 +108,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }
 
   function editOnboardingStatus(){
-
     const obj = {displayName, email, id, key, password, phone, progress, date:new Date().getTime(), statusUser, token, onboarding: false}
     editData.mutate({id: key, updateData:obj});
     dispatch(setUser(obj));
@@ -115,6 +117,16 @@ export default function HomePagePublic({ setDisabledFooter }) {
     setValidate('default');
     setShowResultImages(true);
     setNumberTask((prevState) => prevState + 1);
+  }
+
+  function clickBtnValidate(){
+    if(numberTask === 9 && !validateTask(value, `task${numberTask + 1}`)){
+      console.log(1);
+      setNumberTask(prevState => prevState + 1);
+      return
+    }
+    sendValidate();
+    setOpenAnswerModal(true);
   }
 
   return (
@@ -178,10 +190,10 @@ export default function HomePagePublic({ setDisabledFooter }) {
             <div className='homePublicPage__block'>
               <div className='homePublicPage__exercise'>
                 <h2 className='homePublicPage__exercise-title'>
-                  Задание {numberTask + 1}{' '}
+                  Задание {numberTask > 9 ?10:numberTask + 1}{' '}
                 </h2>
                 <p className='homePublicPage__exercise-text'>
-                  {tasksPublic[numberTask]?.task}
+                  {numberTask > 9 ? tasksPublic[9]?.task : tasksPublic[numberTask]?.task}
                 </p>
                 <a
                   onClick={() => {
@@ -219,7 +231,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                     alt='arrow heart'
                     className='homePublicPage__result-arrow'
                   />
-                  <h2>
+                  <h2 className='text_descr_task' >
                     Приступай к выполнению задания и ты увидишь тут результат
                   </h2>
                 </div>
@@ -256,10 +268,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
             {validate === 'default' || validate === 'error' ? (
               <button
                 className='homePublicPage__check-btn'
-                onClick={() => {
-                  sendValidate();
-                  setOpenAnswerModal(true);
-                }}
+                onClick={clickBtnValidate}
               >
                 Проверить
               </button>

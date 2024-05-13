@@ -70,6 +70,14 @@
     @media screen and (min-width: 360px) and (max-width: 675px) {
       width: 70%;
     }
+
+  }
+  .text_descr_task{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: $family;
+    line-height: 30px;
+    margin-left: 10px;
   }
 
   &__modal-stripes {
@@ -98,6 +106,8 @@
   }
 
   &__modal-example {
+    border: 1px solid $pinkColor;
+    padding: 10px;
     margin-top: 10px;
     font-size: $font-16;
     color: $darkPinkColor;
@@ -237,8 +247,8 @@
   }
 
   &__result {
+    padding: 30px;
     background-color: $whiteColor;
-    height: 34vh;
     display: flex;
     justify-content: space-between;
     border-radius: 60px;
@@ -253,12 +263,8 @@
       border-radius: 30px;
     }
     @media screen and (min-width: 676px) and (max-width: 990px) {
-      height: auto;
       justify-content: center;
       margin: 4% 0 4% 0;
-    }
-    @media screen and (min-width: 991px) {
-      height: auto;
     }
   }
 
@@ -274,24 +280,23 @@
   }
 
   &__result-images {
+    min-height: 40vh;
+    padding: 30px;
     display: flex;
     align-items: center;
     @media screen and (min-width: 320px) and (max-width: 675px) {
       display: none;
+      min-height: 20vh;
     }
   }
 
   &__result-block {
-    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     @media screen and (min-width: 320px) and (max-width: 675px) {
       width: auto;
-    }
-    @media screen and (min-width: 676px) {
-      width: 60%;
     }
   }
 
@@ -394,6 +399,7 @@
   }
 
   &__check-btn {
+    margin-bottom: 30px;
     width: 100%;
     border-radius: 50px;
     border: none;
