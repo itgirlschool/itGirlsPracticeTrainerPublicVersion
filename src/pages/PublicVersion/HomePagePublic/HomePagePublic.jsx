@@ -22,6 +22,7 @@ import rhombus from '../../../assets/images/homePage/rhombus.png';
 import catHomePage from '../../../assets/images/homePage/cat-home-page.png';
 import arrowHeart from '../../../assets/images/homePage/arrow-heart.png';
 import bulb from '../../../assets/images/homePage/bulb.png';
+import ModalResultLastTask from "../../../components/ModalResultLastTask/ModalResultLastTask.jsx";
 
 export default function HomePagePublic({ setDisabledFooter }) {
   const [value, setValue] = useState('');
@@ -137,6 +138,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
           setIsTourActive={setIsTourActive}
           onboarding={onboarding}
       />
+<ModalResultLastTask/>
       <CustomTour
           editOnboardingStatus={editOnboardingStatus}
         steps={steps}
@@ -288,6 +290,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
             validate={validate}
             openAnswerModal={openAnswerModal}
           />
+
         )}
       </div>
     </>
