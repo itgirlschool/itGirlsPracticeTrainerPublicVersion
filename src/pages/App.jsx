@@ -29,6 +29,8 @@ function App() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const auth = getAuth();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
     useEffect(() => {
         if (window.innerWidth < 1110) setBurger(true)
@@ -36,10 +38,14 @@ function App() {
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             if (!currentUser) {
-                setLoader('uploaded')
-                 navigate('/')
-                return
+                setIsAuthenticated(false);
+                setLoader('uploaded');
+                navigate('/');
+                return;
             }
+    
+            setIsAuthenticated(true);
+
             if (currentUser.email === 'admin@gmail.com' ) {
                 navigate('/admin')
                 setLoader('uploaded')
@@ -58,6 +64,8 @@ function App() {
                      statusUser: userRealtime.statusUser,
                      key:userRealtime.key,
                      progress: userRealtime.progress,
+                    onboarding: userRealtime.onboarding,
+                    descrAdmin: userRealtime.descrAdmin,
                 }));
             })
              navigate('/home')
@@ -72,7 +80,7 @@ function App() {
     return (
 
         <div className="app" id='app'>
-            {showInfo && (burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header />)}
+            {showInfo && (burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header isAuthenticated={isAuthenticated} />)}
             <div className={`content ${loader ? null : 'content_spinner'}`}>
                 {loader === 'uploaded' ? <Routes>
                     <Route path='/login' element={<LoginPage/>} />

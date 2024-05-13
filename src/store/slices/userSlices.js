@@ -12,7 +12,9 @@ const userSlice = createSlice({
         statusUser:null,
         id:null,
         key:null,
-        progress: null
+        progress: null,
+        onboarding: null,
+        descrAdmin:null,
     },
     reducers: {
         setUser(state, action) {
@@ -26,6 +28,8 @@ const userSlice = createSlice({
             state.id = action.payload.id
             state.key = action.payload.key
             state.progress = action.payload.progress
+            state.onboarding = action.payload.onboarding
+            state.descrAdmin = action.payload.descrAdmin
 
 
         },
@@ -41,6 +45,9 @@ const userSlice = createSlice({
             state.id = null
             state.key = null
             state.progress = null
+            state.onboarding = null
+            state.descrAdmin = null
+
         }
     },
 

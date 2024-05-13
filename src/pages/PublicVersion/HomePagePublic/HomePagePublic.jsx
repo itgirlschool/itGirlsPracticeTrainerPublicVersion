@@ -4,7 +4,6 @@ import ResultCode from '../../../components/ResultCode/ResultCode.jsx';
 import validateTask from '../../../validateTask/allTasksValidate.js';
 import ProgressBar from '../../../components/ProgressBar/ProgressBar.jsx';
 import ModalAnswer from '../../../components/ModalAnswer/ModalAnswer.jsx';
-import ModalHint from '../../../components/ModalHint/ModalHint.jsx';
 import { useEditData } from '../../../Services/Firebade_realTime/services.js';
 import { useAuth } from '../../../hooks/use-auth.js';
 import tasksPublic from '../tasksPublic.json';
@@ -12,7 +11,10 @@ import './HomePagePublic.scss';
 import { Modal } from 'antd';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../../store/slices/userSlices.js';
-
+import CustomTour from '../../../components/CustomTour/CustomTour.jsx';
+import ModalGreeting from '../../../components/ModalGreeting/ModalGreeting.jsx';
+import '../../../validateTask/Task.scss';
+import { steps } from './step.js';
 import arrowModal from '../../../assets/images/homePage/arrow-modal.png';
 import stripesModal from '../../../assets/images/homePage/stripes-modal.png';
 import catCalculator from '../../../assets/images/homePage/cat-calculator.png';
@@ -20,24 +22,37 @@ import rhombus from '../../../assets/images/homePage/rhombus.png';
 import catHomePage from '../../../assets/images/homePage/cat-home-page.png';
 import arrowHeart from '../../../assets/images/homePage/arrow-heart.png';
 import bulb from '../../../assets/images/homePage/bulb.png';
-import { log } from 'loglevel';
+import ModalResultLastTask from '../../../components/ModalResultLastTask/ModalResultLastTask.jsx';
 
 export default function HomePagePublic({ setDisabledFooter }) {
   const [value, setValue] = useState('');
   const [numberTask, setNumberTask] = useState(-1);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [validate, setValidate] = useState('default');
-  const { email, id, displayName, phone, password, key, progress, token } =
-    useAuth();
+  const {
+    email,
+    date,
+    id,
+    displayName,
+    phone,
+    password,
+    key,
+    progress,
+    token,
+    onboarding,
+    statusUser,
+  } = useAuth();
   const [showResultImages, setShowResultImages] = useState(true);
   const [openAnswerModal, setOpenAnswerModal] = useState(false);
-
-  const [openModalHint, setOpenModalHint] = useState(false);
-  const [errorCount, setErrorCount] = useState(0);
+  const [openModalGreeting, setOpenModalGreeting] = useState(true);
+  const [isTourActive, setIsTourActive] = useState(false);
 
   const dispatch = useDispatch();
   const editData = useEditData();
   useEffect(() => {
+    if (numberTask > 9) {
+      return;
+    }
     setValue(tasksPublic[numberTask]?.valueRedactor);
   }, [numberTask]);
 
@@ -59,7 +74,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }
 
   function sendValidate() {
-    console.log(numberTask);
     const result = validateTask(value, `task${numberTask + 1}`);
     if (result) {
       setValidate('success');
@@ -68,7 +82,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
     }
     setValidate('error');
     editUserProgressRealTime('error');
-    setErrorCount((prevErrorCount) => prevErrorCount + 1);
   }
 
   function editUserProgressRealTime(valid) {
@@ -104,15 +117,57 @@ export default function HomePagePublic({ setDisabledFooter }) {
     dispatch(setUser(newProgress));
   }
 
+  function editOnboardingStatus() {
+    const obj = {
+      displayName,
+      email,
+      id,
+      key,
+      password,
+      phone,
+      progress,
+      date: new Date().getTime(),
+      statusUser,
+      token,
+      onboarding: false,
+    };
+    editData.mutate({ id: key, updateData: obj });
+    dispatch(setUser(obj));
+  }
+
   function nextTask() {
     setValidate('default');
     setShowResultImages(true);
     setNumberTask((prevState) => prevState + 1);
   }
 
+  function clickBtnValidate() {
+    if (numberTask === 9 && !validateTask(value, `task${numberTask + 1}`)) {
+      setNumberTask((prevState) => prevState + 1);
+      sendValidate();
+      return;
+    }
+
+    setOpenAnswerModal(true);
+  }
+
   return (
     <>
-      <div className='homePublicPage'>
+      <ModalGreeting
+        openModalGreeting={openModalGreeting}
+        setOpenModalGreeting={setOpenModalGreeting}
+        setIsTourActive={setIsTourActive}
+        onboarding={onboarding}
+      />
+      <ModalResultLastTask />
+      <CustomTour
+        editOnboardingStatus={editOnboardingStatus}
+        steps={steps}
+        isTourActive={isTourActive}
+        setIsTourActive={setIsTourActive}
+        setOpenModal={setOpenModal}
+      />
+      <div className='homePublicPage darken-background'>
         <Modal
           open={openModal}
           footer={null}
@@ -122,7 +177,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
         >
           <div className='homePublicPage__modal-container'>
             <h2 className='homePublicPage__modal-title'>
-              {tasksPublic[numberTask]?.title}
+              {tasksPublic[numberTask]?.title}{' '}
               <img
                 src={stripesModal}
                 alt='stripes modal'
@@ -131,6 +186,10 @@ export default function HomePagePublic({ setDisabledFooter }) {
             </h2>
             <p className='homePublicPage__modal-text'>
               {tasksPublic[numberTask]?.theory}
+            </p>
+            <p className='homePublicPage__modal-example'>
+              {' '}
+              Пример: <pre>{tasksPublic[numberTask]?.example}</pre>
             </p>
             <img
               src={arrowModal}
@@ -147,17 +206,22 @@ export default function HomePagePublic({ setDisabledFooter }) {
         </Modal>
         <div className='homePublicPage__left'>
           <div className='homePublicPage__taskPublic'>
-            <ProgressBar
-              allTasks={tasksPublic.length}
-              currentTask={numberTask}
-            />
+            <>
+              <ProgressBar
+                allTasks={tasksPublic.length}
+                currentTask={numberTask}
+              />
+            </>
+
             <div className='homePublicPage__block'>
               <div className='homePublicPage__exercise'>
                 <h2 className='homePublicPage__exercise-title'>
-                  Задание {numberTask + 1}{' '}
+                  Задание {numberTask > 9 ? 10 : numberTask + 1}{' '}
                 </h2>
                 <p className='homePublicPage__exercise-text'>
-                  {tasksPublic[numberTask]?.task}
+                  {numberTask > 9
+                    ? tasksPublic[9]?.task
+                    : tasksPublic[numberTask]?.task}
                 </p>
                 <a
                   onClick={() => {
@@ -195,7 +259,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                     alt='arrow heart'
                     className='homePublicPage__result-arrow'
                   />
-                  <h2>
+                  <h2 className='text_descr_task'>
                     Приступай к выполнению задания и ты увидишь тут результат
                   </h2>
                 </div>
@@ -217,39 +281,22 @@ export default function HomePagePublic({ setDisabledFooter }) {
               setValue={setValue}
               setValidate={validate}
             />
-            {errorCount === 3 && (
-              <div className='homePublicPage__hint'>
-                <button
-                  className='homePublicPage__hint-btn'
-                  onClick={() => setOpenModalHint(true)}
-                >
-                  <img
-                    src={bulb}
-                    alt='bulb'
-                    className='homePublicPage__hint-img'
-                    title='Воспользуйтесь подсказкой'
-                  />
-                </button>
-                <div className='hint__modal-container'>
-                  <ModalHint
-                    openModalHint={openModalHint}
-                    setOpenModalHint={setOpenModalHint}
-                    setErrorCount={setErrorCount}
-                    tasksPublic={tasksPublic}
-                    numberTask={numberTask}
-                  />
-                </div>
-              </div>
-            )}
+            <div className='homePublicPage__hint'>
+              <button className='homePublicPage__hint-btn'>
+                <img
+                  src={bulb}
+                  alt='bulb'
+                  className='homePublicPage__hint-img'
+                  title='Воспользуйтесь подсказкой'
+                />
+              </button>
+            </div>
           </div>
           <div className='homePublicPage__check'>
             {validate === 'default' || validate === 'error' ? (
               <button
                 className='homePublicPage__check-btn'
-                onClick={() => {
-                  sendValidate();
-                  setOpenAnswerModal(true);
-                }}
+                onClick={clickBtnValidate}
               >
                 Проверить
               </button>
