@@ -1,20 +1,23 @@
 import { Modal } from 'antd';
 
+
 import './ModalGreeting.scss';
 
 export default function ModalPass({
   openModalGreeting,
   setOpenModalGreeting,
   setIsTourActive,
+  onboarding
 }) {
   const handleStart = () => {
     setOpenModalGreeting(!openModalGreeting);
     setIsTourActive(true);
   };
 
+
   return (
     <Modal
-      open={openModalGreeting}
+      open={!onboarding ? false: openModalGreeting}
       footer={null}
       onCancel={() => setOpenModalGreeting(false)}
       width={'614px'}
