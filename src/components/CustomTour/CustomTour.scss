@@ -1,0 +1,29 @@
+@import '../../styles/vars.scss';
+
+.helper {
+  font-size: $font-16;
+  color: $darkBrownColor;
+  font-family: $family;
+  span {
+    background-color: $pinkColor;
+  }
+  div {
+    nav {
+      .reactour__dot--is-active {
+        background-color: $pinkColor;
+      }
+    }
+  }
+  .reactour__close {
+    color: $pinkColor;
+    top: 12px;
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 675px) {
+    font-size: $font-14;
+  }
+}
+
+// .reactour__close {
+//   color: red;
+// }
