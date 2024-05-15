@@ -66,6 +66,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
   function sendValidate() {
 
     const result = validateTask(value, `task${numberTask + 1}`);
+    console.log(result);
     if (result) {
       setValidate('success');
       editUserProgressRealTime('success');
@@ -126,7 +127,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
       sendValidate();
       return
     }
-
+    sendValidate()
     setOpenAnswerModal(true);
   }
 
