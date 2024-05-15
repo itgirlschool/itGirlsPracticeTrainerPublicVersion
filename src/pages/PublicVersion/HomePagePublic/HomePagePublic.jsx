@@ -286,32 +286,31 @@ export default function HomePagePublic({ setDisabledFooter }) {
               setValue={setValue}
               setValidate={validate}
             />
-            {errorCount === 3 ||
-              (isTourActive === true && (
-                <div className='homePublicPage__hint'>
-                  <button
-                    className='homePublicPage__hint-btn'
-                    onClick={() => setOpenModalHint(true)}
-                  >
-                    <img
-                      src={bulb}
-                      alt='bulb'
-                      className='homePublicPage__hint-img'
-                      title='Воспользуйтесь подсказкой'
-                    />
-                  </button>
-                  <div className='hint__modal-container'>
-                    <ModalHint
-                      openModalHint={openModalHint}
-                      setOpenModalHint={setOpenModalHint}
-                      setErrorCount={setErrorCount}
-                      Count={setErrorCount}
-                      tasksPublic={tasksPublic}
-                      numberTask={numberTask}
-                    />
-                  </div>
+            {(isTourActive === true || errorCount === 3) && (
+              <div className='homePublicPage__hint'>
+                <button
+                  className='homePublicPage__hint-btn'
+                  onClick={() => setOpenModalHint(true)}
+                >
+                  <img
+                    src={bulb}
+                    alt='bulb'
+                    className='homePublicPage__hint-img'
+                    title='Воспользуйтесь подсказкой'
+                  />
+                </button>
+                <div className='hint__modal-container'>
+                  <ModalHint
+                    openModalHint={openModalHint}
+                    setOpenModalHint={setOpenModalHint}
+                    setErrorCount={setErrorCount}
+                    Count={setErrorCount}
+                    tasksPublic={tasksPublic}
+                    numberTask={numberTask}
+                  />
                 </div>
-              ))}
+              </div>
+            )}
           </div>
           <div className='homePublicPage__check'>
             {validate === 'default' || validate === 'error' ? (
