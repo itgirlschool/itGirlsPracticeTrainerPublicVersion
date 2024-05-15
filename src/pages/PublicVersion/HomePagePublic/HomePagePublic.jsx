@@ -4,7 +4,6 @@ import ResultCode from '../../../components/ResultCode/ResultCode.jsx';
 import validateTask from '../../../validateTask/allTasksValidate.js';
 import ProgressBar from '../../../components/ProgressBar/ProgressBar.jsx';
 import ModalAnswer from '../../../components/ModalAnswer/ModalAnswer.jsx';
-import ModalHint from '../../../components/ModalHint/ModalHint.jsx';
 import { useEditData } from '../../../Services/Firebade_realTime/services.js';
 import { useAuth } from '../../../hooks/use-auth.js';
 import tasksPublic from '../tasksPublic.json';
@@ -48,9 +47,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
   const [openModalGreeting, setOpenModalGreeting] = useState(true);
   const [isTourActive, setIsTourActive] = useState(false);
 
-  const [openModalHint, setOpenModalHint] = useState(false);
-  const [errorCount, setErrorCount] = useState(0);
-
   const dispatch = useDispatch();
   const editData = useEditData();
   useEffect(() => {
@@ -79,7 +75,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
 
   function sendValidate() {
     const result = validateTask(value, `task${numberTask + 1}`);
-
     console.log(result);
     if (result) {
       setValidate('success');
@@ -88,7 +83,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
     }
     setValidate('error');
     editUserProgressRealTime('error');
-    setErrorCount((prevErrorCount) => prevErrorCount + 1);
   }
 
   function editUserProgressRealTime(valid) {
@@ -288,32 +282,16 @@ export default function HomePagePublic({ setDisabledFooter }) {
               setValue={setValue}
               setValidate={validate}
             />
-            {isTourActive ||
-              (errorCount === 3 && (
-                <div className='homePublicPage__hint'>
-                  <button
-                    className='homePublicPage__hint-btn'
-                    onClick={() => setOpenModalHint(true)}
-                  >
-                    <img
-                      src={bulb}
-                      alt='bulb'
-                      className='homePublicPage__hint-img'
-                      title='Воспользуйтесь подсказкой'
-                    />
-                  </button>
-                  <div className='hint__modal-container'>
-                    <ModalHint
-                      openModalHint={openModalHint}
-                      setOpenModalHint={setOpenModalHint}
-                      setErrorCount={setErrorCount}
-                      Count={setErrorCount}
-                      tasksPublic={tasksPublic}
-                      numberTask={numberTask}
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className='homePublicPage__hint'>
+              <button className='homePublicPage__hint-btn'>
+                <img
+                  src={bulb}
+                  alt='bulb'
+                  className='homePublicPage__hint-img'
+                  title='Воспользуйтесь подсказкой'
+                />
+              </button>
+            </div>
           </div>
           <div className='homePublicPage__check'>
             {validate === 'default' || validate === 'error' ? (
