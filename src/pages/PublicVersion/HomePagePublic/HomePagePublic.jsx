@@ -286,8 +286,8 @@ export default function HomePagePublic({ setDisabledFooter }) {
               setValue={setValue}
               setValidate={validate}
             />
-            {isTourActive ||
-              (errorCount === 3 && (
+            {errorCount === 3 ||
+              (isTourActive === true && (
                 <div className='homePublicPage__hint'>
                   <button
                     className='homePublicPage__hint-btn'
