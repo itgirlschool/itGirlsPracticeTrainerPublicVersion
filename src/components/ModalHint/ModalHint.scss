@@ -1,0 +1,36 @@
+@import '../../styles/vars';
+
+.hint__modal-title {
+  font-size: $font-32;
+  color: $pinkColor;
+  text-align: center;
+  font-family: $family;
+
+  @media screen and (min-width: 320px) and (max-width: 360px) {
+    margin-top: 30px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 450px) {
+    font-size: $font-20;
+  }
+  @media screen and (min-width: 450px) and (max-width: 490px) {
+    margin-top: 50px;
+  }
+  @media screen and (min-width: 450px) and (max-width: 700px) {
+    font-size: $font-26;
+  }
+}
+
+.hint__modal-answer {
+  color: $black2;
+  font-size: $font-18;
+  margin: 40px 0 40px;
+  text-wrap: wrap;
+  @media screen and (min-width: 320px) and (max-width: 450px) {
+    margin: 20px 0 20px;
+    font-size: $font-14;
+  }
+  @media screen and (min-width: 450px) and (max-width: 700px) {
+    margin: 25px 0 25px;
+    font-size: $font-16;
+  }
+}
