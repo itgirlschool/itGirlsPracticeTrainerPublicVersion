@@ -78,7 +78,9 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }
 
   function sendValidate() {
-    const result = validateTask(value, `task${numberTask + 1}`);
+    // const result = validateTask(value, `task${numberTask + 1}`);
+    const result = false;
+    console.log(result);
     if (result) {
       setValidate('success');
       editUserProgressRealTime('success');
@@ -147,13 +149,12 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }
 
   function clickBtnValidate() {
-    setErrorCount((prevErrorCount) => prevErrorCount + 1);
     if (numberTask === 9 && !validateTask(value, `task${numberTask + 1}`)) {
       setNumberTask((prevState) => prevState + 1);
       sendValidate();
       return;
     }
-
+    sendValidate();
     setOpenAnswerModal(true);
   }
 
