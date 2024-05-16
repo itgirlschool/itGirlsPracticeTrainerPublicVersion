@@ -20,6 +20,14 @@ export default function Admin({ setShowInfo }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterValue, setFilterValue] = useState('all');
     const [adaptive, setAdaptive] = useState(true);
+    const [userStatuses, setUserStatuses] = useState({});
+    const [showSaveButton, setShowSaveButton] = useState({});
+
+    const statuses = [
+        "new",
+        "active",
+        "critical"
+    ]
     const [isShowNoteInput, setIsShowNoteInput] = useState(null);
     const [isShowEmptyColumn, setIsShowEmptyColumn] = useState(false);
     const [note, setNote] = useState('');
@@ -141,7 +149,36 @@ export default function Admin({ setShowInfo }) {
                     <td>{item.displayName}</td>
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
-                    <td><p className={`adminTable__body-row-status ${getColorForStatus(item.statusUser)}`}>{item.statusUser}</p></td>
+                    <td>
+                        <div className="adminTable__body-row-filterBox">
+                            <select
+                                onChange={(e) => {
+                                    const { value } = e.target;
+                                    setUserStatuses(prevState => ({
+                                        ...prevState,
+                                        [item.id]: value
+                                    }));
+                                    setShowSaveButton(prevState => ({
+                                        ...prevState,
+                                        [item.id]: true
+                                    }));
+                                }}
+                                className={`adminTable__body-statusFilter adminTable__body-statusFilter--${getColorForStatus(item.statusUser)} filter`}
+                            >
+                                <option value={item.statusUser} defaultValue>{item.statusUser}</option>
+                                {statuses.filter((status) => status !== item.statusUser).map((status) => (
+                                    <option value={status} key={status}>{status}</option>
+                                ))}
+                            </select>
+                            {showSaveButton[item.id] && userStatuses[item.id] !== item.statusUser && <button onClick={() => {
+                                switchUserStatus(userStatuses[item.id], item.id);
+                                setShowSaveButton(prevState => ({
+                                    ...prevState,
+                                    [item.id]: false
+                                }));
+                            }}>Сохранить</button>}
+                        </div>
+                    </td>
                     <td>{formatDate(item.date)}</td>
                     <td>
                         <LuPencil

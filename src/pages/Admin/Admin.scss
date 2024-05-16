@@ -83,6 +83,11 @@ html {
     outline: none;
     border: none;
     border-radius: 10px;
+    padding-left: 5px;
+
+    &:nth-child(2n) {
+        background-color: #f6f6f6;
+    }
 }
 
 .pagination {
@@ -195,26 +200,42 @@ html {
                 background: $whiteColor;
             }
 
-            .adminTable__body-row-status {
-                padding: 10px 20px;
-                border-radius: 10px;
-                display: inline-block;
-                color: $whiteColor;
-                font-weight: $bold;
-            }
+            .adminTable__body-row-filterBox {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-            .new {
-                background: $lightOrangeColor;
-            }
+                .adminTable__body-statusFilter {
+                    font-weight: $bold;
+                    color: $whiteColor;
+                    width: 100px;
 
-            .active {
-                background: $orangeColor;
-            }
+                    &--active {
+                        background-color: $orangeColor;
+                    }
 
-            .critical {
-                background: $darkPinkColor;
+                    &--new {
+                        background-color: $lightOrangeColor;
+                    }
+
+                    &--critical {
+                        background-color: $darkPinkColor;
+                    }
+                }
+
+                & button {
+                    position: absolute;
+                    height: 100%;
+                    width: 100px;
+                    border-radius: 10px;
+                    border: none;
+                    background-color: $pinkColor;
+                    color: #ffffff;
+                    font-weight: $bold;
+                    cursor: pointer;
+                }
             }
         }
-
     }
 }
