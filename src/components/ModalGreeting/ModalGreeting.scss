@@ -5,11 +5,9 @@
   color: $black2;
   text-align: center;
   font-family: $family;
-  @media screen and (min-width: 320px) and (max-width: 360px) {
-    margin-top: 30px;
-  }
   @media screen and (min-width: 320px) and (max-width: 450px) {
     font-size: $font-20;
+    margin-top: 40px;
   }
   @media screen and (min-width: 450px) and (max-width: 490px) {
     margin-top: 50px;

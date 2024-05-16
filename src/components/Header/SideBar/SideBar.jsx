@@ -22,7 +22,7 @@ const SideBar = ({ isAuthenticated, ...props }) => {
             </a>
 
             <a className='menu-item' href='#'>
-              Карьеная консультация
+              Карьерная консультация
             </a>
 
             <a className='menu-item' href='#'>
