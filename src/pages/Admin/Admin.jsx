@@ -1,7 +1,7 @@
 import { useGetData, useEditData } from "../../Services/Firebade_realTime/services.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
 import ExitButtonAuth from "../../components/ExitButtonsAuth/ExitButtonAuth.jsx";
-import { Dropdown, Menu, Space, Pagination, ConfigProvider } from 'antd';
+import { Dropdown, Menu, Space, Pagination, ConfigProvider, Input } from 'antd';
 import { setUser } from "../../store/slices/userSlices.js";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,6 +9,8 @@ import { log } from "loglevel";
 import './Admin.scss'
 
 import { MdArrowDropDown } from "react-icons/md";
+import { LuPencil } from "react-icons/lu";
+import { FiSave } from "react-icons/fi";
 
 export default function Admin({ setShowInfo }) {
     const { data, isLoading } = useGetData([]);
@@ -18,6 +20,9 @@ export default function Admin({ setShowInfo }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterValue, setFilterValue] = useState('all');
     const [adaptive, setAdaptive] = useState(true);
+    const [isShowNoteInput, setIsShowNoteInput] = useState(null);
+    const [isShowEmptyColumn, setIsShowEmptyColumn] = useState(false);
+    const [note, setNote] = useState('');
 
     const dispatch = useDispatch();
     const editData = useEditData();
@@ -38,7 +43,7 @@ export default function Admin({ setShowInfo }) {
         });
     };
 
-    function switchUserStatus(status, id) {
+    function switchUserStatus(status, id, userNote = "") {
         const updateUser = users.find(user => user.id === id);
         if (updateUser) {
             const { displayName, email, id, key, password, phone, progress = [], date, token } = updateUser;
@@ -52,12 +57,14 @@ export default function Admin({ setShowInfo }) {
                 progress,
                 date,
                 statusUser: status,
-                token
-            }
+                token,
+                note: userNote
+            };
             editData.mutate({ id: key, updateData: newStatus });
             dispatch(setUser(newStatus));
         }
     }
+
 
     useEffect(() => {
         if (window.innerWidth < 768) setAdaptive(false);
@@ -99,18 +106,52 @@ export default function Admin({ setShowInfo }) {
         return `${formattedDate.getDate()}/${formattedDate.getMonth() + 1}/${formattedDate.getFullYear()} в ${formattedDate.getHours()}:${(formattedDate.getMinutes() < 10 ? (`0${formattedDate.getMinutes()}`) : (formattedDate.getMinutes()))}`;
     }
 
+    function handleSaveNoteClick(userId) {
+        switchUserStatus(null, userId, note);
+        setIsShowNoteInput(null);
+        // setNote('')
+    }
+
     const displayItems = () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         if (adaptive) {
             return filteredUsers.slice(startIndex, endIndex).map((item, index) => (
-                <tr className="adminTable__body-row" key={index}>
+                <tr
+                    className="adminTable__body-row"
+                    key={index}
+                >
+                    {isShowNoteInput == index && (
+                        <div className="adminTable__body-row-noteInput">
+                            <input
+                                placeholder={item.note ? item.note : "Заметка"}
+                                value={note}
+                                onChange={(e) => setNote(e.target.value)}
+                                type="text"
+                            />
+                            <button
+                                className="saveNoteBtn"
+                                onClick={() => handleSaveNoteClick(item.id)}
+                            >
+                                <FiSave />
+                            </button>
+                        </div>
+                    )}
                     <td>{startIndex + index + 1}</td>
                     <td>{item.displayName}</td>
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
                     <td><p className={`adminTable__body-row-status ${getColorForStatus(item.statusUser)}`}>{item.statusUser}</p></td>
                     <td>{formatDate(item.date)}</td>
+                    <td>
+                        <LuPencil
+                            onClick={() => {
+                                setIsShowNoteInput(index);
+                                setIsShowEmptyColumn(true);
+                            }}
+                            className="adminTable__body-row-noteBtn"
+                        />
+                    </td>
                 </tr>
             ));
         } else {
@@ -144,7 +185,7 @@ export default function Admin({ setShowInfo }) {
             ));
         }
     };
-
+    
     return (
         <div className="adminPage">
             {adaptive ? (
@@ -184,6 +225,8 @@ export default function Admin({ setShowInfo }) {
                                             <th>Телефон</th>
                                             <th>Статус</th>
                                             <th>Последняя активность</th>
+                                            <th>Заметки</th>
+                                            {isShowEmptyColumn && <div className="adminTable__header-emptyColumn"></div>}
                                         </tr>
                                         {displayItems()}
                                     </tbody>
