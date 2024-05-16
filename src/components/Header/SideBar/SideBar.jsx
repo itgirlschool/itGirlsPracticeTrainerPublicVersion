@@ -4,7 +4,7 @@ import { slide as Menu } from 'react-burger-menu';
 import './SideBar.scss';
 import ExitButton from '../../ExitButtonsAuth/ExitButtonAuth';
 
-export default (props) => {
+const SideBar = ({ isAuthenticated, ...props }) => {
   return (
     <div className='containerBurger'>
       <div className='logo'>
@@ -13,7 +13,7 @@ export default (props) => {
 
       <div className='test'>
         <div className='logout-container'>
-          <ExitButton />
+        {isAuthenticated && <ExitButton />}
         </div>
         <div className='wrapper_menu'>
           <Menu {...props} right>
@@ -56,3 +56,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default SideBar;
