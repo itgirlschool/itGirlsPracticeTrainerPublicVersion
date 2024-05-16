@@ -4,9 +4,7 @@
   flex-basis: 80px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   @media screen and (min-width: 320px) {
-    align-items: normal;
     margin: 0 auto;
   }
 
@@ -113,11 +111,9 @@
 .logo {
   @media screen and (min-width: 320px) and (max-width: 550px) {
     margin-top: 20px;
-    margin-left: 15px;
   }
   @media screen and (min-width: 551px) and (max-width: 1200px) {
     margin-top: 20px;
-    margin-left: 15px;
   }
 }
 
