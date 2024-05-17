@@ -144,6 +144,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
     setShowResultImages(true);
     setNumberTask((prevState) => prevState + 1);
     setErrorCount(0)
+    setOpenModal(true);
   }
 
   function clickBtnValidate() {
