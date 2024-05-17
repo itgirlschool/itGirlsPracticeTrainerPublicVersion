@@ -22,15 +22,14 @@ export default function Admin({ setShowInfo }) {
     const [adaptive, setAdaptive] = useState(true);
     const [userStatuses, setUserStatuses] = useState({});
     const [showSaveButton, setShowSaveButton] = useState({});
+    const [notes, setNotes] = useState({});
+    const [showNoteInput, setShowNoteInput] = useState({});
 
     const statuses = [
         "new",
         "active",
         "critical"
-    ]
-    const [isShowNoteInput, setIsShowNoteInput] = useState(null);
-    const [isShowEmptyColumn, setIsShowEmptyColumn] = useState(false);
-    const [note, setNote] = useState('');
+    ];
 
     const dispatch = useDispatch();
     const editData = useEditData();
@@ -51,10 +50,10 @@ export default function Admin({ setShowInfo }) {
         });
     };
 
-    function switchUserStatus(status, id, userNote = "") {
+    function switchUserStatus(status, id, note = "") {
         const updateUser = users.find(user => user.id === id);
         if (updateUser) {
-            const { displayName, email, id, key, password, phone, progress = [], date, token } = updateUser;
+            const { displayName, email, key, password, phone, progress = [], date, token } = updateUser;
             const newStatus = {
                 displayName,
                 email,
@@ -66,12 +65,13 @@ export default function Admin({ setShowInfo }) {
                 date,
                 statusUser: status,
                 token,
-                note: userNote
-            };
+                note: note
+            }
             editData.mutate({ id: key, updateData: newStatus });
             dispatch(setUser(newStatus));
         }
     }
+
 
 
     useEffect(() => {
@@ -114,37 +114,12 @@ export default function Admin({ setShowInfo }) {
         return `${formattedDate.getDate()}/${formattedDate.getMonth() + 1}/${formattedDate.getFullYear()} в ${formattedDate.getHours()}:${(formattedDate.getMinutes() < 10 ? (`0${formattedDate.getMinutes()}`) : (formattedDate.getMinutes()))}`;
     }
 
-    function handleSaveNoteClick(userId) {
-        switchUserStatus(null, userId, note);
-        setIsShowNoteInput(null);
-        // setNote('')
-    }
-
     const displayItems = () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         if (adaptive) {
             return filteredUsers.slice(startIndex, endIndex).map((item, index) => (
-                <tr
-                    className="adminTable__body-row"
-                    key={index}
-                >
-                    {isShowNoteInput == index && (
-                        <div className="adminTable__body-row-noteInput">
-                            <input
-                                placeholder={item.note ? item.note : "Заметка"}
-                                value={note}
-                                onChange={(e) => setNote(e.target.value)}
-                                type="text"
-                            />
-                            <button
-                                className="saveNoteBtn"
-                                onClick={() => handleSaveNoteClick(item.id)}
-                            >
-                                <FiSave />
-                            </button>
-                        </div>
-                    )}
+                <tr className="adminTable__body-row" key={index}>
                     <td>{startIndex + index + 1}</td>
                     <td>{item.displayName}</td>
                     <td>{item.email}</td>
@@ -153,10 +128,9 @@ export default function Admin({ setShowInfo }) {
                         <div className="adminTable__body-row-filterBox">
                             <select
                                 onChange={(e) => {
-                                    const { value } = e.target;
                                     setUserStatuses(prevState => ({
                                         ...prevState,
-                                        [item.id]: value
+                                        [item.id]: e.target.value
                                     }));
                                     setShowSaveButton(prevState => ({
                                         ...prevState,
@@ -171,7 +145,7 @@ export default function Admin({ setShowInfo }) {
                                 ))}
                             </select>
                             {showSaveButton[item.id] && userStatuses[item.id] !== item.statusUser && <button onClick={() => {
-                                switchUserStatus(userStatuses[item.id], item.id);
+                                switchUserStatus(userStatuses[item.id], item.id, notes[item.id] || item.note);
                                 setShowSaveButton(prevState => ({
                                     ...prevState,
                                     [item.id]: false
@@ -180,16 +154,44 @@ export default function Admin({ setShowInfo }) {
                         </div>
                     </td>
                     <td>{formatDate(item.date)}</td>
-                    <td>
-                        <LuPencil
-                            onClick={() => {
-                                setIsShowNoteInput(index);
-                                setIsShowEmptyColumn(true);
-                            }}
-                            className="adminTable__body-row-noteBtn"
-                        />
+                    <td className={showNoteInput[item.id] ? "adminTable__body-row-noteBlock" : ""}>
+                        {!showNoteInput[item.id] && (
+
+                            <button onClick={() => setShowNoteInput(prevState => ({
+                                ...prevState,
+                                [item.id]: !prevState[item.id]
+                            }))}
+                                className="adminTable__body-row-noteBtn">
+                                <LuPencil />
+                            </button>
+                        )}
+                        {showNoteInput[item.id] && (
+                            <div className="adminTable__body-row-noteBox">
+                                <input
+                                    type="text"
+                                    placeholder={item.note || "Заметка"}
+                                    value={notes[item.id] || ""}
+                                    onChange={(e) => setNotes(prevState => ({
+                                        ...prevState,
+                                        [item.id]: e.target.value
+                                    }))}
+                                />
+                                <button onClick={() => {
+                                    switchUserStatus(item.statusUser, item.id, notes[item.id] || item.note);
+                                    setShowNoteInput(prevState => ({
+                                        ...prevState,
+                                        [item.id]: false
+                                    }));
+                                    setNotes(prevState => ({
+                                        ...prevState,
+                                        [item.id]: ''
+                                    }));
+                                }}
+                                    className="saveNoteBtn"><FiSave /></button>
+                            </div>
+                        )}
                     </td>
-                </tr>
+                </tr >
             ));
         } else {
             return filteredUsers.slice(startIndex, endIndex).map((item, index) => (
@@ -222,7 +224,8 @@ export default function Admin({ setShowInfo }) {
             ));
         }
     };
-    
+
+
     return (
         <div className="adminPage">
             {adaptive ? (
@@ -263,7 +266,6 @@ export default function Admin({ setShowInfo }) {
                                             <th>Статус</th>
                                             <th>Последняя активность</th>
                                             <th>Заметки</th>
-                                            {isShowEmptyColumn && <div className="adminTable__header-emptyColumn"></div>}
                                         </tr>
                                         {displayItems()}
                                     </tbody>

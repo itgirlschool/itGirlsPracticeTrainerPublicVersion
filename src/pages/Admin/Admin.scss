@@ -142,10 +142,68 @@ html {
             justify-content: space-between;
             min-width: 100%;
 
-            .adminTable__body-row-noteInput {
-                position: absolute;
+            .adminTable__body-row-noteBox {
                 width: 100%;
                 height: 100%;
+
+                & input {
+                    width: 100%;
+                    height: 100%;
+                    outline: none;
+                    padding: 0 20px;
+                    border: none;
+                }
+
+                .saveNoteBtn {
+                    top: 17px;
+                    right: 17px;
+                    cursor: pointer;
+                    background: none;
+                    height: 40px;
+                    width: 40px;
+                    border: none;
+
+                    & svg {
+                        padding: 10px;
+                        height: 40px;
+                        width: 40px;
+                    }
+                }
+            }
+
+            .adminTable__body-row-noteBtn {
+                background: none;
+                border: none;
+                height: 40px;
+                width: 40px;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            td {
+                width: 20%;
+                text-align: center;
+                padding: 15px 15px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &:nth-child(1) {
+                    width: 5%;
+                }
+
+                &:nth-last-child(1) {
+                    width: 10%;
+                }
+            }
+
+            .adminTable__body-row-noteBlock {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                width: 100% !important;
+                height: 100%;
+                padding: 0;
+                margin: 0;
 
                 & input {
                     width: 100%;
@@ -170,29 +228,6 @@ html {
                         height: 40px;
                         width: 40px;
                     }
-                }
-            }
-
-            .adminTable__body-row-noteBtn {
-                height: 40px;
-                width: 40px;
-                padding: 10px;
-                cursor: pointer;
-            }
-
-            td {
-                width: 20%;
-                text-align: center;
-                padding: 15px 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-
-                &:nth-child(1) {
-                    width: 5%;
-                }
-
-                &:nth-last-child(1) {
-                    width: 10%;
                 }
             }
 
