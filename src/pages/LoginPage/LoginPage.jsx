@@ -36,6 +36,10 @@ export default function LoginPage() {
     setErrorLogin(false);
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((user) => {
+        if(data.email === 'admin@gmail.com') {
+          navigate('/admin');
+          return
+        }
           navigate('/home');
         })
       .catch((error) => {
