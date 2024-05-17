@@ -80,7 +80,7 @@ function App() {
     return (
 
         <div className="app" id='app'>
-            {showInfo && (burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header isAuthenticated={isAuthenticated} />)}
+            {showInfo && (burger ? <SideBar isAuthenticated={isAuthenticated} pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header isAuthenticated={isAuthenticated} />)}
             <div className={`content ${loader ? null : 'content_spinner'}`}>
                 {loader === 'uploaded' ? <Routes>
                     <Route path='/login' element={<LoginPage/>} />

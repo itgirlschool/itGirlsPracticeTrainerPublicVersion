@@ -1,7 +1,7 @@
 export default function task10 (value) {
     value = value.trim();
     
-    if (value.includes('<img class="page"') && 
+    if (value.includes('<div class="page"') && 
     value.includes('<img class="img"') && 
     value.includes('<h1 class="title">') && 
     value.includes('<h2 class="subtitle">') && 
