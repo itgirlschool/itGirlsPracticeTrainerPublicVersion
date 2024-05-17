@@ -11,7 +11,6 @@ export default function ModalHint({
 }) {
   const onCancel = () => {
     setOpenModalHint(!openModalHint);
-    setErrorCount(0);
   };
 
   const currentTask = tasksPublic[numberTask];

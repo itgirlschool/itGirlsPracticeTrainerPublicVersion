@@ -65,7 +65,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
       return;
     }
     if (progress[progress.length - 1].valid === 'success') {
-      console.log(1);
       setNumberTask(progress[progress.length - 1]?.numberTask + 1);
       return;
     }
@@ -144,6 +143,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
     setValidate('default');
     setShowResultImages(true);
     setNumberTask((prevState) => prevState + 1);
+    setErrorCount(0)
   }
 
   function clickBtnValidate() {
@@ -252,7 +252,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
               </div>
             </div>
             <div className='homePublicPage__result'>
-              {showResultImages ? (
+              {numberTask < 3 || (numberTask >= 3 && showResultImages ) ? (
                 <div className='homePublicPage__result-images'>
                   <img
                     src={catHomePage}
@@ -286,7 +286,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
               setValue={setValue}
               setValidate={validate}
             />
-            {(isTourActive === true || errorCount === 3) && (
+            {(isTourActive === true || errorCount > 3) && (
               <div className='homePublicPage__hint'>
                 <button
                   className='homePublicPage__hint-btn'
