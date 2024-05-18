@@ -55,7 +55,7 @@ export default function Admin({ setShowInfo }) {
     function switchUserStatus(status, id, note = "") {
         const updateUser = users.find(user => user.id === id);
         if (updateUser) {
-            const { displayName, email,id,key, password, phone, progress, date, onboarding, note } = updateUser;
+            const { displayName, email, key, password, phone, progress = [], date } = updateUser;
             const newStatus = {
                 displayName,
                 email,
@@ -66,8 +66,7 @@ export default function Admin({ setShowInfo }) {
                 progress,
                 date,
                 statusUser: status,
-                onboarding,
-                note
+                note: note
             }
             editData.mutate({ id: key, updateData: newStatus });
             dispatch(setUser(newStatus));
