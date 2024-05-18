@@ -28,7 +28,9 @@ export default function Admin({ setShowInfo }) {
     const statuses = [
         "new",
         "active",
-        "critical"
+        "critical",
+        "stop",
+        "passed"
     ];
 
     const dispatch = useDispatch();
@@ -41,6 +43,9 @@ export default function Admin({ setShowInfo }) {
     const compareDate = () => {
         const currentDate = new Date();
         filteredUsers.forEach(user => {
+            if (user.statusUser === 'stop' || user.statusUser === 'passed') {
+                return;
+            }
             const formattedDate = new Date(user.date);
             const difference = currentDate - formattedDate;
             const oneWeek = 7 * 24 * 60 * 60 * 1000;
@@ -104,6 +109,10 @@ export default function Admin({ setShowInfo }) {
                 return 'new';
             case "critical":
                 return 'critical';
+            case "stop":
+                return 'stop';
+            case "passed":
+                return 'passed';
             default:
                 return 'default';
         }
