@@ -62,6 +62,7 @@ export default function ModalResultLastTask({setModalResultTask, modalResultTask
             footer={null}
             width={'614px'}
             className='lastTask__modal'
+            closeIcon={null} 
         >
             <div className='lastTask__modal-content'>
                 <>
@@ -70,9 +71,10 @@ export default function ModalResultLastTask({setModalResultTask, modalResultTask
                     </h2>
                     <p className='lastTask__modal-text'>
                         Мы тебя поздравляем, ты попробовала написать свой первый проект, и у тебя все получилось,
-                        конечно это только нало твоего пути и впереди еще много всего интересного.
-                        Твои результаты отпралены менеджерам они в скором времени с тообой обязательно свяжутся.
+                        конечно это только начало твоего пути и впереди еще много всего интересного.
+                        Твои результаты отправлены менеджерам, они в скором времени с тобой обязательно свяжутся.
                     </p>
+                    <button className='lastTask__modal-button' onClick={handleCancel}>Вернуться на главную</button>
                 </>
             </div>
         </Modal>
