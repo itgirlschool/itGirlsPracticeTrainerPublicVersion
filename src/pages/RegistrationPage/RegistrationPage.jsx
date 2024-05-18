@@ -1,7 +1,5 @@
 import {useForm} from 'react-hook-form';
 import {useRef, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {setUser} from '../../store/slices/userSlices.js';
 import {addUser} from '../../Services/Firebade_realTime/services.js';
 
 import {getAuth, createUserWithEmailAndPassword, updateProfile,} from 'firebase/auth';
@@ -11,7 +9,6 @@ export default function RegistrationPage({setShowInfo, burger}) {
     const [existingEmail, setExistingEmail] = useState(false);
     const [existingPhone, setExistingPhone] = useState(false);
     const {register, watch, handleSubmit, formState: {errors},} = useForm();
-    const dispatch = useDispatch();
     const password = useRef({});
     password.current = watch('password', '');
 
@@ -46,12 +43,11 @@ export default function RegistrationPage({setShowInfo, burger}) {
                     email: data.email,
                     phone: data.phone,
                     id: user.user.uid,
-                    token: user.user.accessToken,
                     date: new Date().getTime(),
                     statusUser: 'new',
                     progress: false,
                     onboarding: true,
-                    descrAdmin:false
+                    note:'Новый ползователь'
                 }).catch((e) => console.error(e));
             })
             .then(() => {

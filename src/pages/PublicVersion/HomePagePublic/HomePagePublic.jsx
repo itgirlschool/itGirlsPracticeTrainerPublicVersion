@@ -32,16 +32,15 @@ export default function HomePagePublic({ setDisabledFooter }) {
   const [validate, setValidate] = useState('default');
   const {
     email,
-    date,
     id,
     displayName,
     phone,
     password,
     key,
     progress,
-    token,
     onboarding,
     statusUser,
+    note
   } = useAuth();
   const [showResultImages, setShowResultImages] = useState(true);
   const [openAnswerModal, setOpenAnswerModal] = useState(false);
@@ -49,6 +48,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
   const [isTourActive, setIsTourActive] = useState(false);
   const [openModalHint, setOpenModalHint] = useState(false);
   const [errorCount, setErrorCount] = useState(0);
+  const [modalResultTask, setModalResultTask] = useState(false);
 
   const dispatch = useDispatch();
   const editData = useEditData();
@@ -77,7 +77,6 @@ export default function HomePagePublic({ setDisabledFooter }) {
 
   function sendValidate() {
     const result = validateTask(value, `task${numberTask + 1}`);
-    console.log(result);
     if (result) {
       setValidate('success');
       editUserProgressRealTime('success');
@@ -108,14 +107,15 @@ export default function HomePagePublic({ setDisabledFooter }) {
     const newProgress = {
       displayName,
       email,
-      id,
       key,
       password,
       phone,
       progress: progressResult,
       date: new Date().getTime(),
       statusUser: 'active',
-      token,
+      onboarding,
+      note,
+      id
     };
     editData.mutate({ id: key, updateData: newProgress });
     dispatch(setUser(newProgress));
@@ -125,15 +125,15 @@ export default function HomePagePublic({ setDisabledFooter }) {
     const obj = {
       displayName,
       email,
-      id,
       key,
       password,
       phone,
       progress,
       date: new Date().getTime(),
       statusUser,
-      token,
       onboarding: false,
+      note,
+      id
     };
     editData.mutate({ id: key, updateData: obj });
     dispatch(setUser(obj));
@@ -148,9 +148,10 @@ export default function HomePagePublic({ setDisabledFooter }) {
   }
 
   function clickBtnValidate() {
-    if (numberTask === 9 && !validateTask(value, `task${numberTask + 1}`)) {
+    if (numberTask === 9 && validateTask(value, `task${numberTask + 1}`)) {
       setNumberTask((prevState) => prevState + 1);
       sendValidate();
+      setModalResultTask(true)
       return;
     }
     sendValidate();
@@ -165,7 +166,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
         setIsTourActive={setIsTourActive}
         onboarding={onboarding}
       />
-      <ModalResultLastTask />
+      <ModalResultLastTask setModalResultTask={setModalResultTask}  modalResultTask={modalResultTask} />
       <CustomTour
         editOnboardingStatus={editOnboardingStatus}
         steps={steps}
@@ -287,7 +288,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
               setValue={setValue}
               setValidate={validate}
             />
-            {(isTourActive === true || errorCount > 3) && (
+            {(isTourActive === true || errorCount > 2) && (
               <div className='homePublicPage__hint'>
                 <button
                   className='homePublicPage__hint-btn'
