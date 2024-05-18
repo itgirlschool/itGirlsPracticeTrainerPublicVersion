@@ -35,15 +35,13 @@ export default function Admin({ setShowInfo }) {
 
     const dispatch = useDispatch();
     const editData = useEditData();
-
     useEffect(() => {
         compareDate();
     }, [filteredUsers]);
-
     const compareDate = () => {
         const currentDate = new Date();
         filteredUsers.forEach(user => {
-            if (user.statusUser === 'stop' || user.statusUser === 'passed') {
+            if(user.statusUser === "passed" || user.statusUser === "stop"){
                 return;
             }
             const formattedDate = new Date(user.date);
@@ -58,7 +56,7 @@ export default function Admin({ setShowInfo }) {
     function switchUserStatus(status, id, note = "") {
         const updateUser = users.find(user => user.id === id);
         if (updateUser) {
-            const { displayName, email, key, password, phone, progress = [], date, token } = updateUser;
+            const { displayName, email, key, password, phone, progress = [], date } = updateUser;
             const newStatus = {
                 displayName,
                 email,
@@ -69,7 +67,6 @@ export default function Admin({ setShowInfo }) {
                 progress,
                 date,
                 statusUser: status,
-                token,
                 note: note
             }
             editData.mutate({ id: key, updateData: newStatus });
@@ -82,25 +79,21 @@ export default function Admin({ setShowInfo }) {
     useEffect(() => {
         if (window.innerWidth < 768) setAdaptive(false);
     }, []);
-
     useEffect(() => {
         if (data) setUsers(Object.values(data));
     }, [data]);
-
     useEffect(() => {
         setShowInfo(false);
         return () => {
             setShowInfo(true);
         }
     });
-
     useEffect(() => {
         if (users.length > 0) {
             const filteredUsers = filterValue === 'all' ? users : users.filter(item => item.statusUser === filterValue);
             setFilteredUsers(filteredUsers);
         }
     }, [users, filterValue]);
-
     function getColorForStatus(status) {
         switch (status) {
             case "active":
@@ -109,20 +102,18 @@ export default function Admin({ setShowInfo }) {
                 return 'new';
             case "critical":
                 return 'critical';
-            case "stop":
-                return 'stop';
             case "passed":
                 return 'passed';
+            case "stop":
+                return 'stop';
             default:
                 return 'default';
         }
     }
-
     function formatDate(date) {
         const formattedDate = new Date(date);
         return `${formattedDate.getDate()}/${formattedDate.getMonth() + 1}/${formattedDate.getFullYear()} в ${formattedDate.getHours()}:${(formattedDate.getMinutes() < 10 ? (`0${formattedDate.getMinutes()}`) : (formattedDate.getMinutes()))}`;
     }
-
     const displayItems = () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;

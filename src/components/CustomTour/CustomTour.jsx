@@ -1,4 +1,4 @@
-// import Tour from 'reactour';
+import Tour from 'reactour';
 import './CustomTour.scss';
 
 export default function CustomTour({steps, setOpenModal, isTourActive, setIsTourActive, editOnboardingStatus}) {

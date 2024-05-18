@@ -257,6 +257,14 @@ html {
                     &--critical {
                         background-color: $darkPinkColor;
                     }
+
+                    &--stop {
+                        background-color: $darkPinkColor;
+                    }
+
+                    &--passed {
+                        background-color: $darkPinkColor;
+                    }
                 }
 
                 & button {
