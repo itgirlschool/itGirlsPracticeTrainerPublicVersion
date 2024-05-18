@@ -2,16 +2,16 @@
   {
     "id": 1,
     "title": "Знакомство c тегами, наш первый тег!",
-    "theory":"Тег <!DOCTYPE html> в HTML используется для указания веб-браузеру используемой версии HTML. Без него браузер может неправильно отображать страницу.\nПоскольку мы используем последнюю версию HTML, мы используем <!DOCTYPE html>.\nТег doctype выглядит как пустой тег doctype с пустым атрибутом html: <!DOCTYPE html>.",
+    "theory":"Теги HTML - это как инструкции для браузера, которые говорят ему, как правильно отобразить веб-страницу. Каждый тег начинается с символов < и заканчивается >. \nОдиночный тег, такой как <!DOCTYPE html>, это как важная команда, которую нужно выполнить сразу. Он говорит браузеру о том, какую версию HTML использовать, чтобы страница отображалась корректно.\n<!DOCTYPE html> - всегда пишется в самом начале.",
     "example": "<!DOCTYPE html>",
-    "task": "Мы попытались указать тип документа но что-то пошло не так, помоги нам исправить нашу ошибку.",
+    "task": "Измени на правильный формат написания doctype",
     "valueRedactor": "<doctype>html</doctype>",
     "correctAnswer": "<!DOCTYPE html>"
   },
   {
     "id": 2,
     "title": "Основные тэги нашей страницы",
-    "theory":"Подумаем об архитектуре здания. На первый взгляд, мы видим его фасад, окна, двери. Однако за этой внешней оболочкой скрывается множество элементов, неотъемлемых для его функционирования: структура фундамента, проводка, вентиляционные системы. Точно так же и веб-страницы имеют свою видимую и невидимую структуру. В то время как пользователь видит только содержимое страницы и ее дизайн, внутри расположены скрытые элементы: метаданные, скрипты, база данных, которые обеспечивают ее работу и взаимодействие с пользователем.\nТег <head> в HTML представляет собой важную часть структуры веб-страницы. Он используется для хранения метаданных и другой информации о странице, которая не отображается напрямую на экране пользователя.\nОн располагается перед тегом <body>.\n",
+    "theory":"В HTML большинство тегов идут парами: у них есть открывающий и закрывающий теги. Открывающие теги окружены <> и говорят браузеру, что начинается определенная часть контента, а закрывающие теги окружены </> и указывают конец этой части.\nМы изучим в этом задании парные теги из которых строится наша страница и они задают ей правильную архитектуру, в этих тегах важно соблюдать последовательность и вложеность. Начнем с такого тега как  <html></html> - это двойной тег, как вы успели заметить и это самый важный тег, он оборачивает всю нашу страничку и принимает внутрь себя технические настройки, контент который мы хотим видеть на странице. Внутри нашего тега html вложены два тега гиганта, которые определят техническую составляющую и контент нашего сайта , это тег <head><head/>  который будет в себе хранить технические настройки и тег <body><body/> который принимает в себя весь контент нашей странички и отображает его в браузере. Это архитектура нашего сайта она используется везде ее важно знать и уметь построить.",
     "example": "<!DOCTYPE html>\n <html>\n  <head>\n   Технические настройки\n  </head>\n  <body>\n   Содержимое страницы\n  </body>\n </html>",
     "task": "В теории мы тебя познакомили с важными тэгами нашей страницы, напиши их в редакторе в правильном порядке и с правильной вложеностью",
     "valueRedactor": "<!DOCTYPE html>",
@@ -33,7 +33,7 @@
     "example": "<p>Hello!</p>",
     "task": "Давай создадим небольшую приветственную страничку! Добавь элемент <p>. В него добавь приветственное сообщение: “Welcome to my page!”. Сделай все так как написано в задании не используя лишние пробелы и соблюдая правило заглавной буквы и тогда у тебя всё получится!",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n   <title>Document</title>\n  </head>\n  <body>\n\n  </body>\n</html>",
-    "correctAnswer":"<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n    <p>Welcome to my page!</p>\n </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n   <title>Document</title>\n  </head>\n  <body>\n    <p>Welcome to my page!</p>\n </body>\n</html>\n"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "example": "<h1>Code is cool</h1>",
     "task": "Добавь элемент h1 между открывающим и закрывающим тегами над тегами <p> с текстом: \"IT Girl\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n  <title>Document</title>\n  </head>\n  <body>\n    <p>Welcome to my page!</p>\n </body>\n</html>\n",
-    "correctAnswer":"<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n  <p>Welcome to my page!</p>\n </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n  <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n  <p>Welcome to my page!</p>\n </body>\n</html>\n"
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "example": "<h6>Little Things</h6>",
     "task": "Под элементом <h1> создай элемент <h2>. Добавь между открывающим и закрывающим тегами текст: “Front-End Developer”.",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n    <h1>IT Girl</h1>\n    <p>Welcome to my page!</p>\n </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n </body>\n</html>\n"
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "example": "<a>Научиться программировать</a>",
     "task": "Давай добавим две ссылки на нашу страничку! Под элементом <p> создайте элемент ссылки, используя тег <a>. Внутри элемента <a> добавь текст с указанием имени веб-сайта: \"Telegram\". Повтори то же самое еще раз, только добавь текст \"VKontakte\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n   <h1>IT Girl</h1>\n   <h2>Front-End Developer</h2>\n   <p>Welcome to my page!</p>\n </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a>Telegram</a>\n <a>VKontakte</a>\n  </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a>Telegram</a>\n <a>VKontakte</a>\n  </body>\n</html>\n"
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "example": "<a href=\"https://itgirlschool.com\">\nНаучиться программировать</a>",
     "task": "Мы с вами уже сделали ссылки, но они пока не выполняют свою функцию, так как им не хватает атрибутов. Давай их добавим! Внутри открывающих тегов <a> введи href=\"\". Внутри кавычек после href в первом случае добавь ссылку на \"https://t.me/itgirlschool\", во втором на \"https://vk.com/itgirlschool\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n   <title>Document</title>\n  </head>\n  <body>\n   <h1>IT Girl</h1>\n   <h2>Front-End Developer</h2>\n   <p>Welcome to my page!</p>\n   <a>Telegram</a>\n   <a>VKontakte</a>\n  </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n   <title>Document</title>\n  </head>\n  <body>\n  <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "example": "<h3>Восход Солнца</h3>\n<img src=\"https://itgirlschool.com/sun.png\">",
     "task": "Давай вставим изображение, которое будет украшать нашу страницу. Вверху страницы, прямо над элементом h1, добавь элемент img. Внутри элемента img добавь атрибут src с ссылкой на изображение: \"cat.png\".",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n   <h1>IT Girl</h1>\n   <h2>Front-End Developer</h2>\n   <p>Welcome to my page!</p><br>\n   <a href=\"https://t.me/itgirlschool\">Telegram</a>\n   <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <img src=\"cat.png\">\n <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p><br>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n <img src=\"cat.png\">\n <h1>IT Girl</h1>\n <h2>Front-End Developer</h2>\n <p>Welcome to my page!</p><br>\n <a href=\"https://t.me/itgirlschool\">Telegram</a>\n <a href=\"https://vk.com/itgirlschool\">VKontakte</a>\n  </body>\n</html>\n"
   },
   {
     "id": 10,
@@ -87,6 +87,6 @@
     "example": "<p class=\"paragraph\"></p>",
     "task": "Давай добавим магии к нашей страничке! Мы уже создали стили за тебя, тебе лишь нужно правильно расставить имена классов (page, text, link, subtitle, title, img). Необходимо применить все классы, некоторые могут использоваться не один раз.",
     "valueRedactor": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n   <div class=\"\">\n    <img class=\"\" src=\"cat.png\">\n    <h1 class=\"\">IT Girl</h1>\n    <h2 class=\"\">Front-End Developer</h2>\n    <p class=\"\">Welcome to my page!</p>\n    <a class=\"\" href=\"https://t.me/itgirlschool\">Telegram</a>\n    <a class=\"\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n   </div>\n </body>\n</html>\n",
-    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Document</title>\n  </head>\n  <body>\n <div class=\"page\">\n <img class=\"img\" src=\"cat.png\">\n <h1 class=\"title\">IT Girl</h1>\n <h2 class=\"subtitle\">Front-End Developer</h2>\n <p class=\"text\">Welcome to my page!</p>\n <a class=\"link\" href=\"https://t.me/itgirlschool\">Telegram</a>\n <a class=\"link\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n </div>\n </body>\n</html>\n"
+    "correctAnswer": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>\n <div class=\"page\">\n <img class=\"img\" src=\"cat.png\">\n <h1 class=\"title\">IT Girl</h1>\n <h2 class=\"subtitle\">Front-End Developer</h2>\n <p class=\"text\">Welcome to my page!</p>\n <a class=\"link\" href=\"https://t.me/itgirlschool\">Telegram</a>\n <a class=\"link\" href=\"https://vk.com/itgirlschool\">VKontakte</a>\n </div>\n </body>\n</html>\n"
   }
 ]

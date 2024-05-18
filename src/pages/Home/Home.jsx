@@ -11,14 +11,14 @@ import {useEffect} from "react";
 
 export default function Home({setShowInfo}) {
 
-    useEffect(() => {
-        if (window.innerWidth < 1110){
-            setShowInfo(false)
-        }
-        return ()=>{
-            setShowInfo(true)
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (window.innerWidth < 1110){
+    //         setShowInfo(false)
+    //     }
+    //     return ()=>{
+    //         setShowInfo(true)
+    //     }
+    // }, []);
     return (
         <>
             <div className='wrapper_homeGl'>

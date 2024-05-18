@@ -43,9 +43,7 @@ function App() {
                 navigate('/');
                 return;
             }
-    
             setIsAuthenticated(true);
-
             if (currentUser.email === 'admin@gmail.com' ) {
                 navigate('/admin')
                 setLoader('uploaded')
@@ -57,15 +55,14 @@ function App() {
                      displayName: userRealtime.displayName,
                      password: userRealtime.password,
                      email: userRealtime.email,
-                     token: userRealtime.token,
-                     id: userRealtime.id,
                      date: userRealtime.date,
+                     id: userRealtime.id,
                      phone: userRealtime.phone,
                      statusUser: userRealtime.statusUser,
                      key:userRealtime.key,
                      progress: userRealtime.progress,
                     onboarding: userRealtime.onboarding,
-                    descrAdmin: userRealtime.descrAdmin,
+                    note: userRealtime.note,
                 }));
             })
              navigate('/home')
@@ -80,7 +77,7 @@ function App() {
     return (
 
         <div className="app" id='app'>
-            {showInfo && (burger ? <SideBar pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header isAuthenticated={isAuthenticated} />)}
+            {showInfo && (burger ? <SideBar isAuthenticated={isAuthenticated} pageWrapId={"page-wrap"} outerContainerId={"app"} /> : <Header isAuthenticated={isAuthenticated} />)}
             <div className={`content ${loader ? null : 'content_spinner'}`}>
                 {loader === 'uploaded' ? <Routes>
                     <Route path='/login' element={<LoginPage/>} />

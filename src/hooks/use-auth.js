@@ -2,6 +2,6 @@ import {useSelector} from "react-redux";
 
 
 export  function  useAuth(){
-    const {email,id,displayName,statusUser,phone,date,password,key,token,progress,onboarding} = useSelector(state => state.user)
-    return {useAuthBool:!!email, email,id,displayName,phone,date,statusUser,password,key,token,progress,onboarding}
+    const {email,displayName,statusUser,phone,date,password,key,progress,onboarding,note,id} = useSelector(state => state.user)
+    return {email,displayName,phone,date,statusUser,password,key,progress,onboarding,note,id}
 }

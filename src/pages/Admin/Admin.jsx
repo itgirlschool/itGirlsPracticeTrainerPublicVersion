@@ -5,7 +5,6 @@ import { Dropdown, Menu, Space, Pagination, ConfigProvider, Input } from 'antd';
 import { setUser } from "../../store/slices/userSlices.js";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { log } from "loglevel";
 import './Admin.scss'
 
 import { MdArrowDropDown } from "react-icons/md";
@@ -56,7 +55,7 @@ export default function Admin({ setShowInfo }) {
     function switchUserStatus(status, id, note = "") {
         const updateUser = users.find(user => user.id === id);
         if (updateUser) {
-            const { displayName, email, key, password, phone, progress = [], date } = updateUser;
+            const { displayName, email,id,key, password, phone, progress, date, onboarding, note } = updateUser;
             const newStatus = {
                 displayName,
                 email,
@@ -67,7 +66,8 @@ export default function Admin({ setShowInfo }) {
                 progress,
                 date,
                 statusUser: status,
-                note: note
+                onboarding,
+                note
             }
             editData.mutate({ id: key, updateData: newStatus });
             dispatch(setUser(newStatus));

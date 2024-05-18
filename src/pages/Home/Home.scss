@@ -21,7 +21,7 @@
         color: rgb(24, 27, 50);
         font-family: $family;
         font-size: 56px;
-        font-weight: 400;
+        font-weight: $light;
         line-height: 126%;
         text-align: left;
         display: inline-block;
@@ -29,10 +29,10 @@
           font-size: 40px;
         }
         @media (max-width: 680px) {
-          font-size: 30px;
+          font-size: $font-30;
         }
         @media (max-width: 480px) {
-          font-size: 24px;
+          font-size: $font-26;
         }
 
         span {
