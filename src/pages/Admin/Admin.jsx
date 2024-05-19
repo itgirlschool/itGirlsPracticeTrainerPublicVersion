@@ -1,13 +1,15 @@
 import { useGetData, useEditData } from "../../Services/Firebade_realTime/services.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
 import ExitButtonAuth from "../../components/ExitButtonsAuth/ExitButtonAuth.jsx";
-import { Dropdown, Menu, Space, Pagination, ConfigProvider } from 'antd';
+import { Dropdown, Menu, Space, Pagination, ConfigProvider, Input } from 'antd';
 import { setUser } from "../../store/slices/userSlices.js";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import './Admin.scss'
 
 import { MdArrowDropDown } from "react-icons/md";
+import { LuPencil } from "react-icons/lu";
+import { FiSave } from "react-icons/fi";
 
 export default function Admin({ setShowInfo }) {
     const { data, isLoading } = useGetData([]);
@@ -19,6 +21,8 @@ export default function Admin({ setShowInfo }) {
     const [adaptive, setAdaptive] = useState(true);
     const [userStatuses, setUserStatuses] = useState({});
     const [showSaveButton, setShowSaveButton] = useState({});
+    const [notes, setNotes] = useState({});
+    const [showNoteInput, setShowNoteInput] = useState({});
 
     const statuses = [
         "new",
@@ -26,18 +30,19 @@ export default function Admin({ setShowInfo }) {
         "critical",
         "stop",
         "passed"
-    ]
+    ];
 
     const dispatch = useDispatch();
     const editData = useEditData();
-
     useEffect(() => {
         compareDate();
     }, [filteredUsers]);
-
     const compareDate = () => {
         const currentDate = new Date();
         filteredUsers.forEach(user => {
+            if(user.statusUser === "passed" || user.statusUser === "stop"){
+                return;
+            }
             const formattedDate = new Date(user.date);
             const difference = currentDate - formattedDate;
             const oneWeek = 7 * 24 * 60 * 60 * 1000;
@@ -47,10 +52,10 @@ export default function Admin({ setShowInfo }) {
         });
     };
 
-    function switchUserStatus(status, id) {
+    function switchUserStatus(status, id, note = "") {
         const updateUser = users.find(user => user.id === id);
         if (updateUser) {
-            const { displayName, email,id,key, password, phone, progress, date,onboarding,note } = updateUser;
+            const { displayName, email, key, password, phone, progress = [], date } = updateUser;
             const newStatus = {
                 displayName,
                 email,
@@ -61,36 +66,33 @@ export default function Admin({ setShowInfo }) {
                 progress,
                 date,
                 statusUser: status,
-                onboarding,
-                note
+                note: note
             }
             editData.mutate({ id: key, updateData: newStatus });
             dispatch(setUser(newStatus));
         }
     }
 
+
+
     useEffect(() => {
         if (window.innerWidth < 768) setAdaptive(false);
     }, []);
-
     useEffect(() => {
         if (data) setUsers(Object.values(data));
     }, [data]);
-
     useEffect(() => {
         setShowInfo(false);
         return () => {
             setShowInfo(true);
         }
     });
-
     useEffect(() => {
         if (users.length > 0) {
             const filteredUsers = filterValue === 'all' ? users : users.filter(item => item.statusUser === filterValue);
             setFilteredUsers(filteredUsers);
         }
     }, [users, filterValue]);
-
     function getColorForStatus(status) {
         switch (status) {
             case "active":
@@ -99,16 +101,18 @@ export default function Admin({ setShowInfo }) {
                 return 'new';
             case "critical":
                 return 'critical';
+            case "passed":
+                return 'passed';
+            case "stop":
+                return 'stop';
             default:
                 return 'default';
         }
     }
-
     function formatDate(date) {
         const formattedDate = new Date(date);
         return `${formattedDate.getDate()}/${formattedDate.getMonth() + 1}/${formattedDate.getFullYear()} в ${formattedDate.getHours()}:${(formattedDate.getMinutes() < 10 ? (`0${formattedDate.getMinutes()}`) : (formattedDate.getMinutes()))}`;
     }
-
     const displayItems = () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
@@ -123,10 +127,9 @@ export default function Admin({ setShowInfo }) {
                         <div className="adminTable__body-row-filterBox">
                             <select
                                 onChange={(e) => {
-                                    const { value } = e.target;
                                     setUserStatuses(prevState => ({
                                         ...prevState,
-                                        [item.id]: value
+                                        [item.id]: e.target.value
                                     }));
                                     setShowSaveButton(prevState => ({
                                         ...prevState,
@@ -141,7 +144,7 @@ export default function Admin({ setShowInfo }) {
                                 ))}
                             </select>
                             {showSaveButton[item.id] && userStatuses[item.id] !== item.statusUser && <button onClick={() => {
-                                switchUserStatus(userStatuses[item.id], item.id);
+                                switchUserStatus(userStatuses[item.id], item.id, notes[item.id] || item.note);
                                 setShowSaveButton(prevState => ({
                                     ...prevState,
                                     [item.id]: false
@@ -150,7 +153,44 @@ export default function Admin({ setShowInfo }) {
                         </div>
                     </td>
                     <td>{formatDate(item.date)}</td>
-                </tr>
+                    <td className={showNoteInput[item.id] ? "adminTable__body-row-noteBlock" : ""}>
+                        {!showNoteInput[item.id] && (
+
+                            <button onClick={() => setShowNoteInput(prevState => ({
+                                ...prevState,
+                                [item.id]: !prevState[item.id]
+                            }))}
+                                className="adminTable__body-row-noteBtn">
+                                <LuPencil />
+                            </button>
+                        )}
+                        {showNoteInput[item.id] && (
+                            <div className="adminTable__body-row-noteBox">
+                                <input
+                                    type="text"
+                                    placeholder={item.note || "Заметка"}
+                                    value={notes[item.id] || ""}
+                                    onChange={(e) => setNotes(prevState => ({
+                                        ...prevState,
+                                        [item.id]: e.target.value
+                                    }))}
+                                />
+                                <button onClick={() => {
+                                    switchUserStatus(item.statusUser, item.id, notes[item.id] || item.note);
+                                    setShowNoteInput(prevState => ({
+                                        ...prevState,
+                                        [item.id]: false
+                                    }));
+                                    setNotes(prevState => ({
+                                        ...prevState,
+                                        [item.id]: ''
+                                    }));
+                                }}
+                                    className="saveNoteBtn"><FiSave /></button>
+                            </div>
+                        )}
+                    </td>
+                </tr >
             ));
         } else {
             return filteredUsers.slice(startIndex, endIndex).map((item, index) => (
@@ -183,6 +223,7 @@ export default function Admin({ setShowInfo }) {
             ));
         }
     };
+
 
     return (
         <div className="adminPage">
@@ -223,6 +264,7 @@ export default function Admin({ setShowInfo }) {
                                             <th>Телефон</th>
                                             <th>Статус</th>
                                             <th>Последняя активность</th>
+                                            <th>Заметки</th>
                                         </tr>
                                         {displayItems()}
                                     </tbody>
