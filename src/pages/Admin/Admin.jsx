@@ -260,7 +260,7 @@ export default function Admin({ setShowInfo }) {
                                         <tr className="adminTable__header">
                                             <th>#</th>
                                             <th>Имя пользователя</th>
-                                            <th>Електронная почта</th>
+                                            <th>Email</th>
                                             <th>Телефон</th>
                                             <th>Статус</th>
                                             <th>Последняя активность</th>

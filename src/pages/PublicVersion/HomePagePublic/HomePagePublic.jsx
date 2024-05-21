@@ -237,7 +237,7 @@ export default function HomePagePublic({ setDisabledFooter }) {
                   href='#'
                   className='homePublicPage__exercise-a'
                 >
-                  Вернуться обратно к теориии{' '}
+                  Вернуться обратно к теории{' '}
                 </a>
               </div>
               <div className='homePublicPage__img'>
